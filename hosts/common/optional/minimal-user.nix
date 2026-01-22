@@ -2,7 +2,7 @@
 { config, ... }:
 {
   # Set a temp password for use by minimal builds like installer and iso
-  users.users.${config.hostSpec.username} = {
+  users.users.${config.hostSpec.primaryUsername} = {
     isNormalUser = true;
 
     # This is a hashed version of the plain-text password "nixos" for use in the ISO. Even though,

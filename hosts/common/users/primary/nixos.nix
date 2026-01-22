@@ -12,12 +12,12 @@ let
   # Decrypt password to /run/secrets-for-users/ so it can be used to create the user
   sopsHashedPasswordFile = lib.optionalString (
     !config.hostSpec.isMinimal
-  ) config.sops.secrets."passwords/${hostSpec.username}".path;
+  ) config.sops.secrets."passwords/${hostSpec.primaryUsername}".path;
 in
 {
   users.mutableUsers = false; # Only allow declarative credentials; Required for password to be set via sops during system activation!
-  users.users.${hostSpec.username} = {
-    home = "/home/${hostSpec.username}";
+  users.users.${hostSpec.primaryUsername} = {
+    home = "/home/${hostSpec.primaryUsername}";
     isNormalUser = true;
     hashedPasswordFile = sopsHashedPasswordFile; # Blank if sops is not working.
 
@@ -41,9 +41,9 @@ in
   # root's ssh key are mainly used for remote deployment, borg, and some other specific ops
   users.users.root = {
     shell = pkgs.bash;
-    hashedPasswordFile = config.users.users.${hostSpec.username}.hashedPasswordFile;
-    hashedPassword = config.users.users.${hostSpec.username}.hashedPassword; # This comes from hosts/common/optional/minimal.nix and gets overridden if sops is working
-    openssh.authorizedKeys.keys = config.users.users.${hostSpec.username}.openssh.authorizedKeys.keys; # root's ssh keys are mainly used for remote deployment.
+    hashedPasswordFile = config.users.users.${hostSpec.primaryUsername}.hashedPasswordFile;
+    hashedPassword = config.users.users.${hostSpec.primaryUsername}.hashedPassword; # This comes from hosts/common/optional/minimal.nix and gets overridden if sops is working
+    openssh.authorizedKeys.keys =
+      config.users.users.${hostSpec.primaryUsername}.openssh.authorizedKeys.keys; # root's ssh keys are mainly used for remote deployment.
   };
 }
-

@@ -14,8 +14,8 @@ let
   pubKeys = lib.filesystem.listFilesRecursive ./keys;
 in
 {
-  users.users.${hostSpec.username} = {
-    name = hostSpec.username;
+  users.users.${hostSpec.primaryUsername} = {
+    name = hostSpec.primaryUsername;
     shell = pkgs.bash; # default shell
 
     # These get placed into /etc/ssh/authorized_keys.d/<name> on nixos
@@ -25,13 +25,13 @@ in
   # Create ssh sockets directory for controlpaths when homemanager not loaded (i.e. isMinimal)
   systemd.tmpfiles.rules =
     let
-      user = config.users.users.${hostSpec.username}.name;
-      group = config.users.users.${hostSpec.username}.group;
+      user = config.users.users.${hostSpec.primaryUsername}.name;
+      group = config.users.users.${hostSpec.primaryUsername}.group;
     in
     # you must set the rule for .ssh separately first, otherwise it will be automatically created as root:root and .ssh/sockects will fail
     [
-      "d /home/${hostSpec.username}/.ssh 0750 ${user} ${group} -"
-      "d /home/${hostSpec.username}/.ssh/sockets 0750 ${user} ${group} -"
+      "d /home/${hostSpec.primaryUsername}/.ssh 0750 ${user} ${group} -"
+      "d /home/${hostSpec.primaryUsername}/.ssh/sockets 0750 ${user} ${group} -"
     ];
 
   # No matter what environment we are in we want these tools
@@ -48,11 +48,11 @@ in
       inherit pkgs inputs;
       hostSpec = config.hostSpec;
     };
-    users.${hostSpec.username}.imports = lib.flatten (
+    users.${hostSpec.primaryUsername}.imports = lib.flatten (
       lib.optional (!hostSpec.isMinimal) [
         (
           { config, ... }:
-          import (lib.custom.relativeToRoot "home/${hostSpec.username}/${hostSpec.hostName}.nix") {
+          import (lib.custom.relativeToRoot "home/${hostSpec.primaryUsername}/${hostSpec.hostName}.nix") {
             inherit
               pkgs
               inputs

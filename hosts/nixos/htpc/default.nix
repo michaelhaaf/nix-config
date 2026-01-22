@@ -64,6 +64,12 @@
 
   hostSpec = {
     hostName = "htpc";
+    primaryDesktopUsername = "homie";
+    primaryUser = "michael";
+    users = [
+      "michael"
+      "homie"
+    ];
   };
 
   networking = {
@@ -90,4 +96,10 @@
   };
   # https://wiki.nixos.org/wiki/FAQ/When_do_I_update_stateVersion
   system.stateVersion = "24.11";
+
+  services = {
+    # backup = {
+    #   enable = false;
+    # };
+  };
 }

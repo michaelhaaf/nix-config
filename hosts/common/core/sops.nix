@@ -66,14 +66,14 @@ in
       }
       # only reference borg password if host is using backup
       # TODO: will i be using borg?
-      (lib.mkIf config.services.backup.enable {
-        "passwords/borg" = {
-          owner = "root";
-          group = if pkgs.stdenv.isLinux then "root" else "wheel";
-          mode = "0600";
-          path = "/etc/borg/passphrase";
-        };
-      })
+      # (lib.mkIf config.services.backup.enable {
+      #   "passwords/borg" = {
+      #     owner = "root";
+      #     group = if pkgs.stdenv.isLinux then "root" else "wheel";
+      #     mode = "0600";
+      #     path = "/etc/borg/passphrase";
+      #   };
+      # })
       (lib.mkIf pkgs.stdenv.isLinux linuxEntries)
     ];
   # The containing folders are created as root and if this is the first ~/.config/ entry,
@@ -82,8 +82,8 @@ in
   system.activationScripts.sopsSetAgeKeyOwnership =
     let
       ageFolder = "${config.hostSpec.home}/.config/sops/age";
-      user = config.users.users.${config.hostSpec.username}.name;
-      group = config.users.users.${config.hostSpec.username}.group;
+      user = config.users.users.${config.hostSpec.primaryUsername}.name;
+      group = config.users.users.${config.hostSpec.primaryUsername}.group;
     in
     ''
       mkdir -p ${ageFolder} || true

@@ -11,10 +11,22 @@
       freeformType = with lib.types; attrsOf str;
       options = {
         # Data variables that don't dictate configuration settings
+        primaryUsername = lib.mkOption {
+          type = lib.types.str;
+          description = "The primary administrative username of the host";
+        };
+        primaryDesktopUsername = lib.mkOption {
+          type = lib.types.str;
+          description = "The primary desktop user on the host";
+          default = config.hostSpec.primaryUsername;
+        };
+
+        # TODO: deprecated, use either primaryUsername or map over users
         username = lib.mkOption {
           type = lib.types.str;
           description = "The username of the host";
         };
+
         hostName = lib.mkOption {
           type = lib.types.str;
           description = "The hostname of the host";
@@ -50,15 +62,18 @@
           type = lib.types.str;
           description = "The handle of the user (eg: github user)";
         };
+
+        # TODO: causes issues for multi-user systems
         home = lib.mkOption {
           type = lib.types.str;
           description = "The home directory of the user";
           default =
             let
-              user = config.hostSpec.username;
+              user = config.hostSpec.primaryUsername;
             in
             if pkgs.stdenv.isLinux then "/home/${user}" else "/Users/${user}";
         };
+
         persistFolder = lib.mkOption {
           type = lib.types.str;
           description = "The folder to persist data if impermenance is enabled";
@@ -66,16 +81,44 @@
         };
 
         # Configuration Settings
+        users = lib.mkOption {
+          type = lib.types.listOf lib.types.str;
+          description = "An attribute set of all users on the host";
+          default = [ config.hostSpec.primaryUsername ];
+        };
         isMinimal = lib.mkOption {
           type = lib.types.bool;
           default = false;
           description = "Used to indicate a minimal host";
         };
+        isRoaming = lib.mkOption {
+          type = lib.types.bool;
+          default = false;
+          description = "Used to indicate a roaming host for wireless, battery use, etc";
+        };
+        isRemote = lib.mkOption {
+          type = lib.types.bool;
+          default = false;
+          description = "Used to indicate a host that is remotely managed";
+        };
+        isLocal = lib.mkOption {
+          type = lib.types.bool;
+          default = (!config.hostSpec.isRemote);
+          description = "Used to indicate a host that is remotely managed";
+        };
+        isAdmin = lib.mkOption {
+          type = lib.types.bool;
+          default = false;
+          description = "Used to indicate a host that is used to admin other systems";
+        };
+
+        # TODO: deprecated (I think)
         isMobile = lib.mkOption {
           type = lib.types.bool;
           default = false;
           description = "Used to indicate a mobile host";
         };
+
         isProduction = lib.mkOption {
           type = lib.types.bool;
           default = true;

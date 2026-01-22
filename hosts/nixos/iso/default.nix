@@ -27,18 +27,19 @@
   hostSpec = {
     hostName = "iso";
     # the username below will be available in additional the the standard `root` and `nixos` users from the nixos installation image.
-    username = "michael";
+    primaryUsername = "michael";
     isProduction = lib.mkForce false;
 
     handle = "michaelhaaf";
     email.gitHub = "michaelhaaf@users.noreply.github.com";
+    networking = secrets.networking;
   };
 
   # root's ssh key are mainly used for remote deployment
   users.extraUsers.root = {
-    inherit (config.users.users.${config.hostSpec.username}) hashedPassword;
+    inherit (config.users.users.${config.hostSpec.primaryUsername}) hashedPassword;
     openssh.authorizedKeys.keys =
-      config.users.users.${config.hostSpec.username}.openssh.authorizedKeys.keys;
+      config.users.users.${config.hostSpec.primaryUsername}.openssh.authorizedKeys.keys;
   };
 
   environment.etc = {
