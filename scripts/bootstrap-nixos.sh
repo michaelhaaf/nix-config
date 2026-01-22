@@ -237,7 +237,7 @@ function luks_setup_secondary_drive_decryption() {
 }
 
 # Validate required options
-# FIXME(bootstrap): The ssh key and destination aren't required if only rekeying, so could be moved into specific sections?
+# TODO: The ssh key and destination aren't required if only rekeying, so could be moved into specific sections?
 if [ -z "${target_hostname}" ] || [ -z "${target_destination}" ] || [ -z "${ssh_key}" ]; then
 	red "ERROR: -n, -d, and -k are all required"
 	echo
@@ -282,7 +282,7 @@ if yes_or_no "Do you want to copy your full nix-config and nix-secrets to $targe
 	green "Copying full nix-secrets to $target_hostname"
 	sync "$target_user" "${nix_secrets_dir}"
 
-	# FIXME(bootstrap): Add some sort of key access from the target to download the config (if it's a cloud system)
+	# TODO: Add some sort of key access from the target to download the config (if it's a cloud system)
 	if yes_or_no "Do you want to rebuild immediately?"; then
 		green "Rebuilding nix-config on $target_hostname"
 		$ssh_cmd "cd ${nix_src_path}nix-config && sudo nixos-rebuild --impure --show-trace --flake .#$target_hostname switch"

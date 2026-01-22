@@ -1,10 +1,50 @@
 {
-  description = "EmergentMind's Nix-Config Starter";
+  description = "NixOS configuration for all my systems.";
+
+  inputs = {
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
+    nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-25.11";
+    nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
+
+    hardware.url = "github:nixos/nixos-hardware";
+    nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
+    home-manager = {
+      url = "github:nix-community/home-manager/release-25.11";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    #
+    # ========= Utilities =========
+    #
+    disko = {
+      url = "github:nix-community/disko";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    # Secrets management. See ./docs/secretsmgmt.md
+    sops-nix = {
+      url = "github:mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    # Pre-commit
+    pre-commit-hooks = {
+      url = "github:cachix/git-hooks.nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    #
+    # ========= Personal Repositories =========
+    #
+    # Private secrets repo.  See ./docs/secretsmgmt.md
+    # Authenticates via ssh and use shallow clone
+    nix-secrets = {
+      url = "git+ssh://git@github.com/michaelhaaf/nix-secrets.git?ref=main&shallow=1";
+      inputs = { };
+    };
+  };
   outputs =
     {
       self,
       nixpkgs,
-      # nix-darwin,
       ...
     }@inputs:
     let
@@ -13,10 +53,8 @@
       #
       # ========= Architectures =========
       #
-      # NOTE(starter): Comment or uncomment architectures below as required by your hosts.
       forAllSystems = nixpkgs.lib.genAttrs [
         "x86_64-linux"
-        #"aarch64-darwin"
       ];
 
       # ========== Extend lib with lib.custom ==========
@@ -48,19 +86,6 @@
           };
         }) (builtins.attrNames (builtins.readDir ./hosts/nixos))
       );
-
-      # darwinConfigurations = builtins.listToAttrs (
-      #   map (host: {
-      #     name = host;
-      #     value = nix-darwin.lib.darwinSystem {
-      #       specialArgs = {
-      #         inherit inputs outputs lib;
-      #         isDarwin = true;
-      #       };
-      #       modules = [ ./hosts/darwin/${host} ];
-      #     };
-      #   }) (builtins.attrNames (builtins.readDir ./hosts/darwin))
-      # );
 
       #
       # ========= Packages =========
@@ -113,61 +138,4 @@
       );
     };
 
-  inputs = {
-    #
-    # ========= Official NixOS, Nix-Darwin, and HM Package Sources =========
-    #
-    # NOTE(starter): As with typical flake-based configs, you'll need to update the nixOS, hm,
-    # and darwin version numbers below when new releases are available.
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
-    # The next two inputs are for pinning nixpkgs to stable vs unstable regardless of what the above is set to.
-    # This is particularly useful when an upcoming stable release is in beta because you can effectively
-    # keep 'nixpkgs-stable' set to stable for critical packages while setting 'nixpkgs' to the beta branch to
-    # get a jump start on deprecation changes.
-    # See also 'stable-packages' and 'unstable-packages' overlays at 'overlays/default.nix"
-    nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-25.05";
-    nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
-
-    hardware.url = "github:nixos/nixos-hardware";
-    home-manager = {
-      url = "github:nix-community/home-manager/release-25.05";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    nixpkgs-darwin.url = "github:nixos/nixpkgs/nixpkgs-25.05-darwin";
-    nix-darwin = {
-      url = "github:lnl7/nix-darwin";
-      inputs.nixpkgs.follows = "nixpkgs-darwin";
-    };
-
-    #
-    # ========= Utilities =========
-    #
-    disko = {
-      url = "github:nix-community/disko";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    # Secrets management. See ./docs/secretsmgmt.md
-    sops-nix = {
-      url = "github:mic92/sops-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    # Pre-commit
-    pre-commit-hooks = {
-      url = "github:cachix/git-hooks.nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    #
-    # ========= Personal Repositories =========
-    #
-    # Private secrets repo.  See ./docs/secretsmgmt.md
-    # Authenticates via ssh and use shallow clone
-    # FIXME(starter): The url below points to the 'simple' branch of the public, nix-secrets-reference repository which is inherently INSECURE!
-    # Replace the url with your personal, private nix-secrets repo.
-    nix-secrets = {
-      url = "git+ssh://git@github.com/emergentmind/nix-secrets-reference.git?ref=simple&shallow=1";
-      inputs = { };
-    };
-  };
 }

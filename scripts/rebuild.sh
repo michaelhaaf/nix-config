@@ -37,9 +37,9 @@ switch_args="$switch_args .#$HOST switch"
 
 os=$(uname -s)
 if [ "$os" == "Darwin" ]; then
-	# FIXME: This might not have to be darwin specific
+	# TODO: This might not have to be darwin specific
 
-	# FIXME: This will break if HM tries to create the file. We should use environment variables instead
+	# TODO: This will break if HM tries to create the file. We should use environment variables instead
 	mkdir -p ~/.config/nix || true
 	CONF=~/.config/nix/nix.conf
 	if [ ! -f $CONF ]; then

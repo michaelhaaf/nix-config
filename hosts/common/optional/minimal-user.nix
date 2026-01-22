@@ -5,8 +5,6 @@
   users.users.${config.hostSpec.username} = {
     isNormalUser = true;
 
-    #FIXME(starter): if desired, you can change the password that is used by the ISO below.
-
     # This is a hashed version of the plain-text password "nixos" for use in the ISO. Even though,
     # the password is known, we use `hashedPassword` here instead of `password` to mitigate
     # occurrences of the latter not being used during build.
