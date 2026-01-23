@@ -54,7 +54,35 @@
 
         # host = newConfig "name" disk" "swapSize"
         # Swap size is in GiB
-        hostname1 = newConfig "hostname1" "/dev/nvme0n1" 16;
+        vm = newConfig "vm" "/dev/vda" 0 false false;
+        remotevm = newConfig "remotevm" "/dev/vda" 0 false false;
+        laptop = newConfig "laptop" "/dev/nvme0n1" 8 false false;
+        htpc = newConfig "htpc" "/dev/nvme0n1" 8 false false;
+
+        home = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          specialArgs = minimalSpecialArgs;
+          modules = [
+            inputs.disko.nixosModules.disko
+            ../hosts/common/disks/home.nix
+            ./minimal-configuration.nix
+            { networking.hostName = "home"; }
+            ../hosts/nixos/home/hardware-configuration.nix
+          ];
+        };
+
+        minerva = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          specialArgs = minimalSpecialArgs;
+          modules = [
+            inputs.disko.nixosModules.disko
+            ../hosts/common/disks/minerva.nix
+            ./minimal-configuration.nix
+            { networking.hostName = "minerva"; }
+            ../hosts/nixos/minerva/hardware-configuration.nix
+          ];
+        };
+
       };
     };
 }

@@ -31,7 +31,10 @@
 
     handle = "michaelhaaf";
     email.gitHub = "michaelhaaf@users.noreply.github.com";
-    networking = inputs.nix-secrets.networking;
+    inherit (inputs.nix-secrets)
+      domain
+      networking
+      ;
   };
 
   # root's ssh key are mainly used for remote deployment

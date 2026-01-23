@@ -7,6 +7,7 @@
 {
   inputs,
   lib,
+  # pkgs,
   ...
 }:
 {
@@ -15,6 +16,7 @@
     # ========== Hardware ==========
     #
     ./hardware-configuration.nix
+    inputs.hardware.nixosModules.common-cpu-intel
 
     #
     # ========== Disk Layout ==========
@@ -72,6 +74,11 @@
     ];
   };
 
+  services.displayManager = {
+    autoLogin.enable = true;
+    autoLogin.user = "homie";
+  };
+
   networking = {
     networkmanager.enable = true;
     enableIPv6 = false;
@@ -97,9 +104,4 @@
   # https://wiki.nixos.org/wiki/FAQ/When_do_I_update_stateVersion
   system.stateVersion = "24.11";
 
-  services = {
-    # backup = {
-    #   enable = false;
-    # };
-  };
 }
