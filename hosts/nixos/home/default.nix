@@ -172,7 +172,6 @@
   #hardware.graphics.package = lib.mkForce pkgs.unstable.mesa.drivers;
   hardware.amdgpu.initrd.enable = true; # load amdgpu kernelModules in stage 1.
   hardware.amdgpu.opencl.enable = true; # OpenCL support - general compute API for gpu
-  hardware.amdgpu.amdvlk.enable = true; # additional, alternative drivers
 
   environment.systemPackages = builtins.attrValues {
     inherit (pkgs)

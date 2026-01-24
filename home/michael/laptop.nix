@@ -37,14 +37,14 @@
   # | Internal |
   # | Display  |
   #    ------
-  monitors = [
-    {
-      name = "eDP-1";
-      width = 1920;
-      height = 1080;
-      refreshRate = 60;
-      primary = true;
-      #vrr = 1;
-    }
-  ];
+  # monitors = [
+  #   {
+  #     name = "eDP-1";
+  #     width = 1920;
+  #     height = 1080;
+  #     refreshRate = 60;
+  #     primary = true;
+  #     #vrr = 1;
+  #   }
+  # ];
 }

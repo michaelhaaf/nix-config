@@ -7,7 +7,7 @@
 {
   inputs,
   lib,
-  # pkgs,
+  pkgs,
   ...
 }:
 {
@@ -17,23 +17,26 @@
     #
     ./hardware-configuration.nix
     inputs.hardware.nixosModules.common-cpu-intel
+    inputs.hardware.nixosModules.common-pc-ssd
+    inputs.hardware.nixosModules.dell-latitude-7490
 
     #
     # ========== Disk Layout ==========
     #
     inputs.disko.nixosModules.disko
-    # TODO:: modify with the disko spec file you want to use.
     (lib.custom.relativeToRoot "hosts/common/disks/btrfs-disk.nix")
-    # TODO: modify the options below to inform disko of the host's disk path and swap requirements.
-    # IMPORTANT: nix-config-starter assumes a single disk per host. If you require more disks, you
-    # must modify or create new disko specs.
     {
       _module.args = {
-        disk = "/dev/nvme0n1";
+        disk = "/dev/sda";
         withSwap = true;
-        swapSize = 16;
+        swapSize = 8;
       };
     }
+
+    #
+    # ========== Misc Inputs ==========
+    #
+    inputs.stylix.nixosModules.stylix
 
     (map lib.custom.relativeToRoot [
       #
@@ -56,7 +59,9 @@
       #
       "hosts/common/optional/services/openssh.nix" # allow remote SSH access
       "hosts/common/optional/audio.nix" # pipewire and cli controls
-      "hosts/common/optional/xfce.nix" # lightweight x-based window manager
+      "hosts/common/optional/plasma.nix" # KDE desktop
+      "hosts/common/optional/wayland.nix" # common wayland options
+      "hosts/common/optional/wifi.nix" # common wifi options
     ])
   ];
 
@@ -101,6 +106,22 @@
   hardware.graphics = {
     enable = true;
   };
+
+  # TODO: move this stuff to separate file but define theme itself per host
+  # host-wide styling
+  stylix = {
+    enable = true;
+    image = (lib.custom.relativeToRoot "assets/wallpapers/zen-01.png");
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/rose-pine-moon.yaml";
+    opacity = {
+      applications = 1.0;
+      terminal = 1.0;
+      desktop = 1.0;
+      popups = 0.8;
+    };
+    polarity = "dark";
+  };
+
   # https://wiki.nixos.org/wiki/FAQ/When_do_I_update_stateVersion
   system.stateVersion = "24.11";
 
