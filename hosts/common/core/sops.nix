@@ -7,7 +7,7 @@
   ...
 }:
 let
-  sopsFolder = builtins.toString inputs.nix-secrets;
+  sopsFolder = builtins.toString inputs.nix-secrets + "/sops";
 in
 {
   #the import for inputs.sops-nix.nixosModules.sops is handled in hosts/common/core/default.nix so that it can be dynamically input according to the platform
@@ -44,25 +44,23 @@ in
       {
         "keys/age" = {
           owner = config.users.users.${config.hostSpec.primaryUsername}.name;
-          group =
-            if pkgs.stdenv.isLinux then
-              config.users.users.${config.hostSpec.primaryUsername}.group
-            else
-              "staff";
+          group = config.users.users.${config.hostSpec.primaryUsername}.group;
           # See later activation script for folder permission sanitization
           path = "${config.hostSpec.home}/.config/sops/age/keys.txt";
         };
 
-        # NOTE: This entry is duplicated in home sops and here because nix.nix can't
-        # directly check for sops usage due to recursion in some situations
-        # formatted as extra-access-tokens = github.com=<PAT token>
-        "tokens/nix-access-tokens" = {
+        "access-tokens" = {
           sopsFile = "${sopsFolder}/shared.yaml";
         };
 
-        "passwords/msmtp" = {
+        "public-keys" = {
           sopsFile = "${sopsFolder}/shared.yaml";
         };
+
+        "private-keys" = {
+          sopsFile = "${sopsFolder}/shared.yaml";
+        };
+
       }
       # only reference borg password if host is using backup
       # TODO: will i be using borg?
