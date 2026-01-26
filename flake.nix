@@ -43,6 +43,11 @@
     # Theming
     stylix.url = "github:danth/stylix/release-24.11";
     rose-pine-hyprcursor.url = "github:ndom91/rose-pine-hyprcursor";
+    plasma-manager = {
+      url = "github:nix-community/plasma-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.home-manager.follows = "home-manager";
+    };
 
     #
     # ========= Personal Repositories =========

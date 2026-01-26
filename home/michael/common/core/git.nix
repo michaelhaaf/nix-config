@@ -23,14 +23,15 @@
       ".direnv"
     ];
 
-    aliases = {
-      graph = "log --decorate --oneline --graph";
-    };
-    userName = inputs.nix-secrets.git.name;
-    userEmail = lib.mkDefault inputs.nix-secrets.git.email;
-
     lfs.enable = true;
-    extraConfig = {
+    settings = {
+      aliases = {
+        graph = "log --decorate --oneline --graph";
+      };
+      user = {
+        email = lib.mkDefault inputs.nix-secrets.git.email;
+        name = inputs.nix-secrets.git.name;
+      };
       init.defaultBranch = "main";
       commit.gpgSign = lib.mkDefault true;
       core.pager = "delta";

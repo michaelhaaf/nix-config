@@ -27,7 +27,7 @@
             diskSpecPath = ../hosts/common/disks/btrfs-disk.nix;
           in
           nixpkgs.lib.nixosSystem {
-            system = "x86_64-linux";
+            stdenv.hostPlatform.system = "x86_64-linux";
             specialArgs = minimalSpecialArgs;
             modules = [
               inputs.disko.nixosModules.disko
@@ -60,7 +60,7 @@
         htpc = newConfig "htpc" "/dev/nvme0n1" 8 false false;
 
         home = nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
+          stdenv.hostPlatform.system = "x86_64-linux";
           specialArgs = minimalSpecialArgs;
           modules = [
             inputs.disko.nixosModules.disko
@@ -72,7 +72,7 @@
         };
 
         minerva = nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
+          stdenv.hostPlatform.system = "x86_64-linux";
           specialArgs = minimalSpecialArgs;
           modules = [
             inputs.disko.nixosModules.disko

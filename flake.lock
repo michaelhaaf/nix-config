@@ -379,10 +379,10 @@
         "nixpkgs": "nixpkgs"
       },
       "locked": {
-        "lastModified": 1769398824,
-        "narHash": "sha256-Q+b2dPGKjMwGKFUL7O5+n5KTH/kIvpr/3NzNRYrPMqA=",
+        "lastModified": 1769400545,
+        "narHash": "sha256-p0jB8ElFGzPkE1LfM96/IQ9gzV8vdu10BjhPMp3RQ5c=",
         "ref": "main",
-        "rev": "1ac1c999d39ed50cf9e59b12de47e4f91ab50d4b",
+        "rev": "3e779a63616fb993540bfa62ba4fbab03d6d5146",
         "shallow": true,
         "type": "git",
         "url": "ssh://git@github.com/michaelhaaf/nix-secrets.git"
@@ -540,6 +540,29 @@
         "type": "github"
       }
     },
+    "plasma-manager": {
+      "inputs": {
+        "home-manager": [
+          "home-manager"
+        ],
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1767662275,
+        "narHash": "sha256-d5Q1GmQ+sW1Bt8cgDE0vOihzLaswsm8cSdg8124EqXE=",
+        "owner": "nix-community",
+        "repo": "plasma-manager",
+        "rev": "51816be33a1ff0d4b22427de83222d5bfa96d30e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "plasma-manager",
+        "type": "github"
+      }
+    },
     "pre-commit-hooks": {
       "inputs": {
         "flake-compat": "flake-compat_2",
@@ -574,6 +597,7 @@
         "nixpkgs-darwin": "nixpkgs-darwin",
         "nixpkgs-stable": "nixpkgs-stable",
         "nixpkgs-unstable": "nixpkgs-unstable",
+        "plasma-manager": "plasma-manager",
         "pre-commit-hooks": "pre-commit-hooks",
         "rose-pine-hyprcursor": "rose-pine-hyprcursor",
         "sops-nix": "sops-nix",
