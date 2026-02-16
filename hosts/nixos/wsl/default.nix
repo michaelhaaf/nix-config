@@ -12,6 +12,8 @@
 }:
 {
   imports = lib.flatten [
+    ./configuration.nix
+
     #
     # ========== Misc Inputs ==========
     #
