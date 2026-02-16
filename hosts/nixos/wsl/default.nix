@@ -37,14 +37,14 @@
   #
 
   hostSpec = {
-    hostName = "nixos";
+    hostName = "wsl";
     primaryUser = "michael";
     users = [
       "michael"
     ];
   };
 
-  networking.hostName = "nixos";
+  networking.hostName = "wsl";
 
   # Tailscale configuration (currently disabled)
   # To enable Tailscale on WSL:
