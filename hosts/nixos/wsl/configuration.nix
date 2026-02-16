@@ -12,7 +12,7 @@
   wsl.enable = true;
   wsl.defaultUser = "michael";
 
-  nix.settings.trustedUsers = [
+  nix.settings.trusted-users = [
     "root"
     "michael"
   ];
