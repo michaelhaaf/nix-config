@@ -1,4 +1,7 @@
-{ ... }:
+{
+  lib,
+  ...
+}:
 
 {
   imports = [
@@ -17,6 +20,8 @@
     "root"
     "michael"
   ];
+
+  nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
