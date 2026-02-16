@@ -15,5 +15,12 @@
       };
       bashrcExtra = builtins.readFile ./bashrcExtra;
     };
+
+    starship = {
+      enable = true;
+      enableTransience = true;
+      enableZshIntegration = false;
+    };
+
   };
 }

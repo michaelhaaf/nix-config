@@ -47,11 +47,24 @@ in
   # Packages that don't require custom configuration go here
   home.packages = builtins.attrValues {
     inherit (pkgs)
+      # terminal recording
+      asciinema
+      asciinema-agg
+      bat
+
+      eza
+      fd
+
       curl
+
       pciutils
       pfetch # system info
       pre-commit # git hooks
       p7zip # compression & encryption
+
+      rsync
+      tree
+
       usbutils
       unzip # zip extraction
       unrar # rar extraction
