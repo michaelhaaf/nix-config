@@ -80,14 +80,6 @@
   wsl.enable = true; # Redunent with nixosModules.default on the flake.nix level
   wsl.defaultUser = "michael";
 
-  nix.settings = {
-    # Enable flakes and new 'nix' command
-    experimental-features = "nix-command flakes";
-    # Opinionated: disable global registry
-    flake-registry = "";
-    trusted-users = [ "michael" ];
-  };
-
   #   # I think this is unneccecary if I'm going with standalone home-manager rather than flake os module home-manager
   #   home-manager = {
   #     extraSpecialArgs = { inherit inputs outputs; };

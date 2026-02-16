@@ -12,10 +12,6 @@
   wsl.enable = true;
   wsl.defaultUser = "michael";
 
-  nix.settings.experimental-features = [
-    "nix-command"
-    "flakes"
-  ];
   nix.trustedUsers = [
     "root"
     "michael"
