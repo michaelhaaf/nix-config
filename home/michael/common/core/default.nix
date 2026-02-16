@@ -55,7 +55,7 @@ in
 
       eza
       fd
-      rg
+      ripgrep
 
       curl
 
