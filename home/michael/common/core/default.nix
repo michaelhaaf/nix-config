@@ -24,6 +24,7 @@ in
     ./git.nix
     ./kitty.nix
     ./nixos.nix
+    ./password-store.nix
     ./ssh.nix
   ];
 
@@ -54,6 +55,7 @@ in
 
       eza
       fd
+      rg
 
       curl
 
