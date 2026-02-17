@@ -34,6 +34,12 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # Editors
+    nixvim = {
+      url = "github:nix-community/nixvim/nixos-25.11";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # Pre-commit
     pre-commit-hooks = {
       url = "github:cachix/git-hooks.nix";

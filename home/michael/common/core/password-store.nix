@@ -11,5 +11,9 @@
       ext.pass-update
       ext.pass-otp
     ]);
+    settings = {
+      # TODO: use the config object instead, or $XDG_DATA_HOME
+      PASSWORD_STORE_DIR = "/home/michael/.local/share/password-store";
+    };
   };
 }

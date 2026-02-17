@@ -24,7 +24,9 @@ in
     ./git.nix
     ./kitty.nix
     ./nixos.nix
+    ./neovim.nix
     ./password-store.nix
+    ./gnupg.nix
     ./ssh.nix
   ];
 

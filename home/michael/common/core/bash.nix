@@ -14,6 +14,14 @@
         la = "eza -a";
       };
       bashrcExtra = builtins.readFile ./bashrcExtra;
+      sessionVariables = {
+        # TODO use config object
+        XDG_CONFIG_HOME = /home/michael/.config;
+        XDG_CACHE_HOME = /home/michael/.cache;
+        XDG_DATA_HOME = /home/michael/.local/share;
+        XDG_STATE_HOME = /home/michael/.local/state;
+        XDG_DATA_DIRS = "$XDG_DATA_DIRS:$XDG_DATA_HOME/flatpak/exports/share";
+      };
     };
 
     starship = {
