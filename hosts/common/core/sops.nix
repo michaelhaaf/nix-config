@@ -49,15 +49,30 @@ in
           path = "${config.hostSpec.home}/.config/sops/age/keys.txt";
         };
 
-        "access-tokens" = {
+        # extract password/username to /run/secrets-for-users/ so it can be used to create the user
+        "passwords/${config.hostSpec.username}" = {
+          sopsFile = "${sopsFolder}/shared.yaml";
+          neededForUsers = true;
+        };
+
+        # TODO: this all feels like it could be better
+        "access-tokens/github" = {
           sopsFile = "${sopsFolder}/shared.yaml";
         };
 
-        "public-keys" = {
+        "public-keys/ssh" = {
           sopsFile = "${sopsFolder}/shared.yaml";
         };
 
-        "private-keys" = {
+        "public-keys/gpg" = {
+          sopsFile = "${sopsFolder}/shared.yaml";
+        };
+
+        "private-keys/ssh" = {
+          sopsFile = "${sopsFolder}/shared.yaml";
+        };
+
+        "private-keys/gpg" = {
           sopsFile = "${sopsFolder}/shared.yaml";
         };
 
