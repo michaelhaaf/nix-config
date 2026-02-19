@@ -9,7 +9,7 @@
       package = pkgs.unstable.starship;
       settings = {
         palette = "catppuccin_pine";
-        add_newline = true;
+        add_newline = false; # see starship.rc
         line_break.disabled = true;
         format = lib.concatStrings [
           "$all\n"
