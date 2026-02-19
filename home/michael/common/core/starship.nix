@@ -7,10 +7,10 @@
       package = pkgs.unstable.starship;
       settings = {
         palette = "catppuccin_pine";
-        add_newline = false;
+        add_newline = true;
         line_break.disabled = true;
         format = lib.concatStrings [
-          "$all"
+          "$all\n"
           "$character"
         ];
 
@@ -40,17 +40,17 @@
         };
 
         directory = {
-          truncation_length = 2;
           style = "bold lavender";
           truncate_to_repo = true;
-          truncation_symbol = ".../";
+          fish_style_pwd_dir_length = 1;
+          format = " [$path]($style)[$read_only]($read_only_style) ";
         };
 
         time = {
           disabled = false;
           time_format = "%R";
           style = "fg:lavender";
-          format = "[ $time ]($style)";
+          format = "[$time]($style)";
         };
 
         # TODO: not this

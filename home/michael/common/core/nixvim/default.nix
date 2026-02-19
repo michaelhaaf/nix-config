@@ -33,7 +33,24 @@
     enableMan = true; # install man pages for nixvim options
     defaultEditor = true;
     vimdiffAlias = true;
-    clipboard.register = "unnamedplus"; # use system clipboard instead of internal registers
+
+    colorschemes.catppuccin = {
+      enable = true;
+      settings = {
+        transparent_background = true;
+        integrations = {
+          cmp = true;
+          gitsigns = true;
+          nvimtree = true;
+          treesitter = true;
+          notify = true;
+          mini = {
+            enabled = true;
+            indentscope_color = "";
+          };
+        };
+      };
+    };
 
     opts = {
       #
@@ -47,7 +64,6 @@
       showcmd = true; # Show incomplete cmds down the bottom
       showmode = true; # Show current mode down the bottom
       autoread = true; # Reload files changed outside vim
-      lazyredraw = true; # Redraw only when needed
       showmatch = true; # highlight matching braces
       ruler = true; # show current line and column
       visualbell = true; # No sounds
