@@ -446,10 +446,10 @@
         "nixpkgs": "nixpkgs"
       },
       "locked": {
-        "lastModified": 1771524043,
-        "narHash": "sha256-xtGFcEjwZgDGbpEVtdoOAiURk/N4KGiF7LD310xer5I=",
+        "lastModified": 1771533544,
+        "narHash": "sha256-z1olbvCSc3StRGP8RTCDcU2LDGD7MnBu2YZsfhXt4yQ=",
         "ref": "main",
-        "rev": "f8a57f3d38b019a3e83b04d4b52effff0b97d734",
+        "rev": "6585ae2a8df571ffc5adb05f3cf72007c44306b9",
         "shallow": true,
         "type": "git",
         "url": "ssh://git@github.com/michaelhaaf/nix-secrets.git"
@@ -497,11 +497,11 @@
     },
     "nixpkgs-darwin": {
       "locked": {
-        "lastModified": 1771352457,
-        "narHash": "sha256-CCItBNMyLmtWqxTVaDAeeaIigbuaiZuN3WO8PZNkGBc=",
+        "lastModified": 1771430329,
+        "narHash": "sha256-AioylaovOBcqqbIX2nY4dWP7OXXbATIyLwEZtvkzfeQ=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "f8a68d8ce473ec59300d9fb510a1b545c1290939",
+        "rev": "41547a0e3a015a570ca3f5061b6aef64eae13975",
         "type": "github"
       },
       "original": {

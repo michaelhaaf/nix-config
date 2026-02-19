@@ -55,27 +55,6 @@ in
           neededForUsers = true;
         };
 
-        # TODO: this all feels like it could be better
-        "access-tokens/github" = {
-          sopsFile = "${sopsFolder}/shared.yaml";
-        };
-
-        "public-keys/ssh" = {
-          sopsFile = "${sopsFolder}/shared.yaml";
-        };
-
-        "public-keys/gpg" = {
-          sopsFile = "${sopsFolder}/shared.yaml";
-        };
-
-        "private-keys/ssh" = {
-          sopsFile = "${sopsFolder}/shared.yaml";
-        };
-
-        "private-keys/gpg" = {
-          sopsFile = "${sopsFolder}/shared.yaml";
-        };
-
       }
       # only reference borg password if host is using backup
       # TODO: will i be using borg?
