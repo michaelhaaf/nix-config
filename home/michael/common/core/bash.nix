@@ -24,6 +24,17 @@
       };
     };
 
+    fzf = {
+      enable = true;
+      fileWidgetOptions = [
+        "--height 60%"
+        "--border sharp"
+        "--layout reverse"
+        "--prompt '∷ '"
+        "--preview 'bat -n --color=always {}'"
+      ];
+    };
+
     starship = {
       enable = true;
       enableTransience = true;

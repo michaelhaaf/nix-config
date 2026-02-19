@@ -17,7 +17,9 @@ in
     ])
     ./${platform}.nix
 
+    ./atuin.nix
     ./bash.nix
+    ./btop.nix
     ./darwin.nix
     ./direnv.nix
     ./fonts.nix
