@@ -1,5 +1,7 @@
 { lib, pkgs, ... }:
 {
+  home.file.".bashrc.d/starship.rc".source = ./starship.rc;
+
   programs = {
     starship = {
       enable = true;

@@ -1,0 +1,13 @@
+### STARSHIP: new line after command ###
+# adapted from https://www.reddit.com/r/commandline/comments/13r2ou3/is_there_any_way_to_remove_the_first_newline_from/jliam5c/
+newline_after_cmd() {
+    if [ -z $NEW_LINE_BEFORE_PROMPT ]; then
+        NEW_LINE_BEFORE_PROMPT=1
+    elif [ "$NEW_LINE_BEFORE_PROMPT" -eq 1 ]; then
+        echo ""
+    fi
+}
+if [ -z $NEW_LINE_AFTER_CMD_CALLED ]; then
+    PROMPT_COMMAND=${PROMPT_COMMAND:+$PROMPT_COMMAND; }newline_after_cmd
+fi
+NEW_LINE_AFTER_CMD_CALLED=1
