@@ -12,12 +12,15 @@
 
   services.gpg-agent = {
     enable = true;
+    enableBashIntegration = true;
     defaultCacheTtl = 1800;
     enableSshSupport = true;
-    pinentryPackage = pkgs.pinentry-tty;
+    # pinentryPackage = pkgs.pinentry-tty;
+    pinentryPackage = pkgs.wayprompt;
   };
 
   home.packages = [
-    pkgs.pinentry-tty
+    # pkgs.pinentry-tty
+    pkgs.wayprompt
   ];
 }

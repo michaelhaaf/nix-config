@@ -46,8 +46,8 @@
       delta = {
         enable = true;
         features = [
+          "navigate"
           "side-by-side"
-          "line-numbers"
           "hyperlinks"
           "line-numbers"
           "commit-decoration"

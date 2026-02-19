@@ -35,28 +35,48 @@
   # Packages that don't require custom configuration go here
   home.packages = builtins.attrValues {
     inherit (pkgs)
-      # terminal recording
-      asciinema
+      asciinema # terminal recorder
       asciinema-agg
       bat
-
-      eza
-      fd
-      ripgrep
-
+      bc
+      btop
+      chafa # terminal graphics
+      coreutils-full # gnu
       curl
+      delta
+      dust # du, but more intuitive
+      eza
+      fastfetch # neofetch replacement
+      fd
+      gawk
+      gnused
+      gzip
+      jq
+      inotify-tools # inotify watches
+      iftop
+      nmap
 
       pciutils
       pfetch # system info
       pre-commit # git hooks
       p7zip # compression & encryption
 
+      ripgrep
       rsync
+      strace # system process tracer
       tree
 
       usbutils
       unzip # zip extraction
       unrar # rar extraction
+      wl-clipboard
+      yq # yaml parser
+
+      # Repository management
+      hub
+      gh
+      act
+      codeberg-cli
       ;
   };
 

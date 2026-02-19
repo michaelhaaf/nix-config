@@ -1,0 +1,15 @@
+// https://zellij.dev/documentation/layout-examples#quick-generic-project-explorer
+layout {
+    pane split_direction="vertical" size="60%" {
+        pane command="nvim"
+        pane split_direction="horizontal" size="40%" {
+            pane command="git" size="70%" {
+                args "log" "--oneline"
+            }
+            pane size="30%"
+        }
+    }
+    pane size=1 borderless=true {
+        plugin location="zellij:compact-bar"
+    }
+}

@@ -15,11 +15,24 @@
     ./keymaps.nix
   ];
 
+  programs.bash = {
+    shellAliases = {
+      vim = "nvim";
+      vi = "nvim";
+      v = "nvim";
+    };
+    sessionVariables = {
+      MANPAGER = "nvim +Man!";
+    };
+  };
+
   programs.nixvim = {
     nixpkgs.pkgs = import <nixpkgs> { };
 
     enable = true;
     enableMan = true; # install man pages for nixvim options
+    defaultEditor = true;
+    vimdiffAlias = true;
     clipboard.register = "unnamedplus"; # use system clipboard instead of internal registers
 
     opts = {

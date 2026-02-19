@@ -15,7 +15,7 @@
       };
       bashrcExtra = builtins.readFile ./bashrcExtra;
       sessionVariables = {
-        # TODO use config object
+        # TODO: use config object
         XDG_CONFIG_HOME = /home/michael/.config;
         XDG_CACHE_HOME = /home/michael/.cache;
         XDG_DATA_HOME = /home/michael/.local/share;
@@ -26,6 +26,7 @@
 
     fzf = {
       enable = true;
+      enableBashIntegration = true;
       fileWidgetOptions = [
         "--height 60%"
         "--border sharp"
@@ -35,11 +36,9 @@
       ];
     };
 
-    starship = {
+    zoxide = {
       enable = true;
-      enableTransience = true;
-      enableZshIntegration = false;
+      enableBashIntegration = true;
     };
-
   };
 }
