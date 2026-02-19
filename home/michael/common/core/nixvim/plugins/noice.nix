@@ -1,8 +1,6 @@
 {
-  programs.nixvim = {
-    plugins.noice = {
-      enable = true;
-      autoLoad = true;
-    };
+  plugins.noice = {
+    enable = true;
+    autoLoad = true;
   };
 }
