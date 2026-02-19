@@ -1,11 +1,6 @@
 {
-  osConfig,
-  lib,
   ...
 }:
-let
-  flakeRoot = lib.custom.relativeToRoot "./.";
-in
 {
   plugins = {
     lsp-format = {
@@ -43,25 +38,6 @@ in
             };
             formatting = {
               command = [ "nixfmt" ];
-            };
-            options = {
-              nixos = {
-                expr = ''
-                  let configs = (builtins.getFlake "${flakeRoot}").nixosConfigurations;
-                  in (builtins.head (lib.attrValues configs)).options
-                '';
-              };
-              home_manager = {
-                expr = ''
-                  (builtins.getFlake "${flakeRoot}").nixosConfigurations.${osConfig.hostSpec.hostName}.options.home-manager.users.value.${osConfig.hostSpec.primaryUsername}
-                '';
-              };
-              darwin = {
-                expr = ''
-                  let configs = (builtins.getFlake "${flakeRoot}").darwinConfigurations;
-                  in (builtins.head (lib.attrValues configs)).options
-                '';
-              };
             };
           };
         };
