@@ -6,30 +6,13 @@
   hostSpec,
   ...
 }:
-let
-  platform = if hostSpec.isDarwin then "darwin" else "nixos";
-in
 {
   imports = lib.flatten [
     (map lib.custom.relativeToRoot [
       "modules/common/host-spec.nix"
       "modules/home"
     ])
-    ./${platform}.nix
-
-    ./atuin.nix
-    ./bash.nix
-    ./btop.nix
-    ./darwin.nix
-    ./direnv.nix
-    ./fonts.nix
-    ./git.nix
-    ./kitty.nix
-    ./nixos.nix
-    ./neovim.nix
-    ./password-store.nix
-    ./gnupg.nix
-    ./ssh.nix
+    (lib.custom.scanPaths ./.)
   ];
 
   inherit hostSpec;
