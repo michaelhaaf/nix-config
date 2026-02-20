@@ -69,7 +69,6 @@
       usbutils
       unzip # zip extraction
       unrar # rar extraction
-      wl-clipboard
       yq # yaml parser
 
       # Repository management

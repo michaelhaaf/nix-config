@@ -16,7 +16,7 @@
     defaultCacheTtl = 1800;
     enableSshSupport = true;
     # pinentryPackage = pkgs.pinentry-tty;
-    pinentryPackage = pkgs.wayprompt;
+    pinentry.package = pkgs.wayprompt;
   };
 
   home.packages = [

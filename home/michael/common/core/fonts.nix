@@ -14,7 +14,6 @@
       monospace = [ "pkgs.nerd-fonts.iosevka" ];
       sansSerif = [ "pkgs.nerd-fonts.ubuntu-sans" ];
       serif = [ "pkgs.nerd-fonts.ubuntu" ];
-
     };
   };
 }
