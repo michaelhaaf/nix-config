@@ -18,7 +18,6 @@
       gitbrowse.enabled = true;
       scratch.enabled = true;
       quickfile.enabled = true;
-      statuccolumn.enabled = true;
       words.enabled = true;
       scope.enabled = true;
       toggle.enabled = true;
@@ -156,7 +155,7 @@
       };
     }
     {
-      key = "<leader>gB";
+      key = "<leader>gG";
       mode = [ "n" ];
       action = "<cmd>lua Snacks.picker.gitbrowse()<CR>";
       options = {
@@ -368,6 +367,16 @@
       key = "<leader>su";
       mode = [ "n" ];
       action = "<cmd>lua Snacks.picker.undo()<CR>";
+      options = {
+        desc = "(s)earch (u)ndo history";
+      };
+    }
+
+    # Git blame
+    {
+      key = "<leader>gB";
+      mode = [ "n" ];
+      action = "<cmd>lua Snacks.git.blame_line()<CR>";
       options = {
         desc = "(s)earch (u)ndo history";
       };
