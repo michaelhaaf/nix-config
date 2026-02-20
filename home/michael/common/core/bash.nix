@@ -27,6 +27,7 @@
     fzf = {
       enable = true;
       enableBashIntegration = true;
+      fileWidgetCommand = "fd --type f --strip-cwd-prefix --follow --exclude .git";
       fileWidgetOptions = [
         "--height 60%"
         "--border sharp"
