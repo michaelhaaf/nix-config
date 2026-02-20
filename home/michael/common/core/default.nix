@@ -69,11 +69,13 @@
       usbutils
       unzip # zip extraction
       unrar # rar extraction
+      wordnet # lexical database
       yq # yaml parser
 
       # Repository management
       hub
       gh
+      glab
       act
       codeberg-cli
       ;
