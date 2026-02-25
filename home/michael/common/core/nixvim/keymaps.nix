@@ -41,23 +41,56 @@
           noremap = true;
         };
       }
+
+      {
+        mode = [ "n" ];
+        key = "<C-h>";
+        action = "<C-w>h";
+        options = {
+          desc = "Go to Left Window";
+          remap = true;
+        };
+      }
       {
         mode = [ "n" ];
         key = "<C-j>";
-        action = "<C-d>";
+        action = "<C-w>j";
         options = {
-          desc = "Add bind for 1/2 page down";
-          noremap = true;
+          desc = "Go to Lower Window";
+          remap = true;
         };
       }
       {
         mode = [ "n" ];
         key = "<C-k>";
-        action = "<C-u>";
+        action = "<C-w>k";
         options = {
-          desc = "Add bind for 1/2 page up";
-          noremap = true;
+          desc = "Go to Upper Window";
+          remap = true;
         };
+      }
+      {
+        mode = [ "n" ];
+        key = "<C-l>";
+        action = "<C-w>l";
+        options = {
+          desc = "Go to Right Window";
+          remap = true;
+        };
+      }
+
+      #
+      # ======== better indenting ========
+      #
+      {
+        mode = [ "x" ];
+        key = "<";
+        action = "<gv";
+      }
+      {
+        mode = [ "x" ];
+        key = ">";
+        action = ">gv";
       }
 
       #

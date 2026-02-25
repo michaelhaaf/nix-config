@@ -37,6 +37,7 @@
     colorschemes.catppuccin = {
       enable = true;
       settings = {
+        flavour = "mocha";
         transparent_background = true;
         integrations = {
           cmp = true;
@@ -122,7 +123,7 @@
 
       # ================ Search and Replace ========================
       incsearch = true; # searches incrementally as you type instead of after 'enter'
-      hlsearch = true; # highlight search results
+      hlsearch = false; # highlight search results
       ignorecase = true; # search case insensitive
       smartcase = true; # search matters if capital letter
       inccommand = "split"; # preview incremental substitutions in a split
