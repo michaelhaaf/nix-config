@@ -4,10 +4,21 @@
   plugins = {
     treesitter = {
       enable = true;
-      highlight.enable = true;
-      indent.enable = true;
-      folding.enable = true;
+      folding = true;
       nixvimInjections = true;
+      settings = {
+        indent = {
+          enable = true;
+          disable = [ "python" ];
+        };
+        incremental_selection = {
+          enable = true;
+        };
+        highlight = {
+          enable = true;
+          additional_vim_regex_highlighting = true;
+        };
+      };
     };
   };
 }
