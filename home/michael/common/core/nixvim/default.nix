@@ -66,8 +66,23 @@
       autoread = true; # Reload files changed outside vim
       showmatch = true; # highlight matching braces
       ruler = true; # show current line and column
+      cursorline = true; # highlight current line
       visualbell = true; # No sounds
       signcolumn = "yes";
+      termguicolors = true; # Enable 24-bit colors
+
+      # A better completion experience
+      completeopt = [
+        "menuone"
+        "noselect"
+        "noinsert"
+      ];
+
+      # Clipboard
+      clipboard = {
+        providers.wl-copy.enable = true;
+        register = "unnamedplus";
+      };
 
       listchars = "trail:·"; # Display tabs and trailing spaces visually
 
@@ -81,8 +96,8 @@
       smartindent = true;
       smarttab = true;
       shiftwidth = 2;
-      softtabstop = 2;
-      tabstop = 2;
+      softtabstop = 0;
+      tabstop = 4;
       expandtab = true;
 
       # ================ Folds ============================
@@ -133,6 +148,8 @@
       shellcheck # Shell script linter
       eslint_d # JavaScript/TypeScript linter
 
+      # LSPs
+      lua-language-server
     ];
 
     # Load Plugins that aren't provided as modules by nixvim
