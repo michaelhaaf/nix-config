@@ -6,6 +6,7 @@
   ];
 
   plugins = {
+    # blink-pairs.enable = true; not available in 25.11, need unstable
     blink-cmp-dictionary.enable = true;
     blink-cmp-git.enable = true;
     blink-cmp-spell.enable = true;
@@ -17,53 +18,7 @@
 
       settings = {
         keymap = {
-          "<C-space>" = [
-            "show"
-            "show_documentation"
-            "hide_documentation"
-          ];
-          "<C-e>" = [
-            "hide"
-            "fallback"
-          ];
-          "<CR>" = [
-            "accept"
-            "fallback"
-          ];
-          "<Tab>" = [
-            "select_next"
-            "snippet_forward"
-            "fallback"
-          ];
-          "<S-Tab>" = [
-            "select_prev"
-            "snippet_backward"
-            "fallback"
-          ];
-          "<Up>" = [
-            "select_prev"
-            "fallback"
-          ];
-          "<Down>" = [
-            "select_next"
-            "fallback"
-          ];
-          "<C-p>" = [
-            "select_prev"
-            "fallback"
-          ];
-          "<C-n>" = [
-            "select_next"
-            "fallback"
-          ];
-          "<C-up>" = [
-            "scroll_documentation_up"
-            "fallback"
-          ];
-          "<C-down>" = [
-            "scroll_documentation_down"
-            "fallback"
-          ];
+          preset = "default";
         };
         signature = {
           enabled = true;

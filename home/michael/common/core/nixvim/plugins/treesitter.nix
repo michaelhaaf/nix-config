@@ -20,5 +20,15 @@
         };
       };
     };
+    treesitter-context = {
+      enable = true;
+    };
+    treesitter-textobjects = {
+      enable = true;
+      select = {
+        enable = true;
+        lookahead = true;
+      };
+    };
   };
 }

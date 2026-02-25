@@ -8,6 +8,7 @@
     };
     lsp = {
       enable = true;
+      inlayHints = true;
       servers = {
         bashls = {
           enable = true;
