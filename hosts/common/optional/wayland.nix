@@ -9,5 +9,6 @@
     waypaper # wayland packages(nitrogen analog for wayland)
     swww # backend wallpaper daemon required by waypaper
     tofi # dmenu equivalent
+    wayland-utils # diagnotstic tools
   ];
 }

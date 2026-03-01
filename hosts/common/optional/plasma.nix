@@ -9,11 +9,7 @@
   };
   services.desktopManager.plasma6.enable = true;
 
-  services.kdeconnect = {
-    enable = true;
-    indicator = true;
-    package = pkgs.kdePackages.kdeconnect-kde;
-  };
+  programs.kdeconnect.enable = true;
 
   environment.systemPackages = with pkgs; [
     (catpuccin-sddm.override {
@@ -22,6 +18,8 @@
     })
     kdePackages.sddm-kcm
     kdePackages.ksystemlog
+    kdePackages.discover
+    kdePackages.sddm-kcm
   ];
 
 }
