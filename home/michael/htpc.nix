@@ -14,7 +14,6 @@
     #
     # ========== Host-specific Optional Configs ==========
     #
-    common/optional/sops.nix
   ];
 
 }

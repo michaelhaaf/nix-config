@@ -17,7 +17,7 @@
     # ========== Hardware ==========
     #
 
-    inputs.hardware.nixosModules.lenovo-thinkpad-e15-intel
+    <nixos-hardware/hp/elitebook/845/g8>
     ./hardware-configuration.nix
 
     #
@@ -63,6 +63,15 @@
       # "hosts/common/optional/wayland.nix" # wayland components and pkgs not available in home-manager
       # "hosts/common/optional/wifi.nix" # wayland components and pkgs not available in home-manager
       # "hosts/common/optional/yubikey.nix" # yubikey related packages and configs
+
+      # TODO: these are the HTPC ones for now -- switch later when I do laptop stuff!
+      "hosts/common/optional/services/openssh.nix" # allow remote SSH access
+      "hosts/common/optional/services/bluetooth.nix"
+      "hosts/common/optional/audio.nix" # pipewire and cli controls
+      "hosts/common/optional/plasma.nix" # KDE desktop
+      "hosts/common/optional/wayland.nix" # common wayland options
+      "hosts/common/optional/wifi.nix" # common wifi options
+      "hosts/common/optional/gaming.nix"
     ])
   ];
 
@@ -72,38 +81,27 @@
 
   hostSpec = {
     hostName = "laptop";
-    isMobile = lib.mkForce true;
-    # useYubikey = lib.mkForce true;
-    hdr = lib.mkForce true;
-    wifi = lib.mkForce true;
-    persistFolder = "/persist"; # added for "completion" because of the disko spec that was used even though impermanence isn't actually enabled here yet.
+    # TODO: remove when I'm no longer using as htpc
+    primaryDesktopUsername = "homie";
+    primaryUser = "michael";
+    users = [
+      "michael"
+      "homie"
+    ];
   };
 
-  # set custom autologin options. see greetd.nix for details
-  #  autoLogin.enable = true;
-  #  autoLogin.username = config.hostSpec.username;
-  #
-  #  services.gnome.gnome-keyring.enable = true;
+  services.displayManager = {
+    autoLogin.enable = true;
+    autoLogin.user = "homie";
+  };
 
   networking = {
     networkmanager.enable = true;
     enableIPv6 = false;
   };
 
-  #Firmwareupdate
-  #  $ fwupdmgr update
+  # Firmware update
   services.fwupd.enable = true;
-
-  #  services.backup = {
-  #    enable = true;
-  #    borgBackupStartTime = "02:00:00";
-  #    borgServer = "${config.hostSpec.networking.subnets.grove.hosts.oops.ip}";
-  #    borgUser = "${config.hostSpec.username}";
-  #    borgPort = "${builtins.toString config.hostSpec.networking.ports.tcp.oops}";
-  #    borgBackupPath = "/var/services/homes/${config.hostSpec.username}/backups";
-  #    borgNotifyFrom = "${config.hostSpec.email.notifier}";
-  #    borgNotifyTo = "${config.hostSpec.email.backup}";
-  #  };
 
   boot.loader = {
     systemd-boot = {
@@ -119,50 +117,25 @@
     systemd.enable = true;
   };
 
-  # #TODO(stylix): move this stuff to separate file but define theme itself per host
-  # # host-wide styling
-  # stylix = {
-  #   enable = true;
-  #   image = (lib.custom.relativeToRoot "assets/wallpapers/zen-01.png");
-  #   #      base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-material-dark-medium.yaml";
-  #   base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-medium.yaml";
-  #   #      cursor = {
-  #   #        package = pkgs.foo;
-  #   #        name = "";
-  #   #      };
-  #   #     fonts = {
-  #   #monospace = {
-  #   #    package = pkgs.foo;
-  #   #    name = "";
-  #   #};
-  #   #sanSerif = {
-  #   #    package = pkgs.foo;
-  #   #    name = "";
-  #   #};
-  #   #serif = {
-  #   #    package = pkgs.foo;
-  #   #    name = "";
-  #   #};
-  #   #    sizes = {
-  #   #        applications = 12;
-  #   #        terminal = 12;
-  #   #        desktop = 12;
-  #   #        popups = 10;
-  #   #    };
-  #   #};
-  #   opacity = {
-  #     applications = 1.0;
-  #     terminal = 1.0;
-  #     desktop = 1.0;
-  #     popups = 0.8;
-  #   };
-  #   polarity = "dark";
-  #   # program specific exclusions
-  #   #targets.foo.enable = false;
-  # };
-  #hyprland border override example
-  #  wayland.windowManager.hyprland.settings.general."col.active_border" = lib.mkForce "rgb(${config.stylix.base16Scheme.base0E});
+  hardware.graphics = {
+    enable = true;
+  };
+
+  # TODO: move this stuff to separate file but define theme itself per host
+  # host-wide styling
+  stylix = {
+    enable = true;
+    image = (lib.custom.relativeToRoot "assets/wallpapers/zen-01.png");
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/rose-pine-moon.yaml";
+    opacity = {
+      applications = 1.0;
+      terminal = 1.0;
+      desktop = 1.0;
+      popups = 0.8;
+    };
+    polarity = "dark";
+  };
 
   # https://wiki.nixos.org/wiki/FAQ/When_do_I_update_stateVersion
-  system.stateVersion = "24.05";
+  system.stateVersion = "25.11";
 }
