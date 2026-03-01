@@ -20,7 +20,7 @@
   programs.kdeconnect.enable = true;
 
   environment.systemPackages = with pkgs; [
-    (catpuccin-sddm.override {
+    (catppuccin-sddm.override {
       flavor = "mocha";
       accent = "mauve";
     })
