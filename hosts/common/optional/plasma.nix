@@ -1,6 +1,14 @@
 { pkgs, ... }:
 {
 
+  # TODO: import config to enable this stuff
+  # security.pam.services.${config.hostSpec.primaryDesktopUsername} = {
+  #   kwallet = {
+  #     enable = true;
+  #     package = pkgs.kdePackages.kwallet-pam;
+  #   };
+  # };
+
   # Enable the KDE Plasma Desktop Environment.
   services.displayManager.sddm = {
     enable = true;
