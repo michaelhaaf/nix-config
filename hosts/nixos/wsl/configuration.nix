@@ -11,6 +11,7 @@
 
   wsl.enable = true;
   wsl.defaultUser = "michael";
+  wsl.docker-desktop.enable = true;
 
   nix.settings.trusted-users = [
     "root"

@@ -79,9 +79,6 @@
 
   # NEW METHOD FOR VSCODE FROM: https://github.com/nix-community/nixos-vscode-server
 
-  wsl.enable = true; # Redunent with nixosModules.default on the flake.nix level
-  wsl.defaultUser = "michael";
-
   #   # I think this is unneccecary if I'm going with standalone home-manager rather than flake os module home-manager
   #   home-manager = {
   #     extraSpecialArgs = { inherit inputs outputs; };
@@ -105,6 +102,4 @@
     };
     polarity = "dark";
   };
-
-  system.stateVersion = "24.05";
 }
