@@ -16,8 +16,7 @@
     # common/optional/atuin.nix
     # common/optional/xdg.nix # file associations
     common/optional/sops.nix
-    common/optional/atuin.nix
-    common/optional/zellij.nix
+    common/optional/shell-extras
     # TODO: https://gist.github.com/tdcosta100/e28636c216515ca88d1f2e7a2e188912 ?
     # common/optional/desktops/sway
   ];
