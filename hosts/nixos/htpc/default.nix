@@ -22,16 +22,16 @@
 
     #
     # ========== Disk Layout ==========
-    #
-    inputs.disko.nixosModules.disko
-    (lib.custom.relativeToRoot "hosts/common/disks/btrfs-disk.nix")
-    {
-      _module.args = {
-        disk = "/dev/sda";
-        withSwap = true;
-        swapSize = 8;
-      };
-    }
+    # #
+    # inputs.disko.nixosModules.disko
+    # (lib.custom.relativeToRoot "hosts/common/disks/btrfs-disk.nix")
+    # {
+    #   _module.args = {
+    #     disk = "/dev/sda";
+    #     withSwap = true;
+    #     swapSize = 8;
+    #   };
+    # }
 
     #
     # ========== Misc Inputs ==========
@@ -125,6 +125,6 @@
   };
 
   # https://wiki.nixos.org/wiki/FAQ/When_do_I_update_stateVersion
-  system.stateVersion = "24.11";
+  system.stateVersion = "25.11";
 
 }
