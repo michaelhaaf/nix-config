@@ -18,7 +18,7 @@
     #
 
     # <nixos-hardware/hp/elitebook/845/g8>
-    inputs.hardware.nixosModules.hp-elitebook-845-g8
+    inputs.hardware.nixosModules.hp-elitebook-845g8
     ./hardware-configuration.nix
 
     #
