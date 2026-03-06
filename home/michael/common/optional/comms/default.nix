@@ -1,10 +1,17 @@
-{ pkgs, ... }:
+{ lib, pkgs, ... }:
 {
-  # imports = [ ./foo.nix ];
 
-  home.packages = builtins.attrValues {
+  home.packages = lib.attrValues {
     inherit (pkgs)
       signal-desktop
+      telegram-desktop
+
+      # matrix
+      cinny-desktop
+      iamb
+
+      # discord
+      vesktop
       ;
   };
 }

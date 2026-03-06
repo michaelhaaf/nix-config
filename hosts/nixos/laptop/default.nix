@@ -1,14 +1,14 @@
 #############################################################
 #
-#  Genoa - Laptop
-#  NixOS running on Lenovo Thinkpad E15
+#  Laptop
+#  NixOS running on HP Elitebook 845 G8
 #
 ###############################################################
 
 {
   inputs,
   lib,
-  # pkgs,
+  pkgs,
   ...
 }:
 {
@@ -23,15 +23,15 @@
     #
     # ========== Disk Layout ==========
     #
-    inputs.disko.nixosModules.disko
-    (lib.custom.relativeToRoot "hosts/common/disks/btrfs-disk.nix")
-    {
-      _module.args = {
-        disk = "/dev/nvme0n1";
-        withSwap = true;
-        swapSize = 16;
-      };
-    }
+    # inputs.disko.nixosModules.disko
+    # (lib.custom.relativeToRoot "hosts/common/disks/btrfs-disk.nix")
+    # {
+    #   _module.args = {
+    #     disk = "/dev/nvme0n1";
+    #     withSwap = true;
+    #     swapSize = 16;
+    #   };
+    # }
 
     #
     # ========== Misc Inputs ==========
@@ -47,31 +47,26 @@
       #
       # ========== Optional Configs ==========
       #
-      # "hosts/common/optional/services/bluetooth.nix" # bluetooth, blueman and bluez via wireplumber
-      # "hosts/common/optional/services/greetd.nix" # display manager
-      # "hosts/common/optional/services/openssh.nix" # allow remote SSH access
-      # "hosts/common/optional/services/printing.nix" # CUPS
-      # "hosts/common/optional/audio.nix" # pipewire and cli controls
-      # "hosts/common/optional/gaming.nix" # window manager
-      # "hosts/common/optional/hyprland.nix" # window manager
-      # "hosts/common/optional/nvtop.nix" # GPU monitor (not available in home-manager)
-      # "hosts/common/optional/obsidian.nix" # wiki
-      # "hosts/common/optional/plymouth.nix" # fancy boot screen
-      # "hosts/common/optional/protonvpn.nix" # vpn
-      # "hosts/common/optional/thunar.nix" # file manager
-      # "hosts/common/optional/vlc.nix" # media player
-      # "hosts/common/optional/wayland.nix" # wayland components and pkgs not available in home-manager
-      # "hosts/common/optional/wifi.nix" # wayland components and pkgs not available in home-manager
-      # "hosts/common/optional/yubikey.nix" # yubikey related packages and configs
+      "hosts/common/optional/desktops/niri.nix"
 
-      # TODO: these are the HTPC ones for now -- switch later when I do laptop stuff!
+      "hosts/common/optional/services/greetd.nix" # display manager
+      "hosts/common/optional/services/printing.nix" # CUPS
       "hosts/common/optional/services/openssh.nix" # allow remote SSH access
-      "hosts/common/optional/services/bluetooth.nix"
+      "hosts/common/optional/services/bluetooth.nix" # bluetooth
+      "hosts/common/optional/services/power.nix" # bluetooth
+
+      "hosts/common/optional/amd.nix" # GPU monitor (not available in home-manager)
+      "hosts/common/optional/libvirt.nix" # Virtual machine manager
+      "hosts/common/optional/nvtop.nix" # GPU monitor (not available in home-manager)
+      "hosts/common/optional/plymouth.nix" # fancy boot screen
+      "hosts/common/optional/thunar.nix" # file manager
       "hosts/common/optional/audio.nix" # pipewire and cli controls
-      "hosts/common/optional/plasma.nix" # KDE desktop
       "hosts/common/optional/wayland.nix" # common wayland options
       "hosts/common/optional/wifi.nix" # common wifi options
-      "hosts/common/optional/gaming.nix"
+      "hosts/common/optional/gaming.nix" # steam and gamemode and stuff
+      "hosts/common/optional/vlc.nix" # media player
+
+      # "hosts/common/optional/yubikey.nix" # yubikey related packages and configs
     ])
   ];
 
@@ -81,18 +76,10 @@
 
   hostSpec = {
     hostName = "laptop";
-    # TODO: remove when I'm no longer using as htpc
-    primaryDesktopUsername = "homie";
     primaryUser = "michael";
     users = [
       "michael"
-      "homie"
     ];
-  };
-
-  services.displayManager = {
-    autoLogin.enable = true;
-    autoLogin.user = "homie";
   };
 
   networking = {

@@ -1,6 +1,6 @@
 # Reminder that CUPS cpanel defaults to localhost:631
 
-{ pkgs, ... }:
+{ lib, pkgs, ... }:
 {
   services.printing = {
     enable = true;
@@ -15,15 +15,25 @@
     unitConfig.Mask = true;
   };
 
-  #FIXME(printing) didn't get this working. can get these values from CUPS but
-  #  hardware.printers = {
-  #    ensurePrinters = [
-  #      {
-  #        name = "Samsung_C460_Series";
-  #        location = "LocalPrinter";
-  #        deviceUri = "usb://Samsung/C460%20Series?serial=ZEW1BJDF50005MT&interface=1";
-  #        model = "samsung-unified-linux-driver";
-  #      }
-  #    ];
-  #  };
+  # SANE - scanner access now easy
+  hardware.sane = {
+    enable = true;
+    extraBackends = [
+      pkgs.samsung-unified-linux-driver
+      pkgs.hplipWithPlugin
+      pkgs.sane-airscan
+    ];
+  };
+  services.udev.packages = [ pkgs.sane-airscan ];
+  services.ipp-usb.enable = true;
+
+  environment.systemPackages = lib.attrValues {
+    inherit (pkgs)
+      simple-scan # GUI scanning application
+      sane-frontends
+      ; # Command-line scanning tools
+  };
+
+  # If your scanner is networked, you might need to open a port
+  # networking.firewall.allowedTCPPorts = [ 9100 ];
 }

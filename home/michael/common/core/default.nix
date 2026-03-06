@@ -43,7 +43,6 @@
       chafa # terminal graphics
       coreutils-full # gnu
       curl
-      delta
       dust # du, but more intuitive
       eza
       fastfetch # neofetch replacement
@@ -54,7 +53,6 @@
       jq
       inotify-tools # inotify watches
       iftop
-      nmap
 
       pciutils
       pfetch # system info
@@ -70,7 +68,6 @@
       unzip # zip extraction
       unrar # rar extraction
       wordnet # lexical database
-      yq # yaml parser
 
       # Repository management
       hub

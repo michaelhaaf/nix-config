@@ -1,10 +1,13 @@
-{ pkgs, ... }:
+{ lib, pkgs, ... }:
 {
-  # imports = [ ./foo.nix ];
-
-  home.packages = builtins.attrValues {
+  home.packages = lib.attrValues {
     inherit (pkgs)
       vlc
+      mpv
+      ffmpeg
+      jellyfin-desktop
+      jellyfin-tui
+      jellycli
       ;
   };
 }

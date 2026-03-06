@@ -17,7 +17,7 @@ in
   users.users.homie = {
     isNormalUser = true;
     hashedPasswordFile = config.sops.secrets.${secretsSubPath}.path;
-    shell = pkgs.zsh; # default shell
+    shell = pkgs.bash; # default shell
     extraGroups = [
       "audio"
       "video"

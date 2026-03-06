@@ -15,6 +15,15 @@
     # ========== Host-specific Optional Configs ==========
     #
     common/optional/sops.nix
+    common/optional/browsers
+    common/optional/desktops
+    common/optional/shell-extras
+    common/optional/development
+    common/optional/comms
+    common/optional/media
+    common/optional/tools
+    common/optional/atuin.nix
+    common/optional/xdg.nix # file associations
   ];
 
 }
