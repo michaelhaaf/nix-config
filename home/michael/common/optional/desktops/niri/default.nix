@@ -3,18 +3,6 @@
   imports = lib.flatten [
     (lib.custom.scanPaths ./.)
   ];
-  programs.niri = {
-    package = pkgs.unstable.niri;
-    settings = {
-      spawn-at-startup = [
-        {
-          command = [
-            "noctalia-shell"
-          ];
-        }
-      ];
-    };
-  };
   home = {
     packages = lib.attrValues {
       inherit (pkgs.unstable)

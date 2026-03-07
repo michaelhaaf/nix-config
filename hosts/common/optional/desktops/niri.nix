@@ -1,4 +1,5 @@
 {
+  inputs,
   config,
   lib,
   pkgs,
@@ -8,12 +9,21 @@
   programs.niri = {
     enable = true;
     package = pkgs.unstable.niri;
+    settings = {
+      spawn-at-startup = [
+        {
+          command = [
+            "noctalia-shell"
+          ];
+        }
+      ];
+    };
   };
-  environment.systemPackages = lib.attrValues {
-    inherit (pkgs)
-      xwayland-satellite # xwayland support
-      ;
-  };
+  environment.systemPackages = with pkgs; [
+    inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default
+    xwayland-satellite
+    # ... maybe other stuff
+  ];
 
   programs.uwsm = {
     enable = true;
