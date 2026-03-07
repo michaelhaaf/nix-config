@@ -14,6 +14,8 @@
     #
     # ========== Host-specific Optional Configs ==========
     #
+    common/optional/desktops/niri
+
     common/optional/sops.nix
     common/optional/browsers
     common/optional/desktops

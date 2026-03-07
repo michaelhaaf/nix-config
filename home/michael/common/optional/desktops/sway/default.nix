@@ -15,11 +15,11 @@
 
   wayland.windowManager.sway = {
     enable = true;
-    config = rec {
-      modifier = "Mod3"; # numpad by default, for Windows only atm
-      startup = [
-        # { command = "firefox"; }
-      ];
-    };
+    # config = rec {
+    #   modifier = "Mod3"; # numpad by default, for Windows only atm
+    #   startup = [
+    #     # { command = "firefox"; }
+    #   ];
+    # };
   };
 }

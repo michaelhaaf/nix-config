@@ -2,6 +2,10 @@
 // ========== Layer Rules ==========
 //
 layer-rule {
+  match namespace="^noctalia-overview*"
+  place-within-backdrop true
+}
+layer-rule {
     //FIXME: confirm namespace for dmenu
     match namespace="drun"
     shadow {
