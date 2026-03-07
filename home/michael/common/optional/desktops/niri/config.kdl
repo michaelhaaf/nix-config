@@ -62,6 +62,7 @@ overview {
 // ========== Startup ==========
 //
 spawn-sh-at-startup "uwsm finalize NIRI_SOCKET"
+spawn-at-startup "noctalia-shell"
 // spawn-sh-at-startup "ghostty -e zellij attach asc"
 // spawn-sh-at-startup "ghostty --title=btop -e btop"
 // spawn-at-startup "copyq"

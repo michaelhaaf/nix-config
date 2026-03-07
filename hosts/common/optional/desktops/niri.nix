@@ -9,19 +9,12 @@
   programs.niri = {
     enable = true;
     package = pkgs.unstable.niri;
-    settings = {
-      spawn-at-startup = [
-        {
-          command = [
-            "noctalia-shell"
-          ];
-        }
-      ];
-    };
   };
   environment.systemPackages = with pkgs; [
     inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default
     xwayland-satellite
+    alacritty
+    fuzzel
     # ... maybe other stuff
   ];
 
