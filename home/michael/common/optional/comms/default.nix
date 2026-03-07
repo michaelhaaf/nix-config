@@ -7,7 +7,7 @@
       telegram-desktop
 
       # matrix
-      cinny-desktop
+      # cinny-desktop # TODO: this is marked broken at the moment
       iamb
 
       # discord
