@@ -3,6 +3,7 @@
   ...
 }:
 {
+  # TODO: import secret keys using sops
 
   programs.gpg = {
     enable = true;

@@ -3,6 +3,7 @@
   ...
 }:
 {
+  # TODO: pull password store from remote git repo
   programs.password-store = {
     enable = true;
     package = pkgs.pass.withExtensions (ext: [
