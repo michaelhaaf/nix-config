@@ -10,6 +10,11 @@ input {
 
 		// Whether to activate the numlock at startup.
 		numlock
+
+        // Keybinding stuff
+        xkb {
+            options "caps:swapescape"
+        }
 	}
 
 	// Whether to enable tap-to-click on the touchpad.
