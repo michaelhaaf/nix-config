@@ -113,7 +113,7 @@
   stylix = {
     enable = true;
     image = (lib.custom.relativeToRoot "assets/wallpapers/zen-01.png");
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/rose-pine-moon.yaml";
     opacity = {
       applications = 1.0;
       terminal = 0.95;

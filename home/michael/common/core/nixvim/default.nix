@@ -34,22 +34,10 @@
     defaultEditor = true;
     vimdiffAlias = true;
 
-    colorschemes.catppuccin = {
+    colorschemes.rose-pine = {
       enable = true;
       settings = {
-        flavour = "mocha";
-        transparent_background = true;
-        integrations = {
-          cmp = true;
-          gitsigns = true;
-          nvimtree = true;
-          treesitter = true;
-          notify = true;
-          mini = {
-            enabled = true;
-            indentscope_color = "";
-          };
-        };
+        dark_variant = "moon";
       };
     };
 
