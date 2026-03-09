@@ -49,7 +49,7 @@ animations {
 overview {
     // FIXME: (niri): go through available options
     // Color of the backdrop.
-    backdrop-color "#17171a"
+    // backdrop-color "#17171a"
     // Configuration of shadows around workspaces in the overview.
     workspace-shadow {
         softness 40

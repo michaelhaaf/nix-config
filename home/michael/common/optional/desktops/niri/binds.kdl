@@ -270,7 +270,7 @@ binds {
     //
     // Spawn terminal
     Super+Return hotkey-overlay-title="Spawn terminal" {
-        spawn "ghostty"
+        spawn "alacritty"
     }
 
     Super+Space { spawn-sh "noctalia-shell ipc call launcher toggle"; }

@@ -13,8 +13,6 @@
   environment.systemPackages = with pkgs; [
     inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default
     xwayland-satellite
-    alacritty
-    fuzzel
     # ... maybe other stuff
   ];
 
