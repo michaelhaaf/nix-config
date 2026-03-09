@@ -121,6 +121,20 @@
       popups = 0.8;
     };
     polarity = "dark";
+    fonts = {
+      monospace = {
+        package = pkgs.nerd-fonts.iosevka;
+        name = "Iosevka";
+      };
+      sansSerif = {
+        package = pkgs.nerd-fonts.ubuntu-sans;
+        name = "Ubuntu Sans";
+      };
+      serif = {
+        package = pkgs.nerd-fonts.ubuntu;
+        name = "Ubuntu";
+      };
+    };
   };
 
   # https://wiki.nixos.org/wiki/FAQ/When_do_I_update_stateVersion
