@@ -10,18 +10,21 @@ in
   # - https://github.com/Kreyren/nixos-config/blob/bd4765eb802a0371de7291980ce999ccff59d619/nixos/users/kreyren/home/modules/web-browsers/firefox/firefox.nix#L116-L148
   #
   # TODO(firefox):
-  # - How to set DDG as default?
-  # - Tons of settings above I haven't looked into
-  # - Go over existing profiles to add settings
-  # - Setup a separate work profile?
   # - Port bookmarks and other profile settings over from existing profile
+  home.packages = with pkgs; [
+    tridactyl-native
+  ];
+  xdg.configFile."tridactyl/tridactylrc".source = ./tridactylrc;
   programs.firefoxpwa = {
     enable = true;
   };
   programs.firefox = {
     enable = true;
 
-    nativeMessagingHosts = [ pkgs.firefoxpwa ];
+    nativeMessagingHosts = [
+      pkgs.firefoxpwa
+      pkgs.tridactyl-native
+    ];
     # Refer to https://mozilla.github.io/policy-templates or `about:policies#documentation` in firefox
     policies = {
       AppAutoUpdate = false;
@@ -67,13 +70,14 @@ in
         in
         builtins.listToAttrs [
 
+          # To find Extension ID of installed add-on: about:debugging#/runtime/this-firefox
           (extension "noscript" "{73a6fe31-595d-460b-a920-fcc0f8843232}")
           (extension "ublock-origin" "uBlock0@raymondhill.net")
           (extension "privacy-badger17" "jid1-MnnxcxisBPnSXQ@jetpack")
-          (extension "cookie-autodelete" "CookieAutoDelete@kennydo.com")
           (extension "sponsorblock" "sponsorBlocker@ajay.app")
           (extension "pwas_for_firefox" "firefoxpwa@filips.si")
           (extension "tree-style-tab" "treestyletab@piro.sakura.ne.jp")
+          (extension "tridactyl" "tridactyl.vim@cmcaine.co.uk")
         ];
 
     };
@@ -82,6 +86,12 @@ in
       id = 0;
       name = "default";
       isDefault = true;
+
+      search = {
+        force = true;
+        default = "DuckDuckGo";
+        order = [ "DuckDuckGo" ];
+      };
 
       # FIXME(firefox): These should probably be in a let .. in block so I can re-use if I setup
       # additional profiles

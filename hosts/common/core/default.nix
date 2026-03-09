@@ -60,7 +60,7 @@ in
   home-manager.useGlobalPkgs = true;
 
   # If there is a conflict file that is backed up, use this extension
-  home-manager.backupFileExtension = "bk";
+  home-manager.backupFileExtension = "hmbk";
 
   #
   # ========== Overlays ==========

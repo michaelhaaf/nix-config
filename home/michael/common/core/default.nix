@@ -46,6 +46,7 @@
       dust # du, but more intuitive
       eza
       fastfetch # neofetch replacement
+      fontpreview
       fd
       gawk
       gnused
