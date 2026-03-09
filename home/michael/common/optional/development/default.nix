@@ -10,6 +10,13 @@
   home.packages = lib.flatten [
     (lib.attrValues {
       inherit (pkgs)
+
+        # Repository management
+        hub
+        glab
+        act
+        codeberg-cli
+
         # debuggers
         gdb
 
@@ -39,6 +46,13 @@
         ;
     })
   ];
+
+  programs.gh = {
+    enable = true;
+    gitCredentialHelper = {
+      enable = true;
+    };
+  };
 
   home.file.".editorconfig".text = ''
     root = true

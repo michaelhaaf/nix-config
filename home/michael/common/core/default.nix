@@ -68,13 +68,6 @@
       unzip # zip extraction
       unrar # rar extraction
       wordnet # lexical database
-
-      # Repository management
-      hub
-      gh
-      glab
-      act
-      codeberg-cli
       ;
   };
 

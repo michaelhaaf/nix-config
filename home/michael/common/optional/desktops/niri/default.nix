@@ -7,6 +7,7 @@
     packages = lib.attrValues {
       inherit (pkgs.unstable)
         xwayland-satellite # xwayland support
+        fuzzel
         ;
     };
     file = {
