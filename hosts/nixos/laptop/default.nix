@@ -124,15 +124,15 @@
     fonts = {
       monospace = {
         package = pkgs.nerd-fonts.iosevka-term-slab;
-        name = "IosevkaTermSlab NFM";
+        name = "IosevkaTermSlab NF";
       };
       sansSerif = {
         package = pkgs.nerd-fonts.ubuntu-sans;
-        name = "Ubuntu Sans";
+        name = "Ubuntu Nerd Font";
       };
       serif = {
-        package = pkgs.nerd-fonts.ubuntu;
-        name = "Ubuntu";
+        package = pkgs.etBook;
+        name = "ETBembo";
       };
     };
   };

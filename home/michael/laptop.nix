@@ -3,7 +3,7 @@
 # the corresponding home-level files are housed in each user's home-level config directory. This allows you to customize
 # user-specific, home-manager configurations on a per user basis. The `home/common/optional/foo` configs, along with
 # `home/common/core` allow you to import the specific home-manager configs you want for each host
-{ ... }:
+{ lib, ... }:
 {
   imports = [
     #
@@ -17,13 +17,15 @@
     common/optional/desktops/niri
 
     common/optional/sops.nix
-    common/optional/browsers
     common/optional/desktops
     common/optional/shell-extras
     common/optional/development
     common/optional/comms
     common/optional/media
     common/optional/tools
+  ]
+  ++ map lib.custom.relativeToRoot [
+    "home/common/optional/browsers/firefox.nix"
   ];
 
 }

@@ -1,4 +1,4 @@
-{ config, ... }:
+{ config, pkgs, ... }:
 let
   homeDir = config.home.homeDirectory;
 in
@@ -15,13 +15,17 @@ in
   # - Go over existing profiles to add settings
   # - Setup a separate work profile?
   # - Port bookmarks and other profile settings over from existing profile
+  programs.firefoxpwa = {
+    enable = true;
+  };
   programs.firefox = {
     enable = true;
 
+    nativeMessagingHosts = [ pkgs.firefoxpwa ];
     # Refer to https://mozilla.github.io/policy-templates or `about:policies#documentation` in firefox
     policies = {
-      AppAutoUpdate = false; # Disable automatic application update
-      BackgroundAppUpdate = false; # Disable automatic application update in the background, when the application is not running.
+      AppAutoUpdate = false;
+      BackgroundAppUpdate = false;
       DefaultDownloadDirectory = "${config.home.homeDirectory}/downloads";
       DisableBuiltinPDFViewer = false;
       DisableFirefoxStudies = true;
@@ -29,7 +33,7 @@ in
       DisablePocket = true;
       DisableTelemetry = true;
       DontCheckDefaultBrowser = true;
-      OfferToSaveLogins = false; # Managed by Proton
+      OfferToSaveLogins = false;
       EnableTrackingProtection = {
         Value = true;
         Locked = true;
@@ -51,7 +55,7 @@ in
       # Then, download the XPI by filling it in to the install_url template, unzip it,
       # run `jq .browser_specific_settings.gecko.id manifest.json` or
       # `jq .applications.gecko.id manifest.json` to get the UUID
-      ExtensionSettings = (
+      ExtensionSettings =
         let
           extension = shortId: uuid: {
             name = uuid;
@@ -62,9 +66,6 @@ in
           };
         in
         builtins.listToAttrs [
-          #TODO Add more of these and test. not high priority though since mozilla sync will pull them in too
-          # Development
-          #(extension "user-agent-switcher" "{a6c4a591-f1b2-4f03-b3ff-767e5bedf4e7}") # failed
 
           (extension "noscript" "{73a6fe31-595d-460b-a920-fcc0f8843232}")
           (extension "ublock-origin" "uBlock0@raymondhill.net")
@@ -73,14 +74,13 @@ in
           (extension "sponsorblock" "sponsorBlocker@ajay.app")
           (extension "pwas_for_firefox" "firefoxpwa@filips.si")
           (extension "tree-style-tab" "treestyletab@piro.sakura.ne.jp")
-        ]
-      );
+        ];
 
     };
 
-    profiles.main = {
+    profiles.default = {
       id = 0;
-      name = "michael";
+      name = "default";
       isDefault = true;
 
       # FIXME(firefox): These should probably be in a let .. in block so I can re-use if I setup
@@ -109,9 +109,11 @@ in
         "browser.newtabpage.activity-stream.showSponsored" = false;
         "browser.newtabpage.activity-stream.system.showSponsored" = false;
         "browser.newtabpage.activity-stream.showSponsoredTopSites" = false;
-        "browser.tabs.firefox-view" = false; # Sync tabs across devices
-        "ui.systemUsesDarkTheme" = 1; # force dark theme
+        "browser.tabs.firefox-view" = false;
+        "ui.systemUsesDarkTheme" = 1;
         "extensions.pocket.enabled" = false;
+        "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
+        "layout.css.has-selector.enabled" = true;
       };
       containers = {
         work = {
@@ -125,15 +127,16 @@ in
       # This just uses the default suggestion from home-manager for now
       userChrome = ''
         /* Hide tab bar in FF Quantum */
-        @-moz-document url("chrome://browser/content/browser.xul") {
-          #TabsToolbar {
-            visibility: collapse !important;
-            margin-bottom: 21px !important;
-          }
+        #TabsToolbar {
+          visibility: collapse !important;
+        }
 
-          #sidebar-box[sidebarcommand="treestyletab_piro_sakura_ne_jp-sidebar-action"] #sidebar-header {
-            visibility: collapse !important;
-          }
+        #sidebar-box[sidebarcommand="treestyletab_piro_sakura_ne_jp-sidebar-action"] #sidebar-header {
+          visibility: collapse !important;
+        }
+
+        .tabbrowser-tab[usercontextid] .tab-bottom-line {
+          display: none !important;
         }
       '';
     };
@@ -144,4 +147,6 @@ in
     "x-scheme-handler/http" = [ "firefox.desktop" ];
     "x-scheme-handler/https" = [ "firefox.desktop" ];
   };
+  stylix.targets.firefox.enable = true;
+  stylix.targets.firefox.profileNames = [ "default" ];
 }
