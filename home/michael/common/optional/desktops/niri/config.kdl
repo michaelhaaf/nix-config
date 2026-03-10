@@ -6,33 +6,34 @@ include "rules.kdl"
 //
 // ========== Named Workspaces ==========
 //
-workspace "8_l" {
-    open-on-output "DP-2"
-}
-workspace "9_u" {
-    open-on-output "HDMI-A-1"
-}
-workspace "0_r" {
-    open-on-output "DP-3"
-}
-workspace "1_dev" {
-    open-on-output "DP-1"
-}
-workspace "2_uci" {
-    open-on-output "DP-1"
-}
-workspace "3_edu" {
-    open-on-output "DP-1"
-}
-workspace "4_gig" {
-    open-on-output "DP-1"
-}
-workspace "5_gmz" {
-    open-on-output "DP-1"
-}
-workspace "Y_qrs" {
-    open-on-output "DP-1"
-}
+// TODO: named workspaces should be in nix so that I can separate home/laptop etc.
+// workspace "8_l" {
+//     open-on-output "DP-2"
+// }
+// workspace "9_u" {
+//     open-on-output "HDMI-A-1"
+// }
+// workspace "0_r" {
+//     open-on-output "DP-3"
+// }
+// workspace "1_dev" {
+//     open-on-output "DP-1"
+// }
+// workspace "2_uci" {
+//     open-on-output "DP-1"
+// }
+// workspace "3_edu" {
+//     open-on-output "DP-1"
+// }
+// workspace "4_gig" {
+//     open-on-output "DP-1"
+// }
+// workspace "5_gmz" {
+//     open-on-output "DP-1"
+// }
+// workspace "Y_qrs" {
+//     open-on-output "DP-1"
+// }
 //
 // ========== Animations ==========
 //

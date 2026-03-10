@@ -55,19 +55,19 @@ binds {
     //
     // ========== Focus workspace ==========
     Super+1 {
-        focus-workspace "1_dev"
+        focus-workspace 1
     }
     Super+2 {
-        focus-workspace "2_uci"
+        focus-workspace 2
     }
     Super+3 {
-        focus-workspace "3_edu"
+        focus-workspace 3
     }
     Super+4 {
-        focus-workspace "4_gig"
+        focus-workspace 4
     }
     Super+5 {
-        focus-workspace "5_gmz"
+        focus-workspace 5
     }
     Super+6 {
         focus-workspace 6
@@ -76,16 +76,13 @@ binds {
         focus-workspace 7
     }
     Super+8 {
-        focus-workspace "8_l"
+        focus-workspace 8
     }
     Super+9 {
-        focus-workspace "9_u"
+        focus-workspace 9
     }
     Super+0 {
-        focus-workspace "0_r"
-    }
-    Super+Y {
-        focus-workspace "Y_qrs"
+        focus-workspace 0
     }
     Super+Minus hotkey-overlay-title="Focus workspace previous" {
         focus-workspace-previous
@@ -140,22 +137,19 @@ binds {
     }
     // Center all fully visible columns on screen    // ========== Move windows/columns ==========
     Super+Shift+1 {
-        move-window-to-workspace "1_dev"
+        move-window-to-workspace 1
     }
     Super+Shift+2 {
-        move-window-to-workspace "2_uci"
+        move-window-to-workspace 2
     }
     Super+Shift+3 {
-        move-window-to-workspace "3_edu"
+        move-window-to-workspace 3
     }
     Super+Shift+4 {
-        move-window-to-workspace "4_gig"
+        move-window-to-workspace 4
     }
     Super+Shift+5 {
-        move-window-to-workspace "5_gmz"
-    }
-    Super+Shift+8 {
-        move-window-to-workspace "8_l"
+        move-window-to-workspace 5
     }
     Super+Shift+6 {
         move-window-to-workspace 6
@@ -163,14 +157,14 @@ binds {
     Super+Shift+7 {
         move-window-to-workspace 7
     }
+    Super+Shift+8 {
+        move-window-to-workspace 8
+    }
     Super+Shift+9 {
-        move-window-to-workspace "9_u"
+        move-window-to-workspace 9
     }
     Super+Shift+0 {
-        move-window-to-workspace "0_r"
-    }
-    Super+Shift+Y {
-        move-window-to-workspace "Y_qrs"
+        move-window-to-workspace 0
     }
     Super+Shift+H hotkey-overlay-title="Move column left" {
         move-column-left
