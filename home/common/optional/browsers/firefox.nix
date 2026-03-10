@@ -75,7 +75,6 @@ in
         builtins.listToAttrs [
 
           # To find Extension ID of installed add-on: about:debugging#/runtime/this-firefox
-          (extension "noscript" "{73a6fe31-595d-460b-a920-fcc0f8843232}")
           (extension "ublock-origin" "uBlock0@raymondhill.net")
           (extension "sponsorblock" "sponsorBlocker@ajay.app")
           (extension "pwas_for_firefox" "firefoxpwa@filips.si")
