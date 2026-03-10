@@ -4,6 +4,9 @@ unbind <C-f>
 " Normal <F1> behavior
 unbind <F1>
 
+" Normal <Ctrl-i> behavior
+unbind <C-i>
+
 " Don't close tabs with d
 unbind d
 unbind D

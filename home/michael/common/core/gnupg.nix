@@ -19,9 +19,9 @@
     enableBashIntegration = true;
     defaultCacheTtl = 77200;
     # enableSshSupport = true;
-    pinentry.package = pkgs.wayprompt;
+    pinentry.package = pkgs.pinentry-qt;
     extraConfig = ''
-      pinentry-program /home/michael/.nix-profile/bin/pinentry
+      pinentry-program /home/michael/.nix-profile/bin/pinentry-qt
       no-allow-external-cache
       max-cache-ttl 72000
       no-grab
@@ -30,7 +30,6 @@
   };
 
   home.packages = [
-    pkgs.pinentry-tty
-    pkgs.wayprompt
+    pkgs.pinentry-all
   ];
 }

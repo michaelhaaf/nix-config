@@ -3,6 +3,7 @@
   imports = [ inputs.noctalia.homeModules.default ];
 
   stylix.targets.noctalia-shell.enable = true;
+  #  noctalia-shell ipc call state all | jq .settings | bat
   programs.noctalia-shell = {
     enable = true;
     plugins = {
@@ -77,6 +78,16 @@
       general = {
         avatarImage = "/home/michael/.face";
         radiusRatio = 0.2;
+        keybinds = {
+          keyUp = [
+            "Up"
+            "Ctrl+P"
+          ];
+          keyDown = [
+            "Down"
+            "Ctrl+N"
+          ];
+        };
       };
       location = {
         monthBeforeDay = true;

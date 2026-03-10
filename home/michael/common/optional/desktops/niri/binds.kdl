@@ -321,8 +321,8 @@ binds {
         spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SOURCE@" "toggle"
     }
 
-    Super+P { spawn-sh "rofi-pass"; }
-    Super+Shift+P { spawn-sh "rofi-pass --insert"; }
+    Super+P { spawn-sh "rofi-pass -theme ~/.config/rofi-pass/rofi-pass.rasi"; }
+    Super+Shift+P { spawn-sh "rofi-pass -theme ~/.config/rofi-pass/rofi-pass.rasi --insert"; }
 
  //
     // ========== Clipboard ==========

@@ -1,0 +1,120 @@
+/* Copyright (C) 2020-2022 Aditya Shakya <adi1090x@gmail.com> */
+/* Everyone is permitted to copy and distribute copies of this file under GNU-GPL3 */
+
+configuration {
+    show-icons:                     true;
+    display-drun: 					":";
+    drun-display-format:            "{icon} {name}";
+    disable-history:                false;
+	click-to-exit: 					true;
+}
+
+* {
+    font:				 	"IosevkaTermSlab NF";
+}
+
+window {
+    transparency:                   "real";
+    border-radius:                  0px;
+    width:                          500px;
+    location:                       center;
+    anchor:                         center;
+    x-offset:                       0;
+    y-offset:                       0;
+}
+
+prompt {
+    enabled: 						true;
+	padding: 						4px 4px 6px 6px;
+}
+
+textbox-prompt-colon {
+	expand: 						false;
+	str: 							"";
+    padding:                        4px 10px 0px 10px;
+	font:							"Iosevka Nerd Font 10";
+}
+
+inputbar {
+	children: 						[ textbox-prompt-colon, entry ];
+    spacing:                       	0px;
+    expand:                         false;
+    border:                  		0px 0px 1px 0px;
+    border-radius:                  0px;
+    margin:                         0px 0px 0px 0px;
+    padding:                        6px 0px 10px 0px;
+    position:                       center;
+}
+
+
+entry {
+    expand:                         true;
+    horizontal-align:               0;
+    placeholder:                    "Search Passwords";
+    blink:                          true;
+    padding:                        4px 0px 0px 0px;
+}
+
+case-indicator {
+    spacing:                        0;
+}
+
+
+listview {
+    columns:                        1;
+    lines:							7;
+    spacing:                        4px;
+    cycle:                          false;
+    dynamic:                        true;
+    layout:                         vertical;
+}
+
+mainbox {
+    children:                       [ inputbar, listview ];
+    spacing:                       	6px;
+    padding:                        6px 6px 6px 6px;
+}
+
+element {
+    orientation:                    horizontal;
+    border-radius:                  4px;
+    padding:                        6px 6px 6px 6px;
+}
+
+element-icon {
+    background-color: 				inherit;
+    text-color:       				inherit;
+    horizontal-align:               0.5;
+    vertical-align:                 0.5;
+    size:                           24px;
+    border:                         0px;
+}
+
+element-text {
+    background-color: 				inherit;
+    text-color:       				inherit;
+    expand:                         true;
+    horizontal-align:               0;
+    vertical-align:                 0.5;
+    margin:                         0px 0px 0px 2px;
+}
+
+element normal.urgent,
+element alternate.urgent {
+    border-radius:                  9px;
+}
+
+element normal.active,
+element alternate.active {
+}
+
+element selected {
+    border:                  		0px;
+    border-radius:                  0px;
+}
+
+element selected.urgent {
+}
+
+element selected.active {
+}
