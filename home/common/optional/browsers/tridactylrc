@@ -1,6 +1,9 @@
 " Normal <Ctrl-f> behavior
 unbind <C-f>
 
+" Normal <F1> behavior
+unbind <F1>
+
 " Don't close tabs with d
 unbind d
 unbind D

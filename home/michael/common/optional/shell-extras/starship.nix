@@ -8,7 +8,7 @@
       enableBashIntegration = true;
       package = pkgs.unstable.starship;
       settings = {
-        palette = "catppuccin_pine";
+        # palette = "catppuccin_pine";
         add_newline = false; # see starship.rc
         line_break.disabled = true;
         format = lib.concatStrings [

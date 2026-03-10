@@ -2,6 +2,7 @@
 {
   imports = [ inputs.noctalia.homeModules.default ];
 
+  stylix.targets.noctalia-shell.enable = true;
   programs.noctalia-shell = {
     enable = true;
     plugins = {
@@ -38,7 +39,7 @@
       # configure noctalia here
       bar = {
         density = "compact";
-        position = "right";
+        position = "top";
         showCapsule = false;
         widgets = {
           left = [
@@ -72,7 +73,7 @@
           ];
         };
       };
-      colorSchemes.predefinedScheme = "Monochrome";
+      # colorSchemes.predefinedScheme = "Monochrome";
       general = {
         avatarImage = "/home/michael/.face";
         radiusRatio = 0.2;
@@ -81,8 +82,13 @@
         monthBeforeDay = true;
         name = "Montreal, Canada";
       };
+      desktopWidgets = {
+        enabled = true;
+        gridSnap = true;
+        overviewEnabled = true;
+        monitorWidgets = [ ];
+      };
     };
-    # this may also be a string or a path to a JSON file.
   };
 
 }

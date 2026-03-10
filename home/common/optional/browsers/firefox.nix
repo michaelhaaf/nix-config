@@ -1,4 +1,8 @@
-{ config, pkgs, ... }:
+{
+  config,
+  pkgs,
+  ...
+}:
 let
   homeDir = config.home.homeDirectory;
 in
@@ -73,7 +77,6 @@ in
           # To find Extension ID of installed add-on: about:debugging#/runtime/this-firefox
           (extension "noscript" "{73a6fe31-595d-460b-a920-fcc0f8843232}")
           (extension "ublock-origin" "uBlock0@raymondhill.net")
-          (extension "privacy-badger17" "jid1-MnnxcxisBPnSXQ@jetpack")
           (extension "sponsorblock" "sponsorBlocker@ajay.app")
           (extension "pwas_for_firefox" "firefoxpwa@filips.si")
           (extension "tree-style-tab" "treestyletab@piro.sakura.ne.jp")
@@ -89,8 +92,8 @@ in
 
       search = {
         force = true;
-        default = "DuckDuckGo";
-        order = [ "DuckDuckGo" ];
+        default = "ddg";
+        order = [ "ddg" ];
       };
 
       # FIXME(firefox): These should probably be in a let .. in block so I can re-use if I setup

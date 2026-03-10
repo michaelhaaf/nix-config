@@ -4,7 +4,7 @@
   home.packages = lib.attrValues {
     inherit (pkgs)
       signal-desktop
-      telegram-desktop
+      # telegram-desktop # TODO: not working at the moment
 
       # matrix
       # cinny-desktop # TODO: this is marked broken at the moment
