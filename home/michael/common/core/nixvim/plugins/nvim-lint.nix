@@ -10,7 +10,9 @@
       lintersByFt = {
         bash = [ "shellcheck" ];
         nix = [ "statix" ];
-        python = [ "pyright" ];
+        # FIXME: idk fuck
+        # python = [ "pyright" ];
+
         # lua = [ "selene" ];
         # javascript = [ "eslint_d" ];
         # javascriptreact = [ "eslint_d" ];
@@ -19,9 +21,9 @@
         yaml = [ "yamllint" ];
       };
       linters = {
-        pylint = {
-          cmd = lib.getExe pkgs.pylint;
-        };
+        # pyright = {
+        #   cmd = lib.getExe pkgs.pyright;
+        # };
         shellcheck = {
           cmd = lib.getExe pkgs.shellcheck;
         };

@@ -136,6 +136,7 @@
       # Linters
       shellcheck # Shell script linter
       eslint_d # JavaScript/TypeScript linter
+      pyright
 
       # LSPs
       lua-language-server

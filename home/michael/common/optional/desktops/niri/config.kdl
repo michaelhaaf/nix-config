@@ -102,3 +102,11 @@ environment {
     // Force Clutter applications to use the Wayland backend.
     CLUTTER_BACKEND "wayland"
 }
+
+cursor {
+    // xcursor-theme "Bibata-Original-Ice"
+    xcursor-size 48
+
+    hide-when-typing
+    hide-after-inactive-ms 5000
+}

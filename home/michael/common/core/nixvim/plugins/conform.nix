@@ -38,6 +38,9 @@
           "shellharden"
           "shfmt"
         ];
+        python = [
+          "ruff"
+        ];
         toml = [ "taplo" ];
         typescript = {
           __unkeyed-1 = "biome";
@@ -58,6 +61,9 @@
         };
         nixfmt = {
           command = lib.getExe pkgs.nixfmt-rfc-style;
+        };
+        ruff = {
+          command = lib.getExe pkgs.ruff;
         };
         mdformat =
           let
