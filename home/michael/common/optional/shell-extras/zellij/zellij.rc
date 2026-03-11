@@ -1,5 +1,12 @@
+# Autostart Zellij
+# - zellij setup --generate-auto-start bash
+# - https://gist.github.com/stevenringo/5e1f4dc68c857d0c66549b4363d9141c
+
+export ZELLIJ_AUTO_ATTACH="true"
+export ZELLIJ_AUTO_EXIT="true"
+
 if [[ -z "$ZELLIJ" ]]; then
-    if [[ "$ZELLIJ_AUTO_ATTACH" == "true" ]]; then
+    if [[ "$ZELLIJ_AUTO_ATTACH" == "true" ]] && [[ -n "$PS1" ]]; then
         zellij attach -c
     else
         zellij
