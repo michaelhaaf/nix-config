@@ -13,6 +13,10 @@
     };
     xfconf.enable = true; # required to persist Thunar settings since we're not running on XFCE
   };
+  environment.systemPackages = with pkgs; [
+    file-roller
+    ffmpegthumbnailer
+  ];
   services = {
     gvfs.enable = true; # for stuff like Trash folders etc
     udisks2.enable = true; # storage device manipulation

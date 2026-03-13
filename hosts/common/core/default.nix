@@ -56,12 +56,11 @@ in
   # System-wide packages, in case we log in as root
   environment.systemPackages = [ pkgs.openssh ];
 
-  # Force home-manager to use global packages
-  home-manager.useGlobalPkgs = true;
-
-  # If there is a conflict file that is backed up, use this extension
-  home-manager.backupFileExtension = "bk";
-  home-manager.overwriteBackup = true;
+  home-manager = {
+    useGlobalPkgs = true;
+    backupFileExtension = "bk";
+    overwriteBackup = true;
+  };
 
   #
   # ========== Overlays ==========
@@ -72,6 +71,10 @@ in
     ];
     config = {
       allowUnfree = true;
+      # TODO: This didn't work on its own, also needed:
+      # export NIXPKGS_ALLOW_UNFREE=1
+      # export NIXPKGS_ALLOW_INSECURE=1
+      # before nix-shell -p ventoy-full worked.
       permittedInsecurePackages = [
         "ventoy-1.1.10"
       ];
