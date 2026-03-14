@@ -1,24 +1,46 @@
 {
   programs.nixvim = {
     globals.mapleader = " ";
-    #
-    # ========== Modes Legend ==========
-    #
-    #    "n" Normal mode
-    #    "i" Insert mode
-    #    "v" Visual and Select mode
-    #    "s" Select mode
-    #    "t" Terminal mode
-    #    ""  Normal, visual, select and operator-pending mode
-    #    "x" Visual mode only, without select
-    #    "o" Operator-pending mode
-    #    "!" Insert and command-line mode
-    #    "l" Insert, command-line and lang-arg mode
-    #    "c" Command-line mode
     keymaps = [
       #
-      # ========== Nixvim Config Shortcuts ==========
+      # ======== User Interface =======
       #
+
+      {
+        mode = [ "n" ];
+        key = "<leader>ui";
+        action = "<cmd>vim.show_pos<CR>";
+        options = {
+          desc = "Inspect Pos";
+        };
+      }
+
+      {
+        mode = [ "n" ];
+        key = "<leader>uT";
+        action = "<cmd>lua Snacks.toggle.treesitter()<CR>";
+        options = {
+          desc = "Toggle (t)reesitter";
+        };
+      }
+
+      {
+        mode = [ "n" ];
+        key = "<leader>us";
+        action = "<cmd>lua Snacks.toggle.option('spell', { name = 'Spelling' })<CR>";
+        options = {
+          desc = "Toggle (s)pelling";
+        };
+      }
+
+      {
+        mode = [ "n" ];
+        key = "<leader>ud";
+        action = "<cmd>lua Snacks.toggle.diagnostics()<CR>";
+        options = {
+          desc = "Toggle (d)iagnostics";
+        };
+      }
 
       #
       # ======== Movement ========
@@ -79,6 +101,39 @@
         };
       }
 
+      {
+        mode = [ "n" ];
+        key = "<C-Up>";
+        action = "<cmd>resize +2<CR>";
+        options = {
+          desc = "Increase Window Height";
+        };
+      }
+      {
+        mode = [ "n" ];
+        key = "<C-Down>";
+        action = "<cmd>resize -2<CR>";
+        options = {
+          desc = "Decrease Window Height";
+        };
+      }
+      {
+        mode = [ "n" ];
+        key = "<C-Left>";
+        action = "<cmd>vertical resize -2<CR>";
+        options = {
+          desc = "Decrease Window Width";
+        };
+      }
+      {
+        mode = [ "n" ];
+        key = "<C-Right>";
+        action = "<cmd>vertical resize +2<CR>";
+        options = {
+          desc = "Increase Window Height";
+        };
+      }
+
       #
       # ======== better indenting ========
       #
@@ -93,18 +148,6 @@
         action = ">gv";
       }
 
-      #
-      # ======== Zen ========
-      #
-      {
-        mode = [ "n" ];
-        key = "<Leader>zz";
-        action = ":ZenMode<CR>";
-        options = {
-          desc = "toggle ZenMode";
-          noremap = true;
-        };
-      }
     ];
   };
 }

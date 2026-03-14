@@ -101,7 +101,7 @@
       };
     }
     {
-      key = "<leader>?";
+      key = "<leader>sg";
       mode = [ "n" ];
       action = "<cmd>lua Snacks.picker.grep()<CR>";
       options = {
@@ -119,7 +119,7 @@
       };
     }
     {
-      key = "<leader>fb";
+      key = "<leader>sb";
       mode = [ "n" ];
       action = "<cmd>lua Snacks.picker.buffers()<CR>";
       options = {
@@ -128,7 +128,7 @@
       };
     }
     {
-      key = "<leader>ff";
+      key = "<leader>sf";
       mode = [ "n" ];
       action = "<cmd>lua Snacks.picker.files()<CR>";
       options = {
@@ -173,14 +173,6 @@
       };
     }
     {
-      key = "<leader>uC";
-      mode = [ "n" ];
-      action = "<cmd>lua Snacks.picker.colorschemes()<CR>";
-      options = {
-        desc = "Color schemes";
-      };
-    }
-    {
       key = "<leader>:";
       mode = [ "n" ];
       action = "<cmd>lua Snacks.picker.command_history()<CR>";
@@ -189,7 +181,7 @@
       };
     }
     {
-      key = "<leader>sC";
+      key = "<leader>sc";
       mode = [ "n" ];
       action = "<cmd>lua Snacks.picker.commands()<CR>";
       options = {
@@ -379,6 +371,89 @@
       action = "<cmd>lua Snacks.git.blame_line()<CR>";
       options = {
         desc = "(s)earch (u)ndo history";
+      };
+    }
+
+    # TODO: I think some of these key commands should be in different places
+    # (i.e. not all in snacks, but in concept)
+
+    # Buffer delete
+    {
+      key = "<leader>bd";
+      mode = [ "n" ];
+      action = "<cmd>lua Snacks.bufdelete()<CR>";
+      options = {
+        desc = "(b)uffer (d)elete";
+      };
+    }
+
+    # Buffer delete others
+    {
+      key = "<leader>bo";
+      mode = [ "n" ];
+      action = "<cmd>lua Snacks.bufdelete.other()<CR>";
+      options = {
+        desc = "(b)uffer delete (o)thers";
+      };
+    }
+
+    # Buffer and window delete
+    {
+      key = "<leader>bD";
+      mode = [ "n" ];
+      action = "<cmd>:bd<CR>";
+      options = {
+        desc = "(b)uffer (D)elete (and window)";
+      };
+    }
+
+    # Previous buffer
+    {
+      key = "H";
+      mode = [ "n" ];
+      action = "<cmd>bprevious<CR>";
+      options = {
+        desc = "Previous buffer";
+      };
+    }
+
+    # Next buffer
+    {
+      key = "L";
+      mode = [ "n" ];
+      action = "<cmd>bnext<CR>";
+      options = {
+        desc = "Next buffer";
+      };
+    }
+
+    # Switch to other buffer
+    {
+      key = "<leader>bb";
+      mode = [ "n" ];
+      action = "<cmd>e #<CR>";
+      options = {
+        desc = "Switch to Other Buffer";
+      };
+    }
+
+    # Toggle Zen
+    {
+      key = "<leader>uz";
+      mode = [ "n" ];
+      action = "<cmd>lua Snacks.toggle.zen()<CR>";
+      options = {
+        desc = "toggle (z)en";
+      };
+    }
+
+    # Zoom?
+    {
+      key = "<leader>uZ";
+      mode = [ "n" ];
+      action = "<cmd>lua Snacks.toggle.zoom()<CR>";
+      options = {
+        desc = "Toggle (Z)oom";
       };
     }
 

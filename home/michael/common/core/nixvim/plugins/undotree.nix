@@ -9,7 +9,7 @@
   keymaps = [
     {
       mode = [ "n" ];
-      key = "<Leader>u";
+      key = "<Leader>uu";
       action = ":UndotreeToggle<cr>";
       options = {
         desc = "Toggle undotree"; # see undotree plugin

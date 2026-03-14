@@ -1,4 +1,3 @@
-{ ... }:
 {
   plugins.mini = {
     enable = true;
@@ -10,6 +9,15 @@
       };
       align = {
         enable = true;
+      };
+      basics = {
+        enable = true;
+        autoLoad = true;
+        settings = {
+          mappings = {
+            windows = true;
+          };
+        };
       };
       comment = {
         enable = true;
