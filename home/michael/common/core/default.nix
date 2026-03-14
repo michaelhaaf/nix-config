@@ -30,6 +30,7 @@
       FLAKE = "$HOME/src/nix/nix-config";
       SHELL = "bash";
     };
+    file.".face".source = lib.custom.relativeToRoot "assets/.face";
   };
 
   # Packages that don't require custom configuration go here
