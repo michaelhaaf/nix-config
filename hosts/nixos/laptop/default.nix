@@ -65,6 +65,7 @@
       "hosts/common/optional/wayland.nix" # common wayland options
       "hosts/common/optional/wifi.nix" # common wifi options
       "hosts/common/optional/gaming.nix" # steam and gamemode and stuff
+      "hosts/common/optional/wine.nix" # run windows applications
 
       # "hosts/common/optional/yubikey.nix" # yubikey related packages and configs
     ])
