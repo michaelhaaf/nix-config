@@ -13,7 +13,12 @@
   environment.systemPackages = with pkgs; [
     inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default
     xwayland-satellite
-    # ... maybe other stuff
+    xdg-desktop-portal-gtk
+
+    # TODO: github.com/niri-wm/niri/issues/544
+    # see the comment about replacing -gnome with -wlr
+    xdg-desktop-portal-gnome
+    gnome-keyring
   ];
 
   programs.uwsm = {

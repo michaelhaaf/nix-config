@@ -32,6 +32,7 @@
       "hosts/common/optional/wayland.nix" # WSL uses wayland
       # TODO: https://gist.github.com/tdcosta100/e28636c216515ca88d1f2e7a2e188912 ?
       # "hosts/common/optional/sway.nix" # minimal sway setup on top of WSL Weston
+      "hosts/common/optional/xdg.nix" # XDG spec modifications
     ])
   ];
 
