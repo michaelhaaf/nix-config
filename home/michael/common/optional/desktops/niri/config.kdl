@@ -75,7 +75,7 @@ hotkey-overlay {
 //
 // ========== Miscellaneous ==========
 //
-screenshot-path "~/media/pictures/screenshots/%Y-%m-%d %H-%M-%S.png"
+screenshot-path "~/media/pictures/screenshots/%Y-%m-%dT%H%M%S.png"
 
 // Disable client-side decorations
 // FIXME: (niri): test this on or off
