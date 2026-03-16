@@ -8,22 +8,6 @@ binds {
     Super+Shift+Slash {
         show-hotkey-overlay
     }
-    // Shutting up hotkey-overlay defaults. I don't have/use mod5
-    Mod5+Up hotkey-overlay-title=null {
-        move-column-to-workspace-up
-    }
-    Mod5+Down hotkey-overlay-title=null {
-        move-column-to-workspace-down
-    }
-    Mod5+Left hotkey-overlay-title=null {
-        focus-column-left
-    }
-    Mod5+Right hotkey-overlay-title=null {
-        focus-column-right
-    }
-    Mod5+Q hotkey-overlay-title=null {
-        quit
-    }
     //
     // ========== Overview mode ==========
     //
@@ -88,17 +72,10 @@ binds {
         focus-workspace-previous
     }
     Super+Comma hotkey-overlay-title="Focus workspace up" {
-        focus-workspace-up
+        consume-window-into-column
     }
     Super+Period hotkey-overlay-title="Focus workspace down" {
-        focus-workspace-down
-    }
-    // ==========  Move workspace ==========
-    Super+Shift+Comma hotkey-overlay-title="Move workspace up" {
-        move-workspace-up
-    }
-    Super+Shift+Period hotkey-overlay-title="Move workspace down" {
-        move-workspace-down
+        expel-window-from-column
     }
     //
     // ========== Window and column actions ==========
@@ -213,40 +190,39 @@ binds {
     Super+R hotkey-overlay-title="Switch preset column widths" {
         switch-preset-column-width
     }
-    // Presets are defined in rules.kdl
     Super+Shift+R hotkey-overlay-title="Switch preset window heights" {
         switch-preset-window-height
     }
-    // Presets are defined in rules.kdl
     Super+F hotkey-overlay-title="Toggle fullscreen" {
+        maximize-column
+    }
+    Super+Shift+F hotkey-overlay-title="Maximize column width" {
         fullscreen-window
     }
     Super+Alt+F hotkey-overlay-title="Toggle windowed fullscreen" {
         toggle-windowed-fullscreen
     }
-    //tricks the window content into thinking its fullscreen
-    Super+Shift+F hotkey-overlay-title="Toggle floating" {
-        toggle-window-floating
-    }
-    Super+Ctrl+F hotkey-overlay-title="Maximize column width" {
-        maximize-column
-    }
-    // Toggle maximized state of the focused column
-    Super+Shift+Ctrl+F hotkey-overlay-title="Expand column to available width" {
+    Super+Ctrl+F hotkey-overlay-title="Expand column to available width" {
         expand-column-to-available-width
     }
+    Super+V hotkey-overlay-title="Toggle floating" {
+        toggle-window-floating
+    }
+    Super+Shift+V hotkey-overlay-title="Switch focus floating-tiling" {
+        switch-focus-between-floating-and-tiling
+    }
     // Expand the focused column to space not taken up by other fully visible columns
+    Super+Minus {
+        set-column-width "-10%"
+    }
     Super+Equal {
-        set-column-width "-1"
+        set-column-width "+10%"
     }
-    Super+Plus {
-        set-column-width "+1"
-    }
-    Super+Shift+Equal {
-        set-window-height "-1"
+    Super+Shift+Minus {
+        set-window-height "-10%"
     }
     Super+Shift+Plus {
-        set-window-height "+1"
+        set-window-height "+10%"
     }
     //
     // ========== System controls ==========
@@ -255,6 +231,12 @@ binds {
     // NOTE: see config.kdl for screenshot-path
     Print {
         screenshot
+    }
+    Ctrl+Print {
+        screenshot-screen
+    }
+    Alt+Print {
+        screenshot-window
     }
     // Super+Ctrl+Shift+P { screenshot write-to-disk=true; }
     // Super+Alt+P { screenshot show-pointer=false; }
