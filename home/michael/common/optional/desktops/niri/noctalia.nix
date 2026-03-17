@@ -78,6 +78,7 @@
       general = {
         avatarImage = "/home/michael/.face";
         radiusRatio = 0.2;
+        lockScreenCountdownDuration = 3000;
         keybinds = {
           keyUp = [
             "Up"
@@ -98,6 +99,13 @@
         gridSnap = true;
         overviewEnabled = true;
         monitorWidgets = [ ];
+      };
+      wallpaper = {
+        directory = "/home/michael/media/pictures/wallpapers";
+      };
+      sessionMenu = {
+        countdownDuration = 3000;
+
       };
     };
   };
