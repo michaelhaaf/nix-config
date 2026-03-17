@@ -39,37 +39,79 @@
     settings = {
       # configure noctalia here
       bar = {
-        density = "compact";
+        barType = "floating";
+        density = "default";
         position = "top";
         showCapsule = false;
         widgets = {
           left = [
             {
-              id = "ControlCenter";
+              id = "Launcher";
+              colorizeSystemIcon = "none";
+              enableColorization = true;
               useDistroLogo = true;
             }
-            { id = "Network"; }
-            { id = "Bluetooth"; }
+            {
+              id = "Workspace";
+              hideUnoccupied = false;
+              labelMode = "none";
+            }
+            {
+              id = "Taskbar";
+              colorizeIcons = true;
+              hideMode = "hidden";
+              maskTaskbarWidth = 40;
+              onlyActiveWorkspaces = true;
+              showPinnedApps = true;
+              showTitle = false;
+              smartWidth = true;
+              titleWidth = 120;
+            }
+            {
+              id = "ActiveWindow";
+              colorizeIcons = true;
+              hideMode = "hidden";
+              maxWidth = 145;
+              scrollingMode = "hover";
+              showIcon = true;
+              useFixedWidth = true;
+            }
           ];
           center = [
             {
-              hideUnoccupied = false;
-              id = "Workspace";
-              labelMode = "none";
+              id = "plugin:catwalk";
+              defaultSettings = {
+                hideBackground = false;
+                minimumThreshold = 10;
+              };
+            }
+            {
+              id = "Clock";
+              formatHorizontal = "HH:mm";
+              formatVertical = "HH mm";
+              useMonospacedFont = true;
+              usePrimaryColor = true;
+            }
+            {
+              id = "AudioVisualizer";
+              hideWhenIdle = true;
+              colorName = "primary";
+              width = 200;
             }
           ];
           right = [
             {
+              id = "plugin:tailscale";
+              defaultSettings = {
+                compactMode = false;
+              };
+            }
+            { id = "Network"; }
+            { id = "Volume"; }
+            {
               alwaysShowPercentage = false;
               id = "Battery";
               warningThreshold = 30;
-            }
-            {
-              formatHorizontal = "HH:mm";
-              formatVertical = "HH mm";
-              id = "Clock";
-              useMonospacedFont = true;
-              usePrimaryColor = true;
             }
           ];
         };

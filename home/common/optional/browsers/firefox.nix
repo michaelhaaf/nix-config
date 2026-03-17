@@ -81,6 +81,31 @@ in
           (extension "tree-style-tab" "treestyletab@piro.sakura.ne.jp")
           (extension "tridactyl" "tridactyl.vim@cmcaine.co.uk")
         ];
+      Cookies = {
+        Allow = [
+          "http://127.0.0.1"
+          "https://127.0.0.1"
+          "http://localhost"
+          "https://localhost"
+
+          # repositories
+          "https://github.com"
+          "https://gitlab.com"
+          "https://codeberg.org"
+          "https://sr.ht"
+
+          # utilities
+          "https://duckduckgo.com"
+
+          # TODO: make a separate firefox profile for comms?
+          "https://youtube.com"
+          "https://web.whatsapp.com"
+
+          # work TODO: move elsewhere
+          "https://johnabbott.omnivox.ca/"
+          "https://moodle.johnabbott.qc.ca/"
+        ];
+      };
 
     };
 

@@ -4,19 +4,15 @@ gestures {
     }
 }
 binds {
-    // Show a list of important bindings.
+
     Super+Shift+Slash {
         show-hotkey-overlay
     }
-    //
-    // ========== Overview mode ==========
-    //
+
     Super+O repeat=false {
         toggle-overview
     }
-    //
-    // ========== Monitor actions ==========
-    //
+
     Super+Ctrl+h hotkey-overlay-title="Focus monitor left" {
         focus-monitor-left
     }
@@ -29,15 +25,11 @@ binds {
     Super+Ctrl+l hotkey-overlay-title="Focus monitor right" {
         focus-monitor-right
     }
-    // Super+m {spawn toggleMonitors}
-    // Super+Shift+n {spawn toggleMonitorsNonPrimary}
-    Super+n {
+
+    Super+Z {
         spawn "toggleMonitorZen"
     }
-    //
-    // ========== Workspace actions ==========
-    //
-    // ========== Focus workspace ==========
+
     Super+1 {
         focus-workspace 1
     }
@@ -81,9 +73,6 @@ binds {
         close-window
     }
     // ========== Focus windows/columns ==========
-    Super+Z {
-        switch-focus-between-floating-and-tiling
-    }
     Super+H hotkey-overlay-title="Focus column or monitor left" {
         focus-column-or-monitor-left
     }
@@ -235,13 +224,7 @@ binds {
     Alt+Print {
         screenshot-window
     }
-    // Super+Ctrl+Shift+P { screenshot write-to-disk=true; }
-    // Super+Alt+P { screenshot show-pointer=false; }
-    // Super+Ctrl+Alt+P { screenshot show-pointer=true; }
-    //
-    // ========== Quick Launch ==========
-    //
-    // Spawn terminal
+
     Super+Return hotkey-overlay-title="Spawn terminal" {
         spawn "alacritty"
     }
@@ -249,10 +232,10 @@ binds {
     Super+Space { spawn-sh "noctalia-shell ipc call launcher toggle"; }
     Super+S { spawn-sh "noctalia-shell ipc call controlCenter toggle"; }
     Super+Shift+S { spawn-sh "noctalia-shell ipc call settings toggle"; }
+    Super+N{ spawn-sh "noctalia-shell ipc call settings toggleTab"; }
     Super+Tab { spawn-sh "noctalia-shell ipc call launcher windows"; }
     Super+Backspace { spawn-sh "noctalia-shell ipc call sessionMenu toggle"; }
 
-    // Spawn file explorer
     Super+E hotkey-overlay-title="Spawn file explorer" {
         spawn "thunar"
     }
@@ -285,7 +268,6 @@ binds {
     XF86AudioForward allow-when-locked=true hotkey-overlay-title=null {
         spawn "playerctl" "position" "2+" "--ignore-player=firefox,chromium,brave"
     }
-    // ========== Media audio control==========
     Shift+XF86AudioRaiseVolume allow-when-locked=true hotkey-overlay-title=null {
         spawn "playerctl" "volume" "0.05%+"
     }
@@ -303,24 +285,4 @@ binds {
     Super+P { spawn-sh "rofi-pass -theme ~/.config/rofi-pass/rofi-pass.rasi"; }
     Super+Shift+P { spawn-sh "rofi-pass -theme ~/.config/rofi-pass/rofi-pass.rasi --insert"; }
 
- //
-    // ========== Clipboard ==========
-    //
-    // FIXME: (niri): setup with copyq
-	// Select from the clipboard.
-	//Super+Shift+V { spawn "dash" "-c" "clipman pick -t CUSTOM -T 'fuzzel -d --no-icons --width 60'"; }
-	// Clear the clipboard.
-	//Super+Ctrl+V { spawn "dash" "-c" "clipman clear --all && dunstify 'Clipboard cleared.'"; }
-	// Opan a permanent "clipboard" file.
-	//Alt+Shift+V { spawn "dash" "-c" "$TERMINAL -e micro $HOME/Documents/Clipboard.txt"; }
-
-	// Applications such as remote-desktop clients and software KVM switches may
-	// request that niri stops processing the keyboard shortcuts defined here
-	// so they may, for example, forward the key presses as-is to a remote machine.
-	// It's a good idea to bind an escape hatch to toggle the inhibitor,
-	// so a buggy application can't hold your session hostage.
-	//
-	// The allow-inhibiting=false property can be applied to other binds as well,
-	// which ensures niri always processes them, even when an inhibitor is active.
-	// Super+Escape allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }
 }
