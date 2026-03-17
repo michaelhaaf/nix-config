@@ -68,9 +68,6 @@ binds {
     Super+0 {
         focus-workspace 0
     }
-    Super+Minus hotkey-overlay-title="Focus workspace previous" {
-        focus-workspace-previous
-    }
     Super+Comma hotkey-overlay-title="Focus workspace up" {
         consume-window-into-column
     }

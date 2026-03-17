@@ -41,13 +41,10 @@ in
     primaryUsername = "michael";
     users = [ "michael" ];
     handle = "michaelhaaf";
-    # modify the attribute sets hostSpec will inherit from your nix-secrets.
-    # If you're not using nix-secrets then remove the following six lines below.
     inherit (inputs.nix-secrets)
       domain
       email
       userFullName
-      networking
       ;
   };
 

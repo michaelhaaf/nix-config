@@ -11,7 +11,7 @@
 }:
 let
   hostSpec = config.hostSpec;
-  pubKeys = lib.filesystem.listFilesRecursive ./keys;
+  pubKeys = lib.attrsets.attrValues inputs.nix-secrets.ssh;
 in
 {
   users.users.${hostSpec.primaryUsername} = {
@@ -19,7 +19,7 @@ in
     shell = pkgs.bash; # default shell
 
     # These get placed into /etc/ssh/authorized_keys.d/<name> on nixos
-    openssh.authorizedKeys.keys = lib.lists.forEach pubKeys (key: builtins.readFile key);
+    openssh.authorizedKeys.keys = pubKeys;
   };
 
   # Create ssh sockets directory for controlpaths when homemanager not loaded (i.e. isMinimal)

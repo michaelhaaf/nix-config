@@ -1,15 +1,9 @@
 {
-  config,
   ...
 }:
-let
-  sshPort = config.hostSpec.networking.ports.tcp.ssh;
-in
-
 {
   services.openssh = {
     enable = true;
-    ports = [ sshPort ];
 
     settings = {
       # Harden
@@ -28,6 +22,4 @@ in
       }
     ];
   };
-
-  networking.firewall.allowedTCPPorts = [ sshPort ];
 }
