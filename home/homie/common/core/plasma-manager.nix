@@ -1,12 +1,15 @@
 { inputs, pkgs, ... }:
 {
   imports = [ inputs.plasma-manager.homeModules.plasma-manager ];
+  home.packages = with pkgs; [
+    papirus-icon-theme
+  ];
   programs.plasma = {
     enable = true;
 
     workspace = {
       lookAndFeel = "org.kde.breezedark.desktop";
-      cursor.size = 32;
+      cursor.size = 48;
       iconTheme = "Papirus-Dark";
       wallpaper = "${pkgs.kdePackages.plasma-workspace-wallpapers}/share/wallpapers/Patak/contents/images/1080x1920.png";
     };
@@ -37,34 +40,6 @@
       "minimize"
       "maximize"
     ];
-
-    # System Settings > Text & Fonts > Fonts
-    fonts = {
-      fixedWidth = {
-        family = "JetBrains Mono";
-        pointSize = 10;
-      };
-      general = {
-        family = "Roboto";
-        pointSize = 10;
-      };
-      menu = {
-        family = "Roboto";
-        pointSize = 10;
-      };
-      small = {
-        family = "Roboto";
-        pointSize = 8;
-      };
-      toolbar = {
-        family = "Roboto";
-        pointSize = 10;
-      };
-      windowTitle = {
-        family = "Roboto";
-        pointSize = 10;
-      };
-    };
 
     kwin = {
       # System Settings > Window Management > Desktop Effects > ...

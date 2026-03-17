@@ -27,7 +27,6 @@
     kdePackages.sddm-kcm
     kdePackages.ksystemlog
     kdePackages.discover
-    kdePackages.sddm-kcm
   ];
 
 }
