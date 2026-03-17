@@ -4,6 +4,7 @@
   home.packages = with pkgs; [
     papirus-icon-theme
   ];
+  stylix.targets.qt.platform = "qtct";
   programs.plasma = {
     enable = true;
 
