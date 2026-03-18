@@ -3,37 +3,12 @@ include "inputs.kdl"
 include "outputs.kdl"
 include "binds.kdl"
 include "rules.kdl"
-//
-// ========== Named Workspaces ==========
-//
+
 // TODO: named workspaces should be in nix so that I can separate home/laptop etc.
-// workspace "8_l" {
-//     open-on-output "DP-2"
-// }
-// workspace "9_u" {
-//     open-on-output "HDMI-A-1"
-// }
-// workspace "0_r" {
-//     open-on-output "DP-3"
-// }
-// workspace "1_dev" {
-//     open-on-output "DP-1"
-// }
-// workspace "2_uci" {
-//     open-on-output "DP-1"
-// }
-// workspace "3_edu" {
-//     open-on-output "DP-1"
-// }
-// workspace "4_gig" {
-//     open-on-output "DP-1"
-// }
-// workspace "5_gmz" {
-//     open-on-output "DP-1"
-// }
-// workspace "Y_qrs" {
-//     open-on-output "DP-1"
-// }
+workspace "browser"
+
+workspace "comms"
+
 //
 // ========== Animations ==========
 //
@@ -64,6 +39,7 @@ overview {
 //
 spawn-sh-at-startup "uwsm finalize NIRI_SOCKET"
 spawn-at-startup "noctalia-shell"
+spawn-at-startup "ghostty --gtk-single-instance=true --quit-after-last-window-closed=false --initial-window=false"
 // spawn-sh-at-startup "ghostty -e zellij attach asc"
 // spawn-sh-at-startup "ghostty --title=btop -e btop"
 // spawn-at-startup "copyq"

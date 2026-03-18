@@ -97,8 +97,14 @@ in
           # utilities
           "https://duckduckgo.com"
 
-          # TODO: make a separate firefox profile for comms?
+          # TODO: make a separate firefox profile for streaming stuff?
           "https://youtube.com"
+          "https://music.youtube.com"
+          "https://dropout.tv"
+          "https://crave.ca"
+          "https://netflix.com"
+
+          # TODO: make a separate firefox profile for comms stuff?
           "https://web.whatsapp.com"
 
           # work TODO: move elsewhere

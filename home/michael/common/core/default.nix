@@ -41,7 +41,6 @@
       bat
       bc
       btop
-      chafa # terminal graphics
       coreutils-full # gnu
       curl
       dust # du, but more intuitive
@@ -55,6 +54,12 @@
       jq
       inotify-tools # inotify watches
       iftop
+
+      # terminal graphics/image
+      chafa
+      feh
+      imv
+      timg
 
       pciutils
       pfetch # system info

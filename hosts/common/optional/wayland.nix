@@ -5,5 +5,6 @@
     wl-clipboard # copy/paste
     wayland-utils # diagnotstic tools
     wlr-randr
+    wev
   ];
 }

@@ -43,7 +43,7 @@ binds {
         focus-workspace 4
     }
     Super+5 {
-        focus-workspace 5
+        focus-workspace "5_steam"
     }
     Super+6 {
         focus-workspace 6
@@ -55,7 +55,7 @@ binds {
         focus-workspace 8
     }
     Super+9 {
-        focus-workspace 9
+        focus-workspace "9_comms"
     }
     Super+0 {
         focus-workspace 0
@@ -226,7 +226,7 @@ binds {
     }
 
     Super+Return hotkey-overlay-title="Spawn terminal" {
-        spawn "alacritty"
+        spawn "ghostty"
     }
 
     Super+Space { spawn-sh "noctalia-shell ipc call launcher toggle"; }
@@ -239,8 +239,8 @@ binds {
     Super+E hotkey-overlay-title="Spawn file explorer" {
         spawn "thunar"
     }
-    Super+Shift+E hotkey-overlay-title="Spawn file explorer" {
-        spawn-sh "yazi"
+    Super+Shift+E hotkey-overlay-title="Spawn cli file explorer" {
+        spawn "ghostty -e yazi"
     }
 
     // Audio & Brightness

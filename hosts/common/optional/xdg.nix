@@ -12,7 +12,7 @@
     PUBLICSHARE=public
     DOCUMENTS=documents
     MUSIC=media/music
-    PICTURES=media/photos
+    PICTURES=media/pictures
     VIDEOS=media/video
   '';
 }

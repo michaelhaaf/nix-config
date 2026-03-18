@@ -112,23 +112,16 @@ window-rule {
 }
 // ========== Workspace Assignments ==========
 window-rule {
-    match app-id="^[Oo]bsidian$"
-    open-on-workspace "8_l"
-}
-window-rule {
     match app-id="signal"
-    match app-id="discord"
-    match app-id="brave-browser"
-    open-on-workspace "9_u"
+    match app-id="vesktop"
+    open-on-workspace "9_comms"
 }
 window-rule {
     match app-id="steam"
-    open-on-workspace "5_gmz"
+    open-on-workspace "5_steam"
 }
 window-rule {
     match app-id="com.yubico.yubioath"
-    match app-id=".protonvpn-app-wrapped"
-    match app-id="^[Ss]potify$"
     open-on-workspace "Y_qrs"
 }
 // ========== Tile on launch ==========
@@ -219,6 +212,7 @@ window-rule {
 window-rule {
     match title="^()$" app-id="^([Ss]team)$"
     match app-id="^([S]team_app_*)$"
+    // TODO: double check this
     open-on-output "DP-1"
     open-on-workspace "5_gmz"
 }
@@ -230,19 +224,25 @@ window-rule {
         proportion 0.25
     }
 }
-// ========== Brave ==========
-// Resize certain windows to specific sizes.
+// Indicate screencasted windows with red colors.
 window-rule {
-    match app-id="brave-browser"
-}
-// ========== Projects ==========
-// Resize certain windows to specific sizes.
-window-rule {
-    match title="pygame window"
-    default-column-width {
-        fixed 1280
+    match is-window-cast-target=true
+
+    focus-ring {
+        active-color "#f38ba8"
+        inactive-color "#7d0d2d"
     }
-    default-window-height {
-        fixed 720
+
+    border {
+        inactive-color "#7d0d2d"
+    }
+
+    shadow {
+        color "#7d0d2d70"
+    }
+
+    tab-indicator {
+        active-color "#f38ba8"
+        inactive-color "#7d0d2d"
     }
 }
