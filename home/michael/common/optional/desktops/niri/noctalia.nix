@@ -57,6 +57,10 @@
           enabled = true;
           sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
         };
+        unicode-picker = {
+          enabled = true;
+          sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
+        };
         neovim-session-provider = {
           enabled = true;
           sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
@@ -82,8 +86,8 @@
         terminalCommand = "ghostty -e";
       };
       bar = {
-        barType = "floating";
         density = "default";
+        barType = "framed";
         position = "top";
         showCapsule = false;
         widgets = {
@@ -179,14 +183,61 @@
         monthBeforeDay = true;
         name = "Montreal, Canada";
       };
+
+      hooks = {
+        startup = "saveSettings";
+      };
+
       desktopWidgets = {
         enabled = true;
         gridSnap = true;
         overviewEnabled = true;
-        monitorWidgets = [ ];
+        monitorWidgets = [
+          {
+            name = "eDP-1";
+            widgets = [
+              {
+                hideMode = "visible";
+                id = "MediaPlayer";
+                roundedCorners = true;
+                scale = 1;
+                showAlbumArt = true;
+                showBackground = true;
+                showButtons = true;
+                showVisualizer = true;
+                visualizerType = "linear";
+                x = 1500;
+                y = 900;
+              }
+              {
+                diskPath = "/";
+                id = "SystemStat";
+                layout = "bottom";
+                roundedCorners = true;
+                scale = 1;
+                showBackground = true;
+                statType = "CPU";
+                x = 1660;
+                y = 760;
+              }
+              {
+                id = "Weather";
+                roundedCorners = true;
+                scale = 1;
+                showBackground = true;
+                x = 1660;
+                y = 40;
+              }
+            ];
+          }
+        ];
+
       };
       wallpaper = {
         directory = "/home/michael/media/pictures/wallpapers";
+        # TODO: get from theme
+        fillColor = "#232136";
+        overviewEnabled = true;
       };
       sessionMenu = {
         countdownDuration = 3000;

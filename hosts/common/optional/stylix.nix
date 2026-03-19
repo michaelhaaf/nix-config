@@ -9,7 +9,7 @@
     opacity = {
       applications = 1.0;
       terminal = 0.95;
-      desktop = 1.0;
+      desktop = 0.9;
       popups = 0.8;
     };
     polarity = "dark";

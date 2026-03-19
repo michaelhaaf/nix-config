@@ -10,7 +10,7 @@ layer-rule {
 //
 layout {
     background-color "transparent"
-    always-center-single-column
+    center-focused-column "never"
     gaps 10
     // FIXME: with this commented out apps will determine their own starting width
     // inside & outside
