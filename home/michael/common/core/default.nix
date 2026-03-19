@@ -57,6 +57,7 @@
 
       # nix utilities
       nixfmt # command line formatter
+      json-diff
 
       # terminal graphics/image
       chafa

@@ -25,17 +25,43 @@ let
   # TODO(niri):requisite niri actions not yet available
 
   #
-  # ========== Toggle Zen Mode ==========
+  # ========== Store Settings Hook ==========
   #
+  # Designed to be used as a start-up hook to store the initial noctalia settings.
   saveSettings = pkgs.writeShellApplication {
     name = "saveSettings";
     text = ''
       #!/usr/bin/env bash
-      noctalia-shell ipc call state all | jq .settings > "/tmp/data.json"
-      nix eval --impure --expr "builtins.fromJSON (builtins.readFile \"/tmp/data.json\")" | nixfmt > "/tmp/data.nix"
-      noctalia-shell ipc call toast send '{"title":"Settings saved."}'
+      mkdir -p "/tmp/noctalia-cache"
+      noctalia-shell ipc call state all | jq .settings > "/tmp/noctalia-cache/settings.json"
     '';
   };
+
+  #
+  # ========== Store Settings Hook ==========
+  #
+  # Designed to be used as a start-up hook to store the initial noctalia settings.
+  generateSettingsDiff = pkgs.writeShellApplication {
+    name = "generateSettingsDiff";
+    text = ''
+      #!/usr/bin/env bash
+      mkdir -p "/tmp/noctalia-cache"
+
+      # || true because json-diff always returns exit code 1 for some reason
+      # github.com/andreyvit/json-diff/issues/130
+      json-diff -nj <(jq -S . "/tmp/noctalia-cache/settings.json") <(noctalia-shell ipc call state all  | jq -S .settings) > "/tmp/noctalia-cache/diff.json" || true
+      if [ -s "/tmp/noctalia-cache/diff.json" ]; then
+        nix eval --impure --expr "builtins.fromJSON (builtins.readFile \"/tmp/noctalia-cache/diff.json\")" | nixfmt > "/tmp/noctalia-cache/diff.nix"
+        noctalia-shell ipc call toast send '{"title":"Settings diff saved."}'
+      else
+        noctalia-shell ipc call toast send '{"title":"No settings changes detected."}'
+      fi
+    '';
+  };
+
+  #
+  # ========== Toggle Zen Mode ==========
+  #
   # Toggle workspaces on all non-primary monitors between default and empty
   toggleMonitorZen = pkgs.writeShellApplication {
     name = "toggleMonitorZen";
@@ -50,10 +76,12 @@ let
       niri msg action focus-monitor "DP-1"
     '';
   };
+
 in
 {
   home.packages = [
     toggleMonitorZen
     saveSettings
+    generateSettingsDiff
   ];
 }
