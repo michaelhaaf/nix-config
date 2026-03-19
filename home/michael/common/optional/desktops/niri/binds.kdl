@@ -6,7 +6,19 @@ gestures {
 binds {
 
     Super+Shift+Slash {
-        show-hotkey-overlay
+        spawn "noctalia-shell ipc call plugin:keybind-cheatsheet toggle";
+    }
+
+    Super+Shift+C {
+        spawn "noctalia-shell ipc call launcher clipboard";
+    }
+
+    Super+A {
+        spawn "noctalia-shell ipc call calendar toggle";
+    }
+
+    Super+Shift+A {
+        spawn "noctalia-shell ipc call plugin:weekly-calendar togglePanel";
     }
 
     Super+O repeat=false {
@@ -230,9 +242,10 @@ binds {
     }
 
     Super+Space { spawn-sh "noctalia-shell ipc call launcher toggle"; }
-    Super+S { spawn-sh "noctalia-shell ipc call controlCenter toggle"; }
+    Super+S { spawn-sh "noctalia-shell ipc call launcher settings"; }
     Super+Shift+S { spawn-sh "noctalia-shell ipc call settings toggle"; }
-    Super+N{ spawn-sh "noctalia-shell ipc call settings toggleTab"; }
+    Super+N{ spawn-sh "noctalia-shell ipc call notifications toggleHistory"; }
+    Super+Shift+N{ spawn-sh "noctalia-shell ipc call settings toggleTab network"; }
     Super+Tab { spawn-sh "noctalia-shell ipc call launcher windows"; }
     Super+Backspace { spawn-sh "noctalia-shell ipc call sessionMenu toggle"; }
 
