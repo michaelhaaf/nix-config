@@ -55,6 +55,9 @@
       inotify-tools # inotify watches
       iftop
 
+      # nix utilities
+      nixfmt # command line formatter
+
       # terminal graphics/image
       chafa
       feh

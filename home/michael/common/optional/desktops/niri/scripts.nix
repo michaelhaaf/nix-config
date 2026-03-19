@@ -27,6 +27,15 @@ let
   #
   # ========== Toggle Zen Mode ==========
   #
+  saveSettings = pkgs.writeShellApplication {
+    name = "saveSettings";
+    text = ''
+      #!/usr/bin/env bash
+      noctalia-shell ipc call state all | jq .settings > "/tmp/data.json"
+      nix eval --impure --expr "builtins.fromJSON (builtins.readFile \"/tmp/data.json\")" | nixfmt > "/tmp/data.nix"
+      noctalia-shell ipc call toast send '{"title":"Settings saved."}'
+    '';
+  };
   # Toggle workspaces on all non-primary monitors between default and empty
   toggleMonitorZen = pkgs.writeShellApplication {
     name = "toggleMonitorZen";
@@ -45,5 +54,6 @@ in
 {
   home.packages = [
     toggleMonitorZen
+    saveSettings
   ];
 }
