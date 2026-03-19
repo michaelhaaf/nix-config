@@ -21,6 +21,9 @@
     gnome-keyring
   ];
 
+  # Calendar integration
+  services.gnome.evolution-data-server.enable = true;
+
   programs.uwsm = {
     enable = true;
     waylandCompositors = {

@@ -5,9 +5,8 @@ include "binds.kdl"
 include "rules.kdl"
 
 // TODO: named workspaces should be in nix so that I can separate home/laptop etc.
-workspace "browser"
-
-workspace "comms"
+workspace "5_steam"
+workspace "9_comms"
 
 //
 // ========== Animations ==========
@@ -40,6 +39,7 @@ overview {
 spawn-sh-at-startup "uwsm finalize NIRI_SOCKET"
 spawn-at-startup "noctalia-shell"
 spawn-at-startup "ghostty --gtk-single-instance=true --quit-after-last-window-closed=false --initial-window=false"
+// spawn-sh-at-startup "wl-paste --watch cliphist store"
 // spawn-sh-at-startup "ghostty -e zellij attach asc"
 // spawn-sh-at-startup "ghostty --title=btop -e btop"
 // spawn-at-startup "copyq"

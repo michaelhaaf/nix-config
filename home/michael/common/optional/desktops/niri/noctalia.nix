@@ -3,7 +3,17 @@
   imports = [ inputs.noctalia.homeModules.default ];
 
   stylix.targets.noctalia-shell.enable = true;
-  #  noctalia-shell ipc call state all | jq .settings | bat
+
+  services = {
+    cliphist = {
+      enable = true;
+    };
+    clipse = {
+      enable = false;
+    };
+  };
+
+  #  nix shell nixpkgs#json-diff -c bash -c "json-diff <(jq -S . ~/.config/noctalia/settings.json) <(noctalia-shell ipc call state all | jq -S .settings)"
   programs.noctalia-shell = {
     enable = true;
     plugins = {
@@ -27,6 +37,33 @@
           enabled = true;
           sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
         };
+        keybind-cheatsheet = {
+          enabled = true;
+          sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
+        };
+        weekly-calendar = {
+          enabled = true;
+          sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
+        };
+        pomodoro = {
+          enabled = true;
+          sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
+        };
+        rss-feed = {
+          enabled = true;
+          sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
+        };
+        news = {
+          enabled = true;
+          sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
+        };
+        neovim-session-provider = {
+          enabled = true;
+          sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
+          settings = {
+            sessionsDirectory = "~/.local/state/nvim/sessions";
+          };
+        };
       };
       version = 2;
     };
@@ -37,7 +74,13 @@
       };
     };
     settings = {
-      # configure noctalia here
+      appLauncher = {
+        clipboardWatchImageCommand = "wl-paste --type image --watch cliphist store";
+        clipboardWatchTextCommand = "wl-paste --type text --watch cliphist store";
+        enableClipPreview = true;
+        enableClipboardHistory = true;
+        terminalCommand = "ghostty -e";
+      };
       bar = {
         barType = "floating";
         density = "default";
@@ -147,7 +190,9 @@
       };
       sessionMenu = {
         countdownDuration = 3000;
-
+      };
+      nightLight = {
+        enabled = true;
       };
     };
   };

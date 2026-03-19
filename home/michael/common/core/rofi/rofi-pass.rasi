@@ -10,12 +10,12 @@ configuration {
 }
 
 * {
-    font:				 	"IosevkaTermSlab NF";
+    font:				 	"IosevkaTermSlab NF 14";
 }
 
 window {
     transparency:                   "real";
-    border-radius:                  0px;
+    border-radius:                  16px;
     width:                          500px;
     location:                       center;
     anchor:                         center;
@@ -32,7 +32,7 @@ textbox-prompt-colon {
 	expand: 						false;
 	str: 							"";
     padding:                        4px 10px 0px 10px;
-	font:							"Iosevka Nerd Font 10";
+	font:							"IosevkaTermSlab NF 12";
 }
 
 inputbar {
@@ -41,8 +41,8 @@ inputbar {
     expand:                         false;
     border:                  		0px 0px 1px 0px;
     border-radius:                  0px;
-    margin:                         0px 0px 0px 0px;
-    padding:                        6px 0px 10px 0px;
+    margin:                         2px 2px 2px 2px;
+    padding:                        6px 2px 10px 2px;
     position:                       center;
 }
 
@@ -52,7 +52,7 @@ entry {
     horizontal-align:               0;
     placeholder:                    "Search Passwords";
     blink:                          true;
-    padding:                        4px 0px 0px 0px;
+    padding:                        4px 4px 4px 4px;
 }
 
 case-indicator {
