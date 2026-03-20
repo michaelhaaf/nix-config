@@ -15,7 +15,12 @@
         autoLoad = true;
         settings = {
           mappings = {
+            basic = true;
             windows = true;
+          };
+          options = {
+            basic = true;
+            extra_ui = true;
           };
         };
       };

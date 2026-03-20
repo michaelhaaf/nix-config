@@ -139,12 +139,6 @@
               useMonospacedFont = true;
               usePrimaryColor = true;
             }
-            {
-              id = "AudioVisualizer";
-              hideWhenIdle = true;
-              colorName = "primary";
-              width = 200;
-            }
           ];
           right = [
             {

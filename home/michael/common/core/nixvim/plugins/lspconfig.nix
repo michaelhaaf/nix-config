@@ -76,26 +76,6 @@
       keymaps = {
         silent = true;
         lspBuf = {
-          gd = {
-            action = "definition";
-            desc = "Goto Definition";
-          };
-          gr = {
-            action = "references";
-            desc = "Goto References";
-          };
-          gD = {
-            action = "declaration";
-            desc = "Goto Declaration";
-          };
-          gI = {
-            action = "implementation";
-            desc = "Goto Implementation";
-          };
-          gT = {
-            action = "type_definition";
-            desc = "Type Definition";
-          };
           K = {
             action = "hover";
             desc = "Hover";
@@ -112,7 +92,7 @@
             action = "code_action";
             desc = "Code Action";
           };
-          "<leader>sh" = {
+          "<leader>ch" = {
             action = "signature_help";
             desc = "Signature Help";
           };

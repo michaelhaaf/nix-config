@@ -5,22 +5,6 @@ gestures {
 }
 binds {
 
-    Super+Shift+Slash {
-        spawn "noctalia-shell ipc call plugin:keybind-cheatsheet toggle";
-    }
-
-    Super+Shift+C {
-        spawn "noctalia-shell ipc call launcher clipboard";
-    }
-
-    Super+A {
-        spawn "noctalia-shell ipc call calendar toggle";
-    }
-
-    Super+Shift+A {
-        spawn "noctalia-shell ipc call plugin:weekly-calendar togglePanel";
-    }
-
     Super+O repeat=false {
         toggle-overview
     }
@@ -248,6 +232,18 @@ binds {
     Super+Shift+N{ spawn-sh "noctalia-shell ipc call settings toggleTab network"; }
     Super+Tab { spawn-sh "noctalia-shell ipc call launcher windows"; }
     Super+Backspace { spawn-sh "noctalia-shell ipc call sessionMenu toggle"; }
+    Super+Shift+Slash {
+        spawn-sh "noctalia-shell ipc call plugin:keybind-cheatsheet toggle";
+    }
+    Super+Shift+C {
+        spawn-sh "noctalia-shell ipc call launcher clipboard";
+    }
+    Super+A {
+        spawn-sh "noctalia-shell ipc call calendar toggle";
+    }
+    Super+Shift+A {
+        spawn-sh "noctalia-shell ipc call plugin:weekly-calendar togglePanel";
+    }
 
     Super+E hotkey-overlay-title="Spawn file explorer" {
         spawn "thunar"
@@ -257,11 +253,11 @@ binds {
     }
 
     // Audio & Brightness
-    XF86AudioRaiseVolume { spawn "noctalia-shell" "ipc" "call" "volume" "increase"; }
-    XF86AudioLowerVolume { spawn "noctalia-shell" "ipc" "call" "volume" "decrease"; }
-    XF86AudioMute { spawn "noctalia-shell" "ipc" "call" "volume" "muteOutput"; }
-    XF86MonBrightnessUp { spawn "noctalia-shell" "ipc" "call" "brightness" "increase"; }
-    XF86MonBrightnessDown { spawn "noctalia-shell" "ipc" "call" "brightness" "decrease"; }
+    XF86AudioRaiseVolume { spawn-sh "noctalia-shell ipc call volume increase"; }
+    XF86AudioLowerVolume { spawn-sh "noctalia-shell ipc call volume decrease"; }
+    XF86AudioMute { spawn-sh "noctalia-shell ipc call volume muteOutput"; }
+    XF86MonBrightnessUp { spawn-sh "noctalia-shell ipc call brightness increase"; }
+    XF86MonBrightnessDown { spawn-sh "noctalia-shell ipc call brightness decrease"; }
 
     XF86AudioPlay allow-when-locked=true hotkey-overlay-title=null {
         spawn "playerctl" "play-pause" "--ignore-player=firefox,chromium,brave"
@@ -295,7 +291,7 @@ binds {
         spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SOURCE@" "toggle"
     }
 
-    Super+P { spawn-sh "rofi-pass -theme ~/.config/rofi-pass/rofi-pass.rasi"; }
-    Super+Shift+P { spawn-sh "rofi-pass -theme ~/.config/rofi-pass/rofi-pass.rasi --insert"; }
+    Super+P { spawn-sh "rofi-pass"; }
+    Super+Shift+P { spawn-sh "rofi-pass --insert"; }
 
 }

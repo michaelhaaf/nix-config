@@ -1,4 +1,3 @@
-# Adapted from: https://github.com/XhuyZ/nixvim/blob/main/config/snacks.nix
 {
   lib,
   config,
@@ -81,15 +80,40 @@
       };
     };
   };
+
   keymaps = [
+
+    # Pickers, Explorer, Scratch
     {
       key = "<leader><space>";
       mode = [ "n" ];
       action = "<cmd>lua Snacks.picker.smart()<CR>";
       options = {
-        silent = true;
-        noremap = true;
         desc = "Smart Find Files";
+      };
+    }
+    {
+      key = "<leader>.";
+      mode = [ "n" ];
+      action = "<cmd>lua Snacks.scratch()<CR>";
+      options = {
+        desc = "Scratch Buffer Toggle";
+      };
+    }
+    {
+      key = "<leader>n";
+      mode = [ "n" ];
+      action = "<cmd>lua Snacks.picker.notifications()<CR>";
+      options = {
+        desc = "Notifications";
+      };
+    }
+    {
+      key = "<leader>:";
+      mode = [ "n" ];
+      action = "<cmd>lua Snacks.picker.command_history()<CR>";
+      options = {
+        desc = "Command history";
       };
     }
     {
@@ -101,7 +125,7 @@
       };
     }
     {
-      key = "<leader>sg";
+      key = "<leader>s/";
       mode = [ "n" ];
       action = "<cmd>lua Snacks.picker.grep()<CR>";
       options = {
@@ -109,22 +133,216 @@
         noremap = true;
       };
     }
+
+    # find
     {
-      key = "<leader>n";
+      key = "<leader>fb";
       mode = [ "n" ];
-      action = "<cmd>lua Snacks.picker.notifications()<CR>";
+      action = "<cmd>lua Snacks.picker.buffers()<CR>";
       options = {
-        silent = true;
-        noremap = true;
+        desc = "(f)ind (b)uffer";
+      };
+    }
+    {
+      key = "<leader>fp";
+      mode = [ "n" ];
+      action = "<cmd>lua Snacks.picker.projects()<CR>";
+      options = {
+        desc = "(f)ind (p)roject";
+      };
+    }
+    {
+      key = "<leader>fg";
+      mode = [ "n" ];
+      action = "<cmd>lua Snacks.picker.git_files()<CR>";
+      options = {
+        desc = "(f)ind (g)it files";
+      };
+    }
+    {
+      key = "<leader>fc";
+      mode = [ "n" ];
+      action = "<cmd>lua Snacks.picker.files({cwd=~/nix-config})<CR>";
+      options = {
+        desc = "(f)ind (c)onfig files";
+      };
+    }
+    {
+      key = "<leader>ff";
+      mode = [ "n" ];
+      action = "<cmd>lua Snacks.picker.files()<CR>";
+      options = {
+        desc = "(f)ind (f)iles";
+      };
+    }
+    {
+      key = "<leader>fr";
+      mode = [ "n" ];
+      action = "<cmd>lua Snacks.picker.recent()<CR>";
+      options = {
+        desc = "(f)ind (r)ecent";
+      };
+    }
+
+    # search
+    {
+      key = "<leader>s\"";
+      mode = [ "n" ];
+      action = "<cmd>lua Snacks.picker.registers()<CR>";
+      options = {
+        desc = "Registers";
+      };
+    }
+    {
+      key = "<leader>sg";
+      mode = [ "n" ];
+      action = "<cmd>lua Snacks.picker.grep()<CR>";
+      options = {
+        desc = "(s)earch (g)rep";
+      };
+    }
+    {
+      key = "<leader>sw";
+      mode = [ "n" ];
+      action = "<cmd>lua Snacks.picker.grep_word()<CR>";
+      options = {
+        desc = "(s)earch (w)ord (grep)";
+      };
+    }
+    {
+      key = "<leader>sR";
+      mode = [ "n" ];
+      action = "<cmd>lua Snacks.picker.resume()<CR>";
+      options = {
+        desc = "Resume";
+      };
+    }
+    {
+      key = "<leader>sa";
+      mode = [ "n" ];
+      action = "<cmd>lua Snacks.picker.autocmds()<CR>";
+      options = {
+        desc = "(s)earch (a)utocmds";
+      };
+    }
+    {
+      key = "<leader>sh";
+      mode = [ "n" ];
+      action = "<cmd>lua Snacks.picker.help()<CR>";
+      options = {
+        desc = "(s)earch (h)elp";
+      };
+    }
+    {
+      key = "<leader>sk";
+      mode = [ "n" ];
+      action = "<cmd>lua Snacks.picker.keymaps()<CR>";
+      options = {
+        desc = "(s)earch (k)eymaps";
+      };
+    }
+    {
+      key = "<leader>sj";
+      mode = [ "n" ];
+      action = "<cmd>lua Snacks.picker.jumps()<CR>";
+      options = {
+        desc = "(s)earch (j)umps";
+      };
+    }
+    {
+      key = "<leader>sD";
+      mode = [ "n" ];
+      action = "<cmd>lua Snacks.picker.diagnostics_buffer()<CR>";
+      options = {
+        desc = "(s)earch (D)iagnostics buffer";
+      };
+    }
+    {
+      key = "<leader>sd";
+      mode = [ "n" ];
+      action = "<cmd>lua Snacks.picker.diagnostics()<CR>";
+      options = {
+        desc = "(s)earch (d)iagnostics";
+      };
+    }
+    {
+      key = "<leader>sm";
+      mode = [ "n" ];
+      action = "<cmd>lua Snacks.picker.marks()<CR>";
+      options = {
+        desc = "(s)earch (m)arks";
+      };
+    }
+    {
+      key = "<leader>sM";
+      mode = [ "n" ];
+      action = "<cmd>lua Snacks.picker.man()<CR>";
+      options = {
+        desc = "(s)earch (M)anpages";
+      };
+    }
+    {
+      key = "<leader>sl";
+      mode = [ "n" ];
+      action = "<cmd>lua Snacks.picker.loclist()<CR>";
+      options = {
+        desc = "(s)earch (l)ocation list";
+      };
+    }
+    {
+      key = "<leader>sq";
+      mode = [ "n" ];
+      action = "<cmd>lua Snacks.picker.qflist()<CR>";
+      options = {
+        desc = "(s)earch (q)uickfix list";
+      };
+    }
+    {
+      key = "<leader>su";
+      mode = [ "n" ];
+      action = "<cmd>lua Snacks.picker.undo()<CR>";
+      options = {
+        desc = "(s)earch (u)ndo history";
+      };
+    }
+    {
+      key = "<leader>sd";
+      mode = [ "n" ];
+      action = "<cmd>lua Snacks.picker.diagnostics()<CR>";
+      options = {
+        desc = "Diagnostics";
+      };
+    }
+    {
+      key = "<leader>s/";
+      mode = [ "n" ];
+      action = "<cmd>lua Snacks.picker.search_history()<CR>";
+      options = {
+        desc = "Search History";
+      };
+    }
+    {
+      key = "<leader>sc";
+      mode = [ "n" ];
+      action = "<cmd>lua Snacks.picker.commands()<CR>";
+      options = {
+        desc = "Commands";
+      };
+    }
+    {
+      key = "<leader>sB";
+      mode = [ "n" ];
+      action = "<cmd>lua Snacks.picker.grep_buffer()<CR>";
+      options = {
+        desc = "(s)earch (B)uffers (grep)";
       };
     }
     {
       key = "<leader>sb";
       mode = [ "n" ];
-      action = "<cmd>lua Snacks.picker.buffers()<CR>";
+      action = "<cmd>lua Snacks.picker.lines()<CR>";
       options = {
-        silent = true;
-        noremap = true;
+        desc = "(s)earch (b)uffer Lines";
       };
     }
     {
@@ -137,105 +355,6 @@
       };
     }
     {
-      key = "<leader>gl";
-      mode = [ "n" ];
-      action = "<cmd>lua Snacks.picker.git_log()<CR>";
-      options = {
-        silent = true;
-        noremap = true;
-      };
-    }
-    {
-      key = "<leader>gb";
-      mode = [ "n" ];
-      action = "<cmd>lua Snacks.picker.git_branches()<CR>";
-      options = {
-        silent = true;
-        noremap = true;
-      };
-    }
-    {
-      key = "<leader>gG";
-      mode = [ "n" ];
-      action = "<cmd>lua Snacks.picker.gitbrowse()<CR>";
-      options = {
-        silent = true;
-        noremap = true;
-      };
-    }
-    {
-      key = "<leader>gs";
-      mode = [ "n" ];
-      action = "<cmd>lua Snacks.picker.git_status()<CR>";
-      options = {
-        silent = true;
-        noremap = true;
-      };
-    }
-    {
-      key = "<leader>:";
-      mode = [ "n" ];
-      action = "<cmd>lua Snacks.picker.command_history()<CR>";
-      options = {
-        desc = "Command history";
-      };
-    }
-    {
-      key = "<leader>sc";
-      mode = [ "n" ];
-      action = "<cmd>lua Snacks.picker.commands()<CR>";
-      options = {
-        desc = "Commands";
-      };
-    }
-    {
-      # Goto Definition
-      key = "gd";
-      mode = [ "n" ];
-      action = "<cmd>lua Snacks.picker.lsp_definitions()<CR>";
-      options = {
-        desc = "(LSP) go to definition";
-      };
-    }
-    {
-      # Goto Declaration
-      key = "gD";
-      mode = [ "n" ];
-      action = "<cmd>lua Snacks.picker.lsp_declarations()<CR>";
-      options = {
-        desc = "(LSP) go to declaration";
-      };
-    }
-    {
-      # References
-      key = "gr";
-      mode = [ "n" ];
-      action = "<cmd>lua Snacks.picker.lsp_references()<CR>";
-      options = {
-        desc = "(LSP) go to references";
-      };
-    }
-    {
-      # Goto Implementation
-      key = "gI";
-      mode = [ "n" ];
-      action = "<cmd>lua Snacks.picker.lsp_implementations()<CR>";
-      options = {
-        desc = "(LSP) go to implementation";
-      };
-    }
-    {
-      # Goto Type Definition (gy)
-      key = "gy";
-      mode = [ "n" ];
-      action = "<cmd>lua Snacks.picker.lsp_type_definitions()<CR>";
-      options = {
-        desc = "(LSP) go to type definition";
-      };
-    }
-
-    # LSP Symbols
-    {
       key = "<leader>ss";
       mode = [ "n" ];
       action = "<cmd>lua Snacks.picker.lsp_symbols()<CR>";
@@ -243,8 +362,6 @@
         desc = "(LSP) symbols";
       };
     }
-
-    # LSP Workspace Symbols
     {
       key = "<leader>sS";
       mode = [ "n" ];
@@ -254,130 +371,133 @@
       };
     }
 
-    # GitHub PRs (all)
+    # git
     {
-      key = "<leader>gP";
+      key = "<leader>gl";
+      mode = [ "n" ];
+      action = "<cmd>lua Snacks.picker.git_log()<CR>";
+      options = {
+        desc = "(g)it (l)og";
+      };
+    }
+    {
+      key = "<leader>gb";
+      mode = [ "n" ];
+      action = "<cmd>lua Snacks.git.blame_line()<CR>";
+      options = {
+        desc = "(g)it (b)lame line";
+      };
+    }
+    {
+      key = "<leader>gB";
+      mode = [ "n" ];
+      action = "<cmd>lua Snacks.picker.git_branches()<CR>";
+      options = {
+        desc = "(g)it (B)ranches";
+      };
+    }
+    {
+      key = "<leader>gs";
+      mode = [ "n" ];
+      action = "<cmd>lua Snacks.picker.git_status()<CR>";
+      options = {
+        desc = "(g)it (s)tatus";
+      };
+    }
+    {
+      key = "<leader>gd";
+      mode = [ "n" ];
+      action = "<cmd>lua Snacks.picker.git_diff()<CR>";
+      options = {
+        desc = "(g)it (d)iff (hunks)";
+      };
+    }
+
+    # LSP
+    {
+      key = "gd";
+      mode = [ "n" ];
+      action = "<cmd>lua Snacks.picker.lsp_definitions()<CR>";
+      options = {
+        desc = "(LSP) go to definition";
+      };
+    }
+    {
+      key = "gD";
+      mode = [ "n" ];
+      action = "<cmd>lua Snacks.picker.lsp_declarations()<CR>";
+      options = {
+        desc = "(LSP) go to declaration";
+      };
+    }
+    {
+      key = "gr";
+      mode = [ "n" ];
+      action = "<cmd>lua Snacks.picker.lsp_references()<CR>";
+      options = {
+        desc = "(LSP) go to references";
+      };
+    }
+    {
+      key = "gI";
+      mode = [ "n" ];
+      action = "<cmd>lua Snacks.picker.lsp_implementations()<CR>";
+      options = {
+        desc = "(LSP) go to implementation";
+      };
+    }
+    {
+      key = "gT";
+      mode = [ "n" ];
+      action = "<cmd>lua Snacks.picker.lsp_type_definitions()<CR>";
+      options = {
+        desc = "(LSP) go to type definition";
+      };
+    }
+
+    # GitHub
+    {
+      key = "<leader>GP";
       mode = [ "n" ];
       action = "<cmd>lua Snacks.picker.gh_pr({ state = 'all' })<CR>";
       options = {
         desc = "(GH) PRs (all)";
       };
     }
-
-    # GitHub PRs (open)
     {
-      key = "<leader>gp";
+      key = "<leader>Gp";
       mode = [ "n" ];
       action = "<cmd>lua Snacks.picker.gh_pr()<CR>";
       options = {
         desc = "(GH) PRs (open)";
       };
     }
-
-    # GitHub Issues (all)
     {
-      key = "<leader>gI";
+      key = "<leader>GI";
       mode = [ "n" ];
       action = "<cmd>lua Snacks.picker.gh_issue({ state = 'all' })<CR>";
       options = {
         desc = "(GH) issues (all)";
       };
     }
-
-    # GitHub Issues (open)
     {
-      key = "<leader>gi";
+      key = "<leader>Gi";
       mode = [ "n" ];
       action = "<cmd>lua Snacks.picker.gh_issue()<CR>";
       options = {
         desc = "(GH) issues (open)";
       };
     }
-
-    # Help pages
     {
-      key = "<leader>sh";
+      key = "<leader>Gb";
       mode = [ "n" ];
-      action = "<cmd>lua Snacks.picker.help()<CR>";
+      action = "<cmd>lua Snacks.picker.gitbrowse()<CR>";
       options = {
-        desc = "(s)earch (h)elp";
+        desc = "(G)itHub (b)rowse";
       };
     }
 
-    # Keymaps
-    {
-      key = "<leader>sk";
-      mode = [ "n" ];
-      action = "<cmd>lua Snacks.picker.keymaps()<CR>";
-      options = {
-        desc = "(s)earch (k)eymaps";
-      };
-    }
-
-    # Marks
-    {
-      key = "<leader>sm";
-      mode = [ "n" ];
-      action = "<cmd>lua Snacks.picker.marks()<CR>";
-      options = {
-        desc = "(s)earch (m)arks";
-      };
-    }
-
-    # man pages
-    {
-      key = "<leader>sM";
-      mode = [ "n" ];
-      action = "<cmd>lua Snacks.picker.man()<CR>";
-      options = {
-        desc = "(s)earch (M)anpages";
-      };
-    }
-
-    # Location list
-    {
-      key = "<leader>sl";
-      mode = [ "n" ];
-      action = "<cmd>lua Snacks.picker.loclist()<CR>";
-      options = {
-        desc = "(s)earch (l)ocation list";
-      };
-    }
-
-    # Quickfix list
-    {
-      key = "<leader>sq";
-      mode = [ "n" ];
-      action = "<cmd>lua Snacks.picker.qflist()<CR>";
-      options = {
-        desc = "(s)earch (q)uickfix list";
-      };
-    }
-
-    # Undo history
-    {
-      key = "<leader>su";
-      mode = [ "n" ];
-      action = "<cmd>lua Snacks.picker.undo()<CR>";
-      options = {
-        desc = "(s)earch (u)ndo history";
-      };
-    }
-
-    # Git blame
-    {
-      key = "<leader>gB";
-      mode = [ "n" ];
-      action = "<cmd>lua Snacks.git.blame_line()<CR>";
-      options = {
-        desc = "(s)earch (u)ndo history";
-      };
-    }
-
-    # TODO: I think some of these key commands should be in different places
-    # (i.e. not all in snacks, but in concept)
-
-    # Buffer delete
+    # Buffer management
     {
       key = "<leader>bd";
       mode = [ "n" ];
@@ -386,8 +506,6 @@
         desc = "(b)uffer (d)elete";
       };
     }
-
-    # Buffer delete others
     {
       key = "<leader>bo";
       mode = [ "n" ];
@@ -396,18 +514,6 @@
         desc = "(b)uffer delete (o)thers";
       };
     }
-
-    # Buffer and window delete
-    {
-      key = "<leader>bD";
-      mode = [ "n" ];
-      action = "<cmd>:bd<CR>";
-      options = {
-        desc = "(b)uffer (D)elete (and window)";
-      };
-    }
-
-    # Previous buffer
     {
       key = "H";
       mode = [ "n" ];
@@ -416,8 +522,6 @@
         desc = "Previous buffer";
       };
     }
-
-    # Next buffer
     {
       key = "L";
       mode = [ "n" ];
@@ -426,8 +530,6 @@
         desc = "Next buffer";
       };
     }
-
-    # Switch to other buffer
     {
       key = "<leader>bb";
       mode = [ "n" ];
@@ -437,7 +539,7 @@
       };
     }
 
-    # Toggle Zen
+    # UI
     {
       key = "<leader>uz";
       mode = [ "n" ];
@@ -446,14 +548,36 @@
         desc = "toggle (z)en";
       };
     }
-
-    # Zoom?
     {
       key = "<leader>uZ";
       mode = [ "n" ];
       action = "<cmd>lua Snacks.toggle.zoom()<CR>";
       options = {
         desc = "Toggle (Z)oom";
+      };
+    }
+
+    # Movement
+    {
+      key = "]]";
+      mode = [
+        "n"
+        "t"
+      ];
+      action = "<cmd>lua Snacks.toggle.jump(vim.v.count1)<CR>";
+      options = {
+        desc = "Next Reference";
+      };
+    }
+    {
+      key = "[[";
+      mode = [
+        "n"
+        "t"
+      ];
+      action = "<cmd>lua Snacks.toggle.jump(-vim.v.count1)<CR>";
+      options = {
+        desc = "Prev Reference";
       };
     }
 

@@ -46,7 +46,6 @@
       # ========= General Appearance =========
       #
       hidden = true; # Makes vim act like all other editors, buffers can exist in the background without being in a window. http://items.sjbach.com/319/configuring-vim-right
-      number = true; # show line numbers
       relativenumber = true; # show relative linenumbers
       laststatus = 0; # Display status line always
       history = 1000; # Store lots of :cmdline history
@@ -55,34 +54,18 @@
       autoread = true; # Reload files changed outside vim
       showmatch = true; # highlight matching braces
       ruler = true; # show current line and column
-      cursorline = true; # highlight current line
       visualbell = true; # No sounds
-      signcolumn = "yes";
-      termguicolors = true; # Enable 24-bit colors
-
-      # A better completion experience
-      completeopt = [
-        "menuone"
-        "noselect"
-        "noinsert"
-      ];
 
       # Clipboard
       clipboard = {
         providers.wl-copy.enable = true;
-        register = "unnamedplus";
       };
 
-      listchars = "trail:·"; # Display tabs and trailing spaces visually
-
-      wrap = false; # Don't wrap lines
-      linebreak = true; # Wrap lines at convenient points
       textwidth = 90;
 
       # ================ Indentation ======================
       autoindent = true;
       cindent = true; # automatically indent braces
-      smartindent = true;
       smarttab = true;
       shiftwidth = 2;
       softtabstop = 0;
@@ -93,10 +76,6 @@
       foldmethod = "indent"; # fold based on indent
       foldnestmax = 3; # deepest fold is 3 levels
       foldenable = false; # don't fold by default
-
-      # ================ Splits ============================
-      splitbelow = true;
-      splitright = true;
 
       # ================ Completion =======================
       wildmode = "list:longest,list:full"; # for tab completion in : command mode
@@ -110,10 +89,7 @@
       sidescroll = 1;
 
       # ================ Search and Replace ========================
-      incsearch = true; # searches incrementally as you type instead of after 'enter'
       hlsearch = false; # highlight search results
-      ignorecase = true; # search case insensitive
-      smartcase = true; # search matters if capital letter
       inccommand = "split"; # preview incremental substitutions in a split
 
       # ================ Movement ========================

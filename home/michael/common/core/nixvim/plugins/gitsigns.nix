@@ -12,7 +12,7 @@
   keymaps = [
     {
       mode = [ "n" ];
-      key = "<Leader>gd";
+      key = "<Leader>gD";
       action = "<cmd>Gitsigns diffthis<CR>";
       options = {
         desc = "Diff this buffer";
