@@ -131,7 +131,7 @@
           center = [
             {
               id = "Clock";
-              formatHorizontal = "HH:mm";
+              formatHorizontal = "HH:mm ddd MMM d";
               formatVertical = "HH mm";
               useMonospacedFont = true;
               usePrimaryColor = true;
