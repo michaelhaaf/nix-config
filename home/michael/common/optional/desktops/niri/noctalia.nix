@@ -126,13 +126,6 @@
           ];
           center = [
             {
-              id = "plugin:catwalk";
-              defaultSettings = {
-                hideBackground = false;
-                minimumThreshold = 10;
-              };
-            }
-            {
               id = "Clock";
               formatHorizontal = "HH:mm";
               formatVertical = "HH mm";
@@ -141,6 +134,13 @@
             }
           ];
           right = [
+            {
+              id = "plugin:catwalk";
+              defaultSettings = {
+                hideBackground = false;
+                minimumThreshold = 10;
+              };
+            }
             {
               id = "plugin:tailscale";
               defaultSettings = {
@@ -179,6 +179,7 @@
       };
 
       hooks = {
+        enabled = true;
         startup = "saveSettings";
       };
 
@@ -199,9 +200,9 @@
                 showBackground = true;
                 showButtons = true;
                 showVisualizer = true;
-                visualizerType = "linear";
-                x = 1500;
-                y = 900;
+                visualizerType = "wave";
+                x = 1520;
+                y = 1000;
               }
               {
                 diskPath = "/";
@@ -211,16 +212,16 @@
                 scale = 1;
                 showBackground = true;
                 statType = "CPU";
-                x = 1660;
-                y = 760;
+                x = 1680;
+                y = 100;
               }
               {
                 id = "Weather";
                 roundedCorners = true;
                 scale = 1;
                 showBackground = true;
-                x = 1660;
-                y = 40;
+                x = 1680;
+                y = 20;
               }
             ];
           }
