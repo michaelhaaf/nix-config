@@ -101,7 +101,11 @@
             {
               id = "Workspace";
               hideUnoccupied = false;
-              labelMode = "none";
+              emptyColor = "tertiary";
+              focusedColor = "secondary";
+              fontWeight = "semibold";
+              labelMode = "index+name";
+              occupiedColor = "tertiary";
             }
             {
               id = "Taskbar";

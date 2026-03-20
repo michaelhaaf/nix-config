@@ -110,6 +110,7 @@ in
           # work TODO: move elsewhere
           "https://johnabbott.omnivox.ca/"
           "https://moodle.johnabbott.qc.ca/"
+          "https://login.microsoft.com"
         ];
       };
 
