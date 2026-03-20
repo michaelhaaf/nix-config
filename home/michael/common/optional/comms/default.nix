@@ -5,6 +5,7 @@
     inherit (pkgs)
       signal-desktop
       vesktop
+      teams-for-linux
       ;
   };
 }
