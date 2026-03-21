@@ -16,6 +16,7 @@
     theme = "catpuccin-mocha-mauve";
   };
   services.desktopManager.plasma6.enable = true;
+  services.flatpak.enable = true;
 
   programs.kdeconnect.enable = true;
 
