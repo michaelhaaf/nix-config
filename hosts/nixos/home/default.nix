@@ -95,6 +95,7 @@
   networking = {
     networkmanager.enable = true;
     enableIPv6 = false;
+    hostId = "fcb8db9f";
   };
 
   # Firmware update
