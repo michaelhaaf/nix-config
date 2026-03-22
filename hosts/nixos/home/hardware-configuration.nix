@@ -30,6 +30,11 @@
     fsType = "zfs";
   };
 
+  fileSystems."/boot" = {
+    device = "rpool/local/boot";
+    fsType = "zfs";
+  };
+
   fileSystems."/boot/efi" = {
     device = "/dev/disk/by-uuid/A9DE-DA2B";
     fsType = "vfat";

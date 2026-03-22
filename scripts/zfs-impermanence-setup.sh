@@ -118,6 +118,7 @@ mount -t zfs rpool/local/root /mnt
 mkdir -p /mnt/{nix,home,persist,boot,boot/efi}
 
 # Mount Boot
+mount -t zfs rpool/local/boot /mnt/boot
 mount -t vfat -o umask=0077 "$PART1" /mnt/boot/efi
 
 # Mount datasets
