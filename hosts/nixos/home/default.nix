@@ -122,12 +122,20 @@
         # When using plymouth, initrd can expand by a lot each time, so limit how many we keep around
         configurationLimit = lib.mkDefault 10;
       };
-      efi.canTouchEfiVariables = true;
+      efi = {
+        efiSysMountPoint = "/boot/efi";
+        canTouchEfiVariables = true;
+      };
       timeout = 3;
     };
     initrd = {
       systemd.enable = true;
+      # Uncomment after first reboot
+      # postMountCommands = lib.mkAfter ''
+      #   zfs rollback -r rpool/local/root@blank
+      # '';
     };
+    supportedFilesystems = [ "zfs" ];
   };
 
   hardware = {
