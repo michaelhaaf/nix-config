@@ -5,7 +5,7 @@
   ...
 }:
 {
-  # imports = lib.custom.scanPaths ./.;
+  imports = lib.custom.scanPaths ./.;
 
   home.packages = lib.flatten [
     (lib.attrValues {

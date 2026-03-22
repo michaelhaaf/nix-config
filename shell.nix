@@ -18,7 +18,7 @@
     NIX_CONFIG = "extra-experimental-features = nix-command flakes";
     BOOTSTRAP_USER = "michael";
     BOOTSTRAP_SSH_PORT = "22";
-    BOOTSTRAP_SSH_KEY = "~/.ssh/id_manu";
+    BOOTSTRAP_SSH_KEY = "~/.ssh/id_ed25519";
 
     inherit (checks.pre-commit-check) shellHook;
     buildInputs = checks.pre-commit-check.enabledPackages;

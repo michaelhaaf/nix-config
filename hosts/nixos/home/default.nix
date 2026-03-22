@@ -25,6 +25,7 @@
     #
     # ========== Disk Layout ==========
     #
+    # USING shell instead of disko for layout for ZFS
     # inputs.disko.nixosModules.disko
     # (lib.custom.relativeToRoot "hosts/common/disks/home.nix")
 
@@ -78,9 +79,11 @@
     users = [
       "michael"
     ];
+    # TODO: set up yubikey
     # useYubikey = lib.mkForce true;
+    # TODO: see if gpu/monitor support HDR
     # hdr = lib.mkForce true;
-    persistFolder = "/persist"; # added for "completion" because of the disko spec that was used even though impermanence isn't actually enabled here yet.
+    persistFolder = "/persist";
   };
 
   # set custom autologin options. see greetd.nix for details
@@ -124,20 +127,12 @@
     initrd = {
       systemd.enable = true;
     };
-    kernelPackages = pkgs.unstable.linuxPackages_latest;
   };
-
-  # needed to unlock LUKS on secondary drives
-  # use partition UUID
-  # https://wiki.nixos.org/wiki/Full_Disk_Encryption#Unlocking_secondary_drives
-  # environment.etc.crypttab.text = lib.optionalString (!config.hostSpec.isMinimal) ''
-  #   cryptextra UUID=d90345b2-6673-4f8e-a5ef-dc764958ea14 /luks-secondary-unlock.key
-  #   cryptvms UUID=ce5f47f8-d5df-4c96-b2a8-766384780a91 /luks-secondary-unlock.key
-  # '';
 
   hardware = {
     graphics = {
       enable = true;
+      # TODO: why unstable mesa? look at options
       package = lib.mkForce pkgs.unstable.mesa.drivers;
     };
     amdgpu = {

@@ -5,7 +5,7 @@
   ...
 }:
 {
-  environment.systemPackages = with pkgs; [
+  home.packages = with pkgs; [
     (pkgs.writeShellScriptBin "python" ''
       exec uv run python "$@"
     '')

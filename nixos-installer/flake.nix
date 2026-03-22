@@ -63,11 +63,9 @@
           stdenv.hostPlatform.system = "x86_64-linux";
           specialArgs = minimalSpecialArgs;
           modules = [
-            inputs.disko.nixosModules.disko
-            ../hosts/common/disks/home.nix
             ./minimal-configuration.nix
-            { networking.hostName = "home"; }
             ../hosts/nixos/home/hardware-configuration.nix
+            { networking.hostName = "home"; }
           ];
         };
 

@@ -6,6 +6,14 @@
   config,
   ...
 }:
+let
+  zfs-impermanence-setup = pkgs.writeShellApplication {
+    name = "zfs-impermanence-setup";
+    runtimeInputs = lib.attrValues { inherit (pkgs) eza fd; };
+    text = lib.readFile ../../../scripts/zfs-impermanence-setup.sh;
+  };
+in
+
 {
   imports = lib.flatten [
     # If you are planning to make use of `nix-config/nixos-installer`, you will not require a graphical iso.
@@ -39,7 +47,6 @@
 
   # root's ssh key are mainly used for remote deployment
   users.extraUsers.root = {
-    inherit (config.users.users.${config.hostSpec.primaryUsername}) hashedPassword;
     openssh.authorizedKeys.keys =
       config.users.users.${config.hostSpec.primaryUsername}.openssh.authorizedKeys.keys;
   };
@@ -47,14 +54,14 @@
   environment.etc = {
     isoBuildTime = {
       #
-      text = lib.readFile (
-        "${pkgs.runCommand "timestamp" {
-          # builtins.currentTime requires --impure
-          env.when = builtins.currentTime;
-        } "echo -n `date -d @$when  +%Y-%m-%d_%H-%M-%S` > $out"}"
-      );
+      text = lib.readFile "${pkgs.runCommand "timestamp" {
+        # builtins.currentTime requires --impure
+        env.when = builtins.currentTime;
+      } "echo -n `date -d @$when  +%Y-%m-%d_%H-%M-%S` > $out"}";
     };
   };
+
+  environment.systemPackages = [ zfs-impermanence-setup ];
 
   # Add the build time to the prompt so it's easier to know the ISO age
   programs.bash.promptInit = ''
@@ -85,8 +92,8 @@
   };
 
   boot = {
-    kernelPackages = pkgs.linuxPackages_latest;
     supportedFilesystems = lib.mkForce [
+      "zfs"
       "btrfs"
       "vfat"
     ];
