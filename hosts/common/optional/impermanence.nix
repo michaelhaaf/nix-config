@@ -3,7 +3,7 @@
   imports = [ inputs.impermanence.nixosModules.impermanence ];
   boot.initrd.postDeviceCommands = lib.mkAfter ''
     # 1. Wait for LUKS (no luks, shouldn't be necessary)
-    # udevadm settle
+    udevadm settle
     # 2. Force the pool into the "garage"
     zpool import -f -N rpool
     # 3. Clean the slate

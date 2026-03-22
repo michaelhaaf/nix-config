@@ -1,11 +1,11 @@
 { pkgs, ... }:
 {
   environment.systemPackages = [
-    pkgs.openrbg-with-all-plugins
+    pkgs.openrgb-with-all-plugins
   ];
   services.hardware.openrgb = {
     enable = true;
-    package = pkgs.openrbg-with-all-plugins;
+    package = pkgs.openrgb-with-all-plugins;
     motherboard = "amd";
   };
 
