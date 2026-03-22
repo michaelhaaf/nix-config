@@ -1,9 +1,8 @@
 { pkgs, ... }:
 {
-  stylix.targets.ghostty.enable = true;
   programs.ghostty = {
     enable = true;
-    package = pkgs.unstable.ghostty;
+    package = pkgs.ghostty;
     settings = {
       scrollback-limit = 10000;
       shell-integration-features = "ssh-terminfo, ssh-env";
