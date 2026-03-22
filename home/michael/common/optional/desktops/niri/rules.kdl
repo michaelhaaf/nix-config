@@ -206,7 +206,7 @@ window-rule {
     match app-id="^steam_app_.*$"
     match app-id="^([Vv]lc)$"
     variable-refresh-rate true
-    open-fullscreen true
+    // open-fullscreen true
 }
 // ========== Steam==========
 window-rule {

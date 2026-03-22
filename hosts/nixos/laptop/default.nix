@@ -67,6 +67,7 @@
       "hosts/common/optional/wine.nix" # run windows applications
       "hosts/common/optional/xdg.nix" # XDG spec modifications
       "hosts/common/optional/vnc.nix" # VNC client programs
+      "hosts/common/optional/torrenting.nix"
 
       # "hosts/common/optional/yubikey.nix" # yubikey related packages and configs
     ])
