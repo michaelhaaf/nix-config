@@ -21,6 +21,7 @@
   ]
   ++ map lib.custom.relativeToRoot [
     "home/common/optional/browsers/firefox.nix"
+    "home/common/optional/browsers/librewolf.nix"
   ];
 
   # ========== Host-specific Monitor Spec ==========
