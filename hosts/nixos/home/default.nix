@@ -141,6 +141,7 @@
   hardware = {
     graphics = {
       enable = true;
+      enable32Bit = true; # for 32 bit programs like Wine
       # TODO: why unstable mesa? look at options
       package = lib.mkForce pkgs.unstable.mesa.drivers;
     };
@@ -156,6 +157,8 @@
       vulkan-tools # vulkaninfo
       ;
   };
+
+  services.lact.enable = true;
 
   # https://wiki.nixos.org/wiki/FAQ/When_do_I_update_stateVersion
   system.stateVersion = "25.11";
