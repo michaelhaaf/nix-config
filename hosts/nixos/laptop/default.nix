@@ -8,7 +8,6 @@
 {
   inputs,
   lib,
-  pkgs,
   ...
 }:
 {
@@ -68,6 +67,7 @@
       "hosts/common/optional/xdg.nix" # XDG spec modifications
       "hosts/common/optional/vnc.nix" # VNC client programs
       "hosts/common/optional/torrenting.nix"
+      "hosts/common/optional/stylix.nix"
 
       # "hosts/common/optional/yubikey.nix" # yubikey related packages and configs
     ])
@@ -109,40 +109,6 @@
 
   hardware.graphics = {
     enable = true;
-  };
-
-  # TODO: move this stuff to separate file but define theme itself per host
-  # host-wide styling
-  stylix = {
-    enable = true;
-    image = lib.custom.relativeToRoot "assets/wallpapers/pieter_bruegel_the_elder-the_tower_of_babel.jpg";
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/rose-pine-moon.yaml";
-    opacity = {
-      applications = 1.0;
-      terminal = 0.95;
-      desktop = 1.0;
-      popups = 0.8;
-    };
-    polarity = "dark";
-    cursor = {
-      package = pkgs.bibata-cursors;
-      name = "Bibata-Original-Ice";
-      size = 48;
-    };
-    fonts = {
-      monospace = {
-        package = pkgs.nerd-fonts.iosevka-term-slab;
-        name = "IosevkaTermSlab NF";
-      };
-      sansSerif = {
-        package = pkgs.nerd-fonts.ubuntu-sans;
-        name = "Ubuntu Nerd Font";
-      };
-      serif = {
-        package = pkgs.etBook;
-        name = "ETBembo";
-      };
-    };
   };
 
   # https://wiki.nixos.org/wiki/FAQ/When_do_I_update_stateVersion
