@@ -1,10 +1,4 @@
 // FIXME: this should be dynamic from monitors module
-//          ------
-//        | HDMI-A-1 |
-//           ------
-//  ------   ------   ------
-// | DP-2 | | DP-1 | | DP-3 |
-//  ------   ------   ------
 output "eDP-1" {
     scale 1
 }

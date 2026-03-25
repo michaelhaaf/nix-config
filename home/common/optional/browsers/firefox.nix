@@ -106,6 +106,9 @@ in
 
           # TODO: make a separate firefox profile for comms stuff?
           "https://web.whatsapp.com"
+          "https://facebook.com"
+          "https://messages.google.com"
+          "https://reddit.com"
 
           # work TODO: move elsewhere
           "https://johnabbott.omnivox.ca/"

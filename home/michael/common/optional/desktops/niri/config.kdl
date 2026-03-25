@@ -4,28 +4,9 @@ include "outputs.kdl"
 include "binds.kdl"
 include "rules.kdl"
 
-// TODO: named workspaces should be in nix so that I can separate home/laptop etc.
-workspace "5_steam"
-workspace "9_comms"
+animations { slowdown 0.7; }
 
-//
-// ========== Animations ==========
-//
-animations {
-    // FIXME: (niri): go through available options
-    // Whether to disable animations.
-    //off
-    // Slow down or speed up animations by this factor. Values below 1 speed animations up.
-    slowdown 0.7
-}
-//
-// ========== Overview screen ==========
-//
 overview {
-    // FIXME: (niri): go through available options
-    // Color of the backdrop.
-    // backdrop-color "#17171a"
-    // Configuration of shadows around workspaces in the overview.
     workspace-shadow {
         softness 40
         spread 20
@@ -33,56 +14,30 @@ overview {
         color "#00000088"
     }
 }
-//
-// ========== Startup ==========
-//
+
 spawn-sh-at-startup "uwsm finalize NIRI_SOCKET"
 spawn-at-startup "noctalia-shell"
 spawn-at-startup "ghostty --gtk-single-instance=true --quit-after-last-window-closed=false --initial-window=false"
-// spawn-sh-at-startup "wl-paste --watch cliphist store"
-// spawn-sh-at-startup "ghostty -e zellij attach asc"
-// spawn-sh-at-startup "ghostty --title=btop -e btop"
-// spawn-at-startup "copyq"
-// spawn-at-startup "signal-desktop"
-// spawn-at-startup "yubioath-flutter"
-hotkey-overlay {
-    skip-at-startup
-}
-//
-// ========== Miscellaneous ==========
-//
+
+hotkey-overlay { skip-at-startup; }
+
+// TODO: use xdg pictures path instead of hardcode
 screenshot-path "~/media/pictures/screenshots/%Y-%m-%dT%H%M%S.png"
 
-// Disable client-side decorations
-// FIXME: (niri): test this on or off
 prefer-no-csd
-switch-events {
-    lid-close {
-        spawn "notify-send" "The laptop lid is closed."
-    }
-    lid-open {
-        spawn "notify-send" "The laptop lid is open."
-    }
-}
+
 environment {
-    // Set the current desktop name.
     XDG_CURRENT_DESKTOP "niri"
     GDK_BACKEND "wayland"
     QT_QPA_PLATFORM "wayland"
-    // Qt: Enable automatic scaling based on the monitor's pixel density.
     QT_AUTO_SCREEN_SCALE_FACTOR "1"
-    // Qt: Disable window decorations on QT applications.
     QT_WAYLAND_DISABLE_WINDOWDECORATION "1"
-    // Run SDL2 applications on Wayland.
     SDL_VIDEODRIVER "wayland"
-    // Force Clutter applications to use the Wayland backend.
     CLUTTER_BACKEND "wayland"
 }
 
 cursor {
-    // xcursor-theme "Bibata-Original-Ice"
     xcursor-size 48
-
     hide-when-typing
     hide-after-inactive-ms 5000
 }

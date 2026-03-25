@@ -1,13 +1,8 @@
-//
-// ========== Layer Rules ==========
-//
 layer-rule {
   match namespace="^noctalia-overview*"
   place-within-backdrop true
 }
-//
-// ========== Layout Rules ==========
-//
+
 layout {
     background-color "transparent"
     center-focused-column "never"
@@ -15,7 +10,6 @@ layout {
     default-column-width {
         proportion 0.66667
     }
-    // Cycled though using `switch-preset-window-column` action
     preset-column-widths {
         proportion 0.33333
         proportion 0.5
@@ -24,7 +18,6 @@ layout {
         proportion 0.5
         proportion 0.33333
     }
-    // Cycled though using `switch-preset-window-height` action
     preset-window-heights {
         proportion 0.33333
         proportion 0.5
@@ -35,86 +28,54 @@ layout {
         proportion 0.33333
     }
     tab-indicator {
-        // Set the gap between the tab indicator and the window in pixels.
         gap 0
-        // Length of the indicator.
         length total-proportion=1.0
-        // Whether to put the tab indicator "within" the column, rather than outside.
-        // This will include it in column sizing and avoid overlaying adjacent columns.
         place-within-column
-        // Position of the indicator.
         position "left"
-        // Width of the tab indicator
         width 8
         // TODO: stylix colors
         active-color "#FF9400"
         inactive-color "#2D2D30"
     }
     struts {
-        // Set a negative strut for the top and bottom to minimize wasted space.
-        // Set a 1px wide strut on the sides to allow easy window switching with the mouse.
         left 0
         right 0
         top 0
         bottom 0
     }
 }
-//
-// ========== Window Rules ==========
-//
-// ========== ALL windows ==========
+
 window-rule {
     geometry-corner-radius 2
     clip-to-geometry true
-    // focus ring configuration.
     focus-ring {
         off
-        // Width of the focus ring in pixels.
         width 1
 
-        // Color of the active focus ring.
         // TODO: stylix colors
         active-color "#FF9400"
-        // Color of the inactive focus ring.
         inactive-color "#2D2D30"
-        // Color of the focus ring around windows that request your attention.
         urgent-color "#C03900"
     }
 }
-// ========== Active windows ==========
+
 window-rule {
     match is-active=true
     shadow {
         on
         softness 30
         spread 5
-        // offset x= y=
         draw-behind-window true
-        // required with non-squared corners
-        // color "#FF9400"
+        // TODO: stylix colors
         color "#0007"
     }
 }
-// ========== General transparency ==========
+
 window-rule {
     match is-active=false
-    opacity 0.85
+    opacity 0.9
 }
-// ========== Workspace Assignments ==========
-window-rule {
-    match app-id="signal"
-    match app-id="vesktop"
-    open-on-workspace "9_comms"
-}
-window-rule {
-    match app-id="steam"
-    open-on-workspace "5_steam"
-}
-window-rule {
-    match app-id="com.yubico.yubioath"
-    open-on-workspace "Y_qrs"
-}
-// ========== Float on open ==========
+
 window-rule {
     // applications
     match app-id="galculator$"
@@ -139,12 +100,12 @@ window-rule {
     // rules
     open-floating true
 }
-// ========== No Focus on open ==========
+
 window-rule {
     match app-id="^([Ff]irefox)" title="^()$"
     open-focused false
 }
-// ========== Always opaque ==========
+
 window-rule {
     // applications
     match title="^([Gg]imp)$"
@@ -166,8 +127,7 @@ window-rule {
     // rules
     opacity 1.0
 }
-// ========== Open at full width ==========
-// Open certain windows in their full size.
+
 window-rule {
     match app-id="^([Gg]imp)$"
     match app-id="^([Bb]lender)$"
@@ -177,48 +137,32 @@ window-rule {
         proportion 1.0
     }
 }
-// ========== Varirable Refresh Rate ==========
-// requires output to have `variable-refresh-rate on-demand=true`
+
 window-rule {
     match app-id="^steam_app_.*$"
     match app-id="^([Vv]lc)$"
     variable-refresh-rate true
-    // open-fullscreen true
 }
-// ========== Steam==========
 
 window-rule {
     match title="^()$" app-id="^([Ss]team)$"
     match app-id="^([S]team_app_*)$"
     // TODO: put in nix config to adapt per host
     open-on-output "DP-3"
-    open-on-workspace "5_gmz"
 }
-// ========== Signal ==========
-// Resize certain windows to specific sizes.
-window-rule {
-    match app-id="^signal$"
-    default-column-width {
-        proportion 0.3333
-    }
-}
-// Indicate screencasted windows with red colors.
+
 window-rule {
     match is-window-cast-target=true
-
     focus-ring {
         active-color "#f38ba8"
         inactive-color "#7d0d2d"
     }
-
     border {
         inactive-color "#7d0d2d"
     }
-
     shadow {
         color "#7d0d2d70"
     }
-
     tab-indicator {
         active-color "#f38ba8"
         inactive-color "#7d0d2d"
