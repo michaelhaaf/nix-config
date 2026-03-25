@@ -12,18 +12,14 @@ layout {
     background-color "transparent"
     center-focused-column "never"
     gaps 10
-    // FIXME: with this commented out apps will determine their own starting width
-    // inside & outside
-    // Need try it out and decide
     default-column-width {
-        proportion 0.75
+        proportion 0.66667
     }
     // Cycled though using `switch-preset-window-column` action
     preset-column-widths {
         proportion 0.33333
         proportion 0.5
         proportion 0.66667
-        proportion 1.0
         proportion 0.66667
         proportion 0.5
         proportion 0.33333
@@ -50,6 +46,7 @@ layout {
         position "left"
         // Width of the tab indicator
         width 8
+        // TODO: stylix colors
         active-color "#FF9400"
         inactive-color "#2D2D30"
     }
@@ -67,14 +64,16 @@ layout {
 //
 // ========== ALL windows ==========
 window-rule {
-    geometry-corner-radius 0 0 15 0
+    geometry-corner-radius 2
     clip-to-geometry true
     // focus ring configuration.
     focus-ring {
         off
         // Width of the focus ring in pixels.
         width 1
+
         // Color of the active focus ring.
+        // TODO: stylix colors
         active-color "#FF9400"
         // Color of the inactive focus ring.
         inactive-color "#2D2D30"
@@ -119,6 +118,9 @@ window-rule {
 window-rule {
     // applications
     match app-id="galculator$"
+    match app-id=r#"^Tk$"#
+    match app-id=r#"^thunar$"#
+    match app-id=r#"^wev$"#
     // dialog windows
     match title="^(Open File)(.*)$"
     match title="^(Select a File)(.*)$"
@@ -131,6 +133,9 @@ window-rule {
     match title="^(File Operation Progress)(.*)$"
     //may need to swap order of title and app-id for this one
     match title="^()$" app-id="^([Ff]irefox)"
+    // specific app classes
+    match app-id=r#"^floating\.ghostty$"#
+    match app-id=r#"^floating\.thunar$"#
     // rules
     open-floating true
 }
@@ -181,11 +186,12 @@ window-rule {
     // open-fullscreen true
 }
 // ========== Steam==========
+
 window-rule {
     match title="^()$" app-id="^([Ss]team)$"
     match app-id="^([S]team_app_*)$"
-    // TODO: double check this
-    open-on-output "DP-1"
+    // TODO: put in nix config to adapt per host
+    open-on-output "DP-3"
     open-on-workspace "5_gmz"
 }
 // ========== Signal ==========
@@ -193,7 +199,7 @@ window-rule {
 window-rule {
     match app-id="^signal$"
     default-column-width {
-        proportion 0.25
+        proportion 0.3333
     }
 }
 // Indicate screencasted windows with red colors.
