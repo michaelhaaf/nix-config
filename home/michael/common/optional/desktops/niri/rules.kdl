@@ -20,32 +20,23 @@ layout {
     }
     // Cycled though using `switch-preset-window-column` action
     preset-column-widths {
-        proportion 0.25
         proportion 0.33333
         proportion 0.5
         proportion 0.66667
-        proportion 0.75
-        proportion 0.8
         proportion 1.0
-        proportion 0.8
-        proportion 0.75
         proportion 0.66667
         proportion 0.5
         proportion 0.33333
     }
     // Cycled though using `switch-preset-window-height` action
     preset-window-heights {
-        proportion 0.25
         proportion 0.33333
         proportion 0.5
         proportion 0.66667
-        proportion 0.75
         proportion 1.0
-        proportion 0.75
         proportion 0.66667
         proportion 0.5
         proportion 0.33333
-        proportion 0.25
     }
     tab-indicator {
         // Set the gap between the tab indicator and the window in pixels.
@@ -124,12 +115,6 @@ window-rule {
     match app-id="com.yubico.yubioath"
     open-on-workspace "Y_qrs"
 }
-// ========== Tile on launch ==========
-// FIXME: May want to make this proton vpn specific and specific starting geometry
-window-rule {
-    match app-id="^(Proton VPN)$"
-    open-floating false
-}
 // ========== Float on open ==========
 window-rule {
     // applications
@@ -175,19 +160,6 @@ window-rule {
     match title="^(Picture-in-Picture)$"
     // rules
     opacity 1.0
-}
-// ========== Screen capture & screen share blackout ==========
-// see also layer rule of same name
-window-rule {
-    match app-id="^org\\.keepassxc\\.KeePassXC$"
-    match app-id="Proton Pass$"
-    block-out-from "screen-capture"
-}
-window-rule {
-    match app-id="^org\\.keepassxc\\.KeePassXC$"
-    match app-id="Proton Pass$"
-    match app-id="com.yubico.yubioath"
-    block-out-from "screencast"
 }
 // ========== Open at full width ==========
 // Open certain windows in their full size.

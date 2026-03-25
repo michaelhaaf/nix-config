@@ -1,9 +1,14 @@
 # Development utilities I want across all systems
 {
+  # inputs,
   lib,
   pkgs,
+  # config,
   ...
 }:
+# let
+#   sopsFolder = (toString inputs.nix-secrets) + "/sops";
+# in
 {
   imports = lib.custom.scanPaths ./.;
 
@@ -47,11 +52,23 @@
     })
   ];
 
+  # TODO: Confused as to whether this was necessary. Commenting out for now.
+  # sops.secrets."access-tokens/github" = {
+  #   sopsFile = "${sopsFolder}/shared.yaml";
+  # };
+  #
+  # home.sessionVariables = {
+  #   GH_TOKEN = config.sops.secrets."access-tokens/github".path;
+  # };
+
   programs.gh = {
     enable = true;
-    gitCredentialHelper = {
-      enable = true;
-    };
+    extensions = with pkgs; [
+      gh-classroom
+      gh-dash
+      gh-f
+    ];
+
   };
 
   home.file.".editorconfig".text = ''
