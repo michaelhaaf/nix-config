@@ -61,6 +61,11 @@
     neededForBoot = true;
   };
 
+  fileSystems."/run/media/michael/NVME Drive" = {
+    device = "/dev/nvme0n1p1";
+    fsType = "ext4";
+  };
+
   swapDevices = [ ];
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";

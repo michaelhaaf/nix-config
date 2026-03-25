@@ -143,7 +143,7 @@
       enable = true;
       enable32Bit = true; # for 32 bit programs like Wine
       # TODO: why unstable mesa? look at options
-      package = lib.mkForce pkgs.unstable.mesa.drivers;
+      package = lib.mkForce pkgs.unstable.mesa;
     };
     amdgpu = {
       initrd.enable = true; # load amdgpu kernelModules in stage 1.
