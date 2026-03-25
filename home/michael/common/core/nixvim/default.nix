@@ -109,10 +109,11 @@
       # Formatters
       stylua # Lua formatter
       nixfmt-rfc-style # Nix formatter
+      ruff
       # Linters
       shellcheck # Shell script linter
       eslint_d # JavaScript/TypeScript linter
-      pyright
+      basedpyright
 
       # LSPs
       lua-language-server

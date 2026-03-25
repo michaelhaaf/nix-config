@@ -6,7 +6,7 @@
   ];
 
   plugins = {
-    # blink-pairs.enable = true; not available in 25.11, need unstable
+    blink-pairs.enable = true; # not available in 25.11, need unstable
     blink-cmp-dictionary.enable = true;
     blink-cmp-git.enable = true;
     blink-cmp-spell.enable = true;
