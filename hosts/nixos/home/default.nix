@@ -64,6 +64,7 @@
       "hosts/common/optional/xdg.nix" # XDG spec modifications
 
       "hosts/common/optional/stylix.nix" # host-wide styling
+      "hosts/common/optional/nix-ld.nix"
 
     ])
 

@@ -44,6 +44,75 @@
       };
     };
 
+    lsp = {
+      servers = {
+        "*" = {
+          config = {
+            capabilities = {
+              textDocument = {
+                semanticTokens = {
+                  multilineTokenSupport = true;
+                };
+              };
+            };
+            root_markers = [
+              ".git"
+            ];
+          };
+        };
+        basedpyright = {
+          enable = true;
+        };
+        bashls = {
+          enable = true;
+        };
+        biome = {
+          enable = true;
+        };
+        clangd = {
+          enable = true;
+          config = {
+            cmd = [
+              "clangd"
+              "--background-index"
+            ];
+            filetypes = [
+              "c"
+              "cpp"
+            ];
+            root_markers = [
+              "compile_commands.json"
+              "compile_flags.txt"
+            ];
+          };
+        };
+        jsonls = {
+          enable = true;
+        };
+        lua_ls = {
+          enable = true;
+        };
+        marksman = {
+          enable = true;
+        };
+        nixd = {
+          enable = true;
+        };
+        ruff = {
+          enable = true;
+        };
+        texlab = {
+          enable = true;
+        };
+        ts_ls = {
+          enable = true;
+        };
+        yaml_ls = {
+          enable = true;
+        };
+      };
+    };
+
     opts = {
       #
       # ========= General Appearance =========
@@ -109,17 +178,6 @@
       fzf
       ripgrep
       fd
-      # Formatters
-      stylua # Lua formatter
-      nixfmt-rfc-style # Nix formatter
-      ruff
-      # Linters
-      shellcheck # Shell script linter
-      eslint_d # JavaScript/TypeScript linter
-      basedpyright
-
-      # LSPs
-      lua-language-server
     ];
 
     # Load Plugins that aren't provided as modules by nixvim

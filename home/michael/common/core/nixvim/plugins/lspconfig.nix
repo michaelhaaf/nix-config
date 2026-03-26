@@ -9,70 +9,6 @@
     lsp = {
       enable = true;
       inlayHints = true;
-      servers = {
-        bashls = {
-          enable = true;
-        };
-        just = {
-          enable = true;
-        };
-        lua_ls = {
-          enable = true;
-          extraOptions = {
-            settings = {
-              Lua = {
-                completion = {
-                  callSnippet = "Replace";
-                };
-                telemetry = {
-                  enabled = false;
-                };
-              };
-            };
-          };
-        };
-        nixd = {
-          enable = true;
-          settings = {
-            nixpkgs = {
-              expr = "import <nixpkgs> {}";
-            };
-            formatting = {
-              command = [ "nixfmt" ];
-            };
-          };
-        };
-        postgres_lsp = {
-          enable = true;
-        };
-        ts_ls = {
-          enable = true;
-          filetypes = [
-            "javascript"
-            "javascriptreact"
-            "typescript"
-            "typescriptreact"
-          ];
-        };
-        ts_query_ls = {
-          enable = true;
-        };
-        typos_lsp = {
-          enable = true;
-          extraOptions = {
-            init_options = {
-              diagnosticSeverity = "Warning";
-            };
-          };
-        };
-        eslint = {
-          enable = true;
-        };
-        ruff = {
-          enable = true;
-        };
-
-      };
       keymaps = {
         silent = true;
         lspBuf = {
@@ -114,27 +50,4 @@
       };
     };
   };
-  extraConfigLua = ''
-    local _border = "rounded"
-
-    vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
-      vim.lsp.handlers.hover, {
-        border = _border
-      }
-    )
-
-    vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(
-      vim.lsp.handlers.signature_help, {
-        border = _border
-      }
-    )
-
-    vim.diagnostic.config{
-      float={border=_border}
-    };
-
-    require('lspconfig.ui.windows').default_options = {
-      border = _border
-    }
-  '';
 }

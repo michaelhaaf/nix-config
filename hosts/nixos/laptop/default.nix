@@ -68,6 +68,7 @@
       "hosts/common/optional/vnc.nix" # VNC client programs
       "hosts/common/optional/torrenting.nix"
       "hosts/common/optional/stylix.nix"
+      "hosts/common/optional/nix-ld.nix"
 
       # "hosts/common/optional/yubikey.nix" # yubikey related packages and configs
     ])
