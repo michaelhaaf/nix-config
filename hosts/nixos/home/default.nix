@@ -50,6 +50,7 @@
       "hosts/common/optional/services/openssh.nix" # allow remote SSH access
       "hosts/common/optional/services/bluetooth.nix" # bluetooth
       "hosts/common/optional/services/openrgb.nix" # openrgb
+      "hosts/common/optional/services/tailscale.nix"
 
       "hosts/common/optional/amd.nix" # GPU monitor (not available in home-manager)
       "hosts/common/optional/libvirt.nix" # Virtual machine manager

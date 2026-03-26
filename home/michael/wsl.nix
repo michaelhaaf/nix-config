@@ -9,12 +9,6 @@
     #
     # ========== Host-specific Optional Configs ==========
     #
-    # common/optional/helper-scripts
-    # common/optional/tools
-
-    # common/optional/atuin.nix
-    # common/optional/xdg.nix # file associations
-
     common/optional/development
     common/optional/sops.nix
     common/optional/shell-extras
