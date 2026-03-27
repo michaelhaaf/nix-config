@@ -1,6 +1,19 @@
 # Adapted from https://github.com/bjeanes/dotfiles/blob/main/packages/nvim/plugins/conform.nix
 { lib, pkgs, ... }:
 {
+  keymaps = [
+    {
+      key = "<leader>cf";
+      action = "<cmd>lua require('conform').format({ formatters = { 'injected' }, timeout_ms = 3000 })<CR>";
+      mode = [
+        "n"
+        "x"
+      ];
+      options = {
+        desc = "Format Injected Langs";
+      };
+    }
+  ];
   plugins.conform-nvim = {
     enable = true;
     settings = {
