@@ -1,6 +1,5 @@
 //order matters
 include "inputs.kdl"
-include "outputs.kdl"
 include "binds.kdl"
 include "rules.kdl"
 
@@ -16,6 +15,8 @@ overview {
 }
 
 spawn-sh-at-startup "uwsm finalize NIRI_SOCKET"
+// TODO: use nix instead of hardcoded path
+spawn-at-startup "/home/michael/.nix-profile/bin/kanshi"
 spawn-at-startup "noctalia-shell"
 spawn-at-startup "ghostty --gtk-single-instance=true --quit-after-last-window-closed=false --initial-window=false"
 
@@ -25,6 +26,12 @@ hotkey-overlay { skip-at-startup; }
 screenshot-path "~/media/pictures/screenshots/%Y-%m-%dT%H%M%S.png"
 
 prefer-no-csd
+
+// TODO: Delete if Kanshi works
+// switch-events {
+//     lid-close { spawn "ghostty" "-e" "wlr-randr" "--output" "eDP-1" "--off"; }
+//     lid-open { spawn "ghostty" "-e" "wlr-randr" "--output" "eDP-1" "--on"; }
+// }
 
 environment {
     XDG_CURRENT_DESKTOP "niri"

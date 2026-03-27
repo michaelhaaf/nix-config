@@ -24,31 +24,55 @@
     "home/common/optional/browsers/librewolf.nix"
   ];
 
-  # ========== Host-specific Monitor Spec ==========
-  #
-  # This uses the nix-config/modules/home/montiors.nix module which defaults to enabled.
-  # Your nix-config/home-manger/<user>/common/optional/desktops/foo.nix WM config should parse and apply these values to it's monitor settings
-  #   ------   ------
-  #  | DP-1 | | DP-2 |
-  #   ------   ------
-  monitors = [
-    {
-      name = "DP-1";
-      width = 3840;
-      height = 2160;
-      refreshRate = 60;
-      primary = true;
-      x = 0;
-      y = 0;
-    }
-    {
-      name = "DP-2";
-      width = 3840;
-      height = 2160;
-      refreshRate = 60;
-      x = 3840;
-      y = 0;
-    }
-  ];
+  services.kanshi = {
+    enable = true;
+    profiles = {
+      undocked = {
+        outputs = [
+          {
+            criteria = "eDP-1";
+            scale = 1.0;
+            status = "enable";
+          }
+        ];
+      };
+      work_office = {
+        outputs = [
+          {
+            criteria = "Dell Inc. DELL P2723QE 2HCRRS3";
+            position = "0,0";
+            mode = "3840x2160";
+            scale = 1.5;
+          }
+          {
+            criteria = "Dell Inc. DELL P2723QE HGW2MP3";
+            position = "-2560,0";
+            mode = "3840x2160";
+            scale = 1.5;
+          }
+          {
+            criteria = "eDP-1";
+            status = "disable";
+          }
+        ];
+      };
+      classroom_mirror = {
+        outputs = [
+          {
+            criteria = "eDP-1";
+            position = "0,0";
+            mode = "1920x1080";
+            status = "enable";
+          }
+          {
+            criteria = "HDMI-A-1";
+            position = "0,0";
+            mode = "1920x1080";
+            status = "enable";
+          }
+        ];
+      };
+    };
+  };
 
 }

@@ -46,7 +46,7 @@ layout {
 }
 
 window-rule {
-    geometry-corner-radius 2
+    geometry-corner-radius 8
     clip-to-geometry true
     focus-ring {
         off

@@ -4,7 +4,7 @@
   keymaps = [
     {
       key = "<leader>cf";
-      action = "<cmd>lua require('conform').format({ formatters = { 'injected' }, timeout_ms = 3000 })<CR>";
+      action = "<cmd>lua require('conform').format({ timeout_ms = 3000 })<CR>";
       mode = [
         "n"
         "x"
