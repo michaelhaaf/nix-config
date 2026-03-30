@@ -10,6 +10,10 @@ in
 {
   # FIXME: Add the background sync service
   # https://forum.atuin.sh/t/getting-the-daemon-working-on-nixos/334
+  sops.secrets."keys/atuin" = {
+    sopsFile = "${sopsFolder}/shared.yaml";
+  };
+
   programs.atuin = {
     enable = true;
 
@@ -39,14 +43,11 @@ in
         "^instagram-dl"
         "^mp4concat"
       ];
+
+      key_path = config.sops.secrets."keys/atuin".path;
     };
 
     # We use down to trigger, and use up to quickly edit the last entry only
     # flags = [ "--disable-up-arrow" ];
   };
-  sops.secrets."keys/atuin" = {
-    path = "${config.home.homeDirectory}/.local/share/atuin/key";
-    sopsFile = "${sopsFolder}/shared.yaml";
-  };
-
 }
