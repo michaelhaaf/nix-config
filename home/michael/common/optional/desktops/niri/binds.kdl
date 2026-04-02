@@ -86,8 +86,7 @@ binds {
     Super+Return hotkey-overlay-title="Spawn terminal" { spawn "ghostty"; }
     Super+Shift+Return hotkey-overlay-title="Spawn terminal (floating)" { spawn "ghostty" "--class=floating.ghostty"; }
 
-    Super+E hotkey-overlay-title="Spawn file explorer" { spawn "thunar"; }
-    Super+Shift+E hotkey-overlay-title="Spawn file explorer (floating)" { spawn "thunar" "--name=floating.thunar"; }
+    Super+E hotkey-overlay-title="Spawn file explorer (floating)" { spawn "thunar" "--name=floating.thunar"; }
 
     Super+Space hotkey-overlay-title="Launcher" { spawn-sh "noctalia-shell ipc call launcher toggle"; }
     Super+S hotkey-overlay-title="Settings (search)" { spawn-sh "noctalia-shell ipc call launcher settings"; }
@@ -100,6 +99,7 @@ binds {
     Super+Shift+C hotkey-overlay-title="Clipboard" { spawn-sh "noctalia-shell ipc call launcher clipboard"; }
     Super+A hotkey-overlay-title="Calendar" { spawn-sh "noctalia-shell ipc call calendar toggle"; }
     Super+Shift+A hotkey-overlay-title="Weekly calendar"{ spawn-sh "noctalia-shell ipc call plugin:weekly-calendar togglePanel"; }
+    Super+Shift+E hotkey-overlay-title="Emoji picker"{ spawn-sh "noctalia-shell ipc call launcher emoji"; }
     Super+O hotkey-overlay-title="Overview" repeat=false { toggle-overview; }
     Super+Z hotkey-overlay-title="Monitor Zen" { spawn "toggleMonitorZen"; }
     Super+P hotkey-overlay-title="Password manager" { spawn-sh "rofi-pass"; }
