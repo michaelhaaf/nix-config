@@ -26,33 +26,28 @@
     "home/common/optional/browsers/brave.nix"
   ];
 
-  # TODO: this module isn't being loaded for some reason.
-  # services.yubikey-touch-detector.enable = true;
-  # services.yubikey-touch-detector.notificationSound = true;
-  #
-  # TODO: this module isn't being loaded for some reason.
-  # ========== Host-specific Monitor Spec ==========
-  #
-  # This uses the nix-config/modules/home/montiors.nix module which defaults to enabled.
-  # Your nix-config/home-manger/<user>/common/optional/desktops/foo.nix WM config should parse and apply these values to it's monitor settings
-  #   ------     ------
-  #  | DP-3 | | HDMI-A-1 |
-  #   ------     ------
-  monitors = [
-    {
-      name = "DP-3";
-      width = 1920;
-      height = 1080;
-      refreshRate = 60;
-      x = -1920;
-      y = 320;
-    }
-    {
-      name = "HDMI-A-1";
-      width = 2560;
-      height = 1440;
-      refreshRate = 60;
-      primary = true;
-    }
-  ];
+  services.kanshi = {
+    enable = true;
+    profiles = {
+      default = {
+        outputs = [
+          {
+            criteria = "DP-3";
+            scale = 1.0;
+            position = "0,0";
+            mode = "1920x1080";
+            status = "enable";
+          }
+          {
+            criteria = "HDMI-A-1";
+            scale = 1.25;
+            position = "1920,0";
+            mode = "3840x2160";
+            status = "enable";
+          }
+        ];
+      };
+    };
+  };
+
 }
