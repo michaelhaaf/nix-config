@@ -24,6 +24,10 @@
   # Calendar integration
   services.gnome.evolution-data-server.enable = true;
 
+  xdg.portal.config.niri = {
+    "org.freedesktop.impl.portal.FileChooser" = [ "gtk" ];
+  };
+
   programs.uwsm = {
     enable = true;
     waylandCompositors = {
@@ -31,7 +35,7 @@
         prettyName = "niri";
         comment = "Niri compositor managed by UWSM";
         binPath = pkgs.writeShellScript "niri" ''
-          ${lib.getExe config.programs.niri.package} --session
+          ${lib.getExe config.programs.niri.package}/bin/niri-session
         '';
       };
     };
