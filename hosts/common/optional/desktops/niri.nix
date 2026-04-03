@@ -24,8 +24,14 @@
   # Calendar integration
   services.gnome.evolution-data-server.enable = true;
 
-  xdg.portal.config.niri = {
-    "org.freedesktop.impl.portal.FileChooser" = [ "gtk" ];
+  xdg.portal = {
+    enable = true;
+    xdgOpenUsePortal = true;
+    config.common.default = "*";
+    extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+    config.niri = {
+      "org.freedesktop.impl.portal.FileChooser" = [ "gtk" ];
+    };
   };
 
   programs.uwsm = {
