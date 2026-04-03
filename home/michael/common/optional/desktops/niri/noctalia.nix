@@ -192,43 +192,43 @@
         gridSnap = true;
         overviewEnabled = true;
         monitorWidgets = [
-          {
-            name = "eDP-1";
-            widgets = [
-              {
-                hideMode = "visible";
-                id = "MediaPlayer";
-                roundedCorners = true;
-                scale = 1;
-                showAlbumArt = true;
-                showBackground = true;
-                showButtons = true;
-                showVisualizer = true;
-                visualizerType = "wave";
-                x = 1520;
-                y = 1000;
-              }
-              {
-                diskPath = "/";
-                id = "SystemStat";
-                layout = "bottom";
-                roundedCorners = true;
-                scale = 1;
-                showBackground = true;
-                statType = "CPU";
-                x = 1680;
-                y = 100;
-              }
-              {
-                id = "Weather";
-                roundedCorners = true;
-                scale = 1;
-                showBackground = true;
-                x = 1680;
-                y = 20;
-              }
-            ];
-          }
+          # {
+          #   name = "eDP-1";
+          #   widgets = [
+          #     {
+          #       hideMode = "visible";
+          #       id = "MediaPlayer";
+          #       roundedCorners = true;
+          #       scale = 1;
+          #       showAlbumArt = true;
+          #       showBackground = true;
+          #       showButtons = true;
+          #       showVisualizer = true;
+          #       visualizerType = "wave";
+          #       x = 1520;
+          #       y = 1000;
+          #     }
+          #     {
+          #       diskPath = "/";
+          #       id = "SystemStat";
+          #       layout = "bottom";
+          #       roundedCorners = true;
+          #       scale = 1;
+          #       showBackground = true;
+          #       statType = "CPU";
+          #       x = 1680;
+          #       y = 100;
+          #     }
+          #     {
+          #       id = "Weather";
+          #       roundedCorners = true;
+          #       scale = 1;
+          #       showBackground = true;
+          #       x = 1680;
+          #       y = 20;
+          #     }
+          #   ];
+          # }
         ];
 
       };

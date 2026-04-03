@@ -9,7 +9,9 @@
       typescriptreact.template.annotation_convention = "tsdoc";
       lua.template.annotation_convention = "ldoc";
       ruby.template.annotation_convention = "yard";
-      python.template.annotation_convention = "reST";
+      # python.template.annotation_convention = "reST";
+      python.template.annotation_convention = "numpydoc";
+      # python.template.annotation_convention = "google_docstrings";
     };
   };
   keymaps = [
