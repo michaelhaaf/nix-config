@@ -2,6 +2,12 @@
 {
   hardware.xone.enable = true; # xbox controller
 
+  environment.systemPackages = with pkgs; [
+    lutris
+    heroic
+    bottles
+  ];
+
   programs = {
     steam = {
       enable = true;
