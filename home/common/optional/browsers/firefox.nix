@@ -114,6 +114,7 @@ in
           "https://johnabbott.omnivox.ca/"
           "https://moodle.johnabbott.qc.ca/"
           "https://login.microsoft.com"
+          "https://outlook.office.com"
         ];
       };
 

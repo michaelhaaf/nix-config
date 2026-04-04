@@ -64,6 +64,7 @@
       inputs.nixpkgs.follows = "nixpkgs-unstable";
       inputs.noctalia-qs.follows = "noctalia-qs";
     };
+    vicinae.url = "github:vicinaehq/vicinae";
     noctalia-qs = {
       url = "github:noctalia-dev/noctalia-qs";
       inputs.nixpkgs.follows = "nixpkgs-unstable";

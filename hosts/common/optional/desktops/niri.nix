@@ -6,32 +6,39 @@
   ...
 }:
 {
+  nixpkgs.overlays = [ inputs.niri-flake.overlays.niri ];
   programs.niri = {
     enable = true;
-    package = pkgs.unstable.niri;
+    package = pkgs.niri-unstable;
   };
   environment.systemPackages = with pkgs; [
     inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default
     xwayland-satellite
     xdg-desktop-portal-gtk
-
-    # TODO: github.com/niri-wm/niri/issues/544
-    # see the comment about replacing -gnome with -wlr
-    xdg-desktop-portal-gnome
-    gnome-keyring
   ];
 
   # Calendar integration
   services.gnome.evolution-data-server.enable = true;
 
+  # Prefer the noctalia polkit plugin for now
+  systemd.user.services.niri-flake-polkit.enable = false;
+
   xdg.portal = {
     enable = true;
     xdgOpenUsePortal = true;
-    config.common.default = "*";
-    extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
-    config.niri = {
-      "org.freedesktop.impl.portal.FileChooser" = [ "gtk" ];
-    };
+    wlr.enable = true;
+    config.common.default = [
+      "gtk"
+      "gnome"
+    ];
+    config.niri.default = [
+      "gtk"
+      "gnome"
+    ];
+    extraPortals = [
+      pkgs.xdg-desktop-portal-wlr
+      pkgs.xdg-desktop-portal-gtk
+    ];
   };
 
   programs.uwsm = {

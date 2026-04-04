@@ -1,4 +1,5 @@
 //order matters
+include "nix-generated-config.kdl"
 include "inputs.kdl"
 include "binds.kdl"
 include "rules.kdl"
@@ -14,7 +15,7 @@ overview {
     }
 }
 
-spawn-sh-at-startup "uwsm finalize NIRI_SOCKET"
+
 // TODO: use nix instead of hardcoded path
 spawn-at-startup "/home/michael/.nix-profile/bin/kanshi"
 spawn-at-startup "noctalia-shell"
@@ -48,3 +49,10 @@ cursor {
     hide-when-typing
     hide-after-inactive-ms 5000
 }
+
+// TODO: remove commented section below if not necessary
+// https://discourse.nixos.org/t/nixos-wayland-users-what-s-your-current-stack/74250/9
+// spawn-sh-at-startup "dbus-update-activation-environment --all --systemd DISPLAY WAYLAND_DISPLAY XDG_CURRENT_DESKTOP XDG_SESSION_ID"
+// spawn-sh-at-startup "systemctl --user import-environment DISPLAY WAYLAND_DISPLAY XDG_CURRENT_DESKTOP XDG_SESSION_ID"
+
+spawn-sh-at-startup "uwsm finalize NIRI_SOCKET"
