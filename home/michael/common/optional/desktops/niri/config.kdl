@@ -52,7 +52,7 @@ cursor {
 
 // TODO: remove commented section below if not necessary
 // https://discourse.nixos.org/t/nixos-wayland-users-what-s-your-current-stack/74250/9
-// spawn-sh-at-startup "dbus-update-activation-environment --all --systemd DISPLAY WAYLAND_DISPLAY XDG_CURRENT_DESKTOP XDG_SESSION_ID"
 // spawn-sh-at-startup "systemctl --user import-environment DISPLAY WAYLAND_DISPLAY XDG_CURRENT_DESKTOP XDG_SESSION_ID"
+spawn-sh-at-startup "dbus-update-activation-environment --all --systemd DISPLAY WAYLAND_DISPLAY XDG_CURRENT_DESKTOP XDG_SESSION_ID"
 
 spawn-sh-at-startup "uwsm finalize NIRI_SOCKET"
