@@ -20,6 +20,8 @@
   # Calendar integration
   services.gnome.evolution-data-server.enable = true;
 
+  services.dbus.implementation = "broker";
+
   # Prefer the noctalia polkit plugin for now
   systemd.user.services.niri-flake-polkit.enable = false;
 
