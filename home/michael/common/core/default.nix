@@ -79,6 +79,8 @@
       unzip # zip extraction
       unrar # rar extraction
       wordnet # lexical database
+
+      zathura # pdf reader
       ;
   };
 
