@@ -41,6 +41,10 @@
         # serial debugging
         screen
 
+        # image OCR TODO: maybe should be somewhere else?
+        tesseract
+        ocrmypdf
+
         # standard man pages for linux API
         man-pages
         man-pages-posix

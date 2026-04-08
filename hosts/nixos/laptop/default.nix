@@ -57,6 +57,7 @@
 
       "hosts/common/optional/amd.nix" # GPU monitor (not available in home-manager)
       "hosts/common/optional/libvirt.nix" # Virtual machine manager
+      "hosts/common/optional/docker.nix"
       "hosts/common/optional/nvtop.nix" # GPU monitor (not available in home-manager)
       "hosts/common/optional/plymouth.nix" # fancy boot screen
       "hosts/common/optional/thunar.nix" # file manager
