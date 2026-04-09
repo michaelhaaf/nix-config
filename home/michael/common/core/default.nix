@@ -78,9 +78,10 @@
       usbutils
       unzip # zip extraction
       unrar # rar extraction
+      wget
       wordnet # lexical database
-
       zathura # pdf reader
+      zip
       ;
   };
 
