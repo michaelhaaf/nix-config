@@ -73,8 +73,8 @@
           stdenv.hostPlatform.system = "x86_64-linux";
           specialArgs = minimalSpecialArgs;
           modules = [
-            inputs.disko.nixosModules.disko
-            ../hosts/common/disks/minerva.nix
+            # inputs.disko.nixosModules.disko
+            # ../hosts/common/disks/minerva.nix
             ./minimal-configuration.nix
             { networking.hostName = "minerva"; }
             ../hosts/nixos/minerva/hardware-configuration.nix
