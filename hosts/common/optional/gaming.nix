@@ -3,10 +3,12 @@
   hardware.xone.enable = true; # xbox controller
 
   environment.systemPackages = with pkgs; [
-    lutris
-    heroic
     bottles
   ];
+
+  environment.sessionVariables = {
+    STEAM_FORCE_DESKTOPUI_SCALING = "1.5";
+  };
 
   programs = {
     steam = {
