@@ -33,12 +33,12 @@ in
       restart = true;
       settings = {
         default_session = {
-          command = "${pkgs.tuigreet}/bin/tuigreet --asterisks --time --time-format '%I:%M %p | %a • %h | %F' --cmd niri";
+          command = "${pkgs.tuigreet}/bin/tuigreet --asterisks --time --time-format '%I:%M %p | %a • %h | %F' --cmd niri-session";
           user = "michael";
         };
 
         initial_session = lib.mkIf cfg.enable {
-          command = "${pkgs.niri}/bin/niri";
+          command = "${pkgs.niri}/bin/niri-session";
           user = "${cfg.username}";
         };
       };
