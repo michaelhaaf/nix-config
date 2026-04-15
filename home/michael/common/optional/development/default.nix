@@ -52,6 +52,8 @@
       inherit (pkgs.unstable)
         devenv # environment manager
         mob # mob programming tool
+
+        bootdev-cli # boot.dev, https://github.com/bootdotdev/bootdev
         ;
     })
   ];

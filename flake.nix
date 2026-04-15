@@ -73,6 +73,7 @@
       url = "github:sodiboo/niri-flake";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
+    millennium.url = "github:SteamClientHomebrew/Millennium?dir=packages/nix";
 
     #
     # ========= Personal Repositories =========

@@ -1,15 +1,18 @@
-{ pkgs, ... }:
+{ inputs, pkgs, ... }:
 {
   hardware.xone.enable = true; # xbox controller
 
   environment.systemPackages = with pkgs; [
     bottles
+    steam-tui
+    steamcmd
   ];
 
   environment.sessionVariables = {
-    STEAM_FORCE_DESKTOPUI_SCALING = "1.5";
+    STEAM_FORCE_DESKTOPUI_SCALING = "2";
   };
 
+  nixpkgs.overlays = [ inputs.millennium.overlays.default ];
   programs = {
     steam = {
       enable = true;
@@ -17,31 +20,7 @@
         enable = true;
         package = pkgs.protontricks;
       };
-      package = pkgs.steam.override {
-        extraPkgs =
-          pkgs:
-          (builtins.attrValues {
-            inherit (pkgs.xorg)
-              libXcursor
-              libXi
-              libXinerama
-              libXScrnSaver
-              ;
-
-            inherit (pkgs.stdenv.cc.cc)
-              lib
-              ;
-
-            inherit (pkgs)
-              libpng
-              libpulseaudio
-              libvorbis
-              libkrb5
-              keyutils
-              gperftools
-              ;
-          });
-      };
+      package = pkgs.millennium-steam;
       extraCompatPackages = [ pkgs.unstable.proton-ge-bin ];
     };
     #gamescope launch args set dynamically in home/<user>/common/optional/gaming
