@@ -1,4 +1,6 @@
-# Source: https://github.com/aca/nix-config/blob/main/dev/python.nix
+# Install system-wide uv, and aliases to point python -> uv
+# Places uv in a fhs env, ostensibly for better management of c modules expecting to be in an fhs
+# I believe the above requires nix-ld to work properly.
 
 {
   pkgs,
@@ -28,4 +30,9 @@
       runScript = "uv";
     })
   ];
+  programs.bash = {
+    shellAliases = {
+      uvx = "uv tool run";
+    };
+  };
 }
