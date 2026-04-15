@@ -20,7 +20,7 @@
         enable = true;
         package = pkgs.protontricks;
       };
-      package = pkgs.millennium-steam;
+      # package = pkgs.millennium-steam;
       extraCompatPackages = [ pkgs.unstable.proton-ge-bin ];
     };
     #gamescope launch args set dynamically in home/<user>/common/optional/gaming

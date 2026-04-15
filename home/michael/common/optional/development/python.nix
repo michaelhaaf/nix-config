@@ -7,15 +7,15 @@
 {
   home.packages = with pkgs; [
     (pkgs.writeShellScriptBin "python" ''
-      exec uv run python "$@"
+      exec uv run --isolated python "$@"
     '')
 
     (pkgs.writeShellScriptBin "python3" ''
-      exec uv run python "$@"
+      exec uv run --isolated python "$@"
     '')
 
     (pkgs.writeShellScriptBin "py" ''
-      exec uv run python "$@"
+      exec uv run --isolated python "$@"
     '')
 
     (pkgs.buildFHSEnv {
