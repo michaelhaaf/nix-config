@@ -17,14 +17,6 @@
   plugins.conform-nvim = {
     enable = true;
     settings = {
-      # NOTE:
-      # Conform will run multiple formatters sequentially
-      # [ "1" "2" "3"]
-      # Add stop_after_first to run only the first available formatter
-      # { "__unkeyed-1" = "foo"; "__unkeyed-2" = "bar"; stop_after_first = true; }
-      # Use the "*" filetype to run formatters on all filetypes.
-      # Use the "_" filetype to run formatters on filetypes that don't
-      # have other formatters configured.
       formatters_by_ft = {
         bash = [
           "shellcheck"
@@ -52,7 +44,9 @@
           "shfmt"
         ];
         python = [
-          "ruff"
+          "ruff_fix"
+          "ruff_format"
+          "ruff_organize_imports"
         ];
         toml = [ "taplo" ];
         typescript = {

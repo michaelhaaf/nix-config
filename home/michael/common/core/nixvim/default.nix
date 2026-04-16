@@ -61,7 +61,9 @@
           };
         };
         basedpyright = {
-          enable = true;
+          # enable = true;
+          # packageFallback = true;
+          enable = false; # Trying different servers for now.
         };
         bashls = {
           enable = true;
@@ -100,6 +102,22 @@
         };
         ruff = {
           enable = true;
+          packageFallback = true;
+          config = {
+            cmd = [
+              "ruff"
+              "server"
+            ];
+            filetypes = [ "python" ];
+            root_markers = [
+              "pyproject.toml"
+              "ruff.toml"
+              ".ruff.toml"
+            ];
+            settings = {
+              configurationPrefence = "filesystemFirst";
+            };
+          };
         };
         texlab = {
           enable = true;
@@ -107,8 +125,25 @@
         ts_ls = {
           enable = true;
         };
-        yaml_ls = {
+        yamlls = {
           enable = true;
+        };
+        zuban = {
+          enable = true;
+          packageFallback = true;
+          config = {
+            cmd = [
+              "zuban"
+              "server"
+            ];
+            filetypes = [ "python" ];
+            root_markers = [
+              "pyproject.toml"
+            ];
+            settings = {
+              configurationPrefence = "filesystemFirst";
+            };
+          };
         };
       };
     };
