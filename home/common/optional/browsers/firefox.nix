@@ -189,11 +189,14 @@ in
       '';
     };
   };
+  xdg.mime.enable = true;
   xdg.mimeApps.defaultApplications = {
     "text/html" = [ "firefox.desktop" ];
     "text/xml" = [ "firefox.desktop" ];
     "x-scheme-handler/http" = [ "firefox.desktop" ];
     "x-scheme-handler/https" = [ "firefox.desktop" ];
+    "x-scheme-handler/about" = [ "firefox.desktop" ];
+    "x-scheme-handler/unknown" = [ "firefox.desktop" ];
   };
   stylix.targets.firefox.enable = true;
   stylix.targets.firefox.profileNames = [ "default" ];
