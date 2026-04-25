@@ -32,4 +32,7 @@
   #
   i18n.defaultLocale = lib.mkDefault "en_US.UTF-8";
   time.timeZone = lib.mkDefault "America/Montreal";
+
+  # TODO: Sysrq, choose a more precise value
+  boot.kernel.sysctl."kernel.sysrq" = 1;
 }

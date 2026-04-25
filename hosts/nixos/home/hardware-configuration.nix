@@ -61,10 +61,17 @@
     neededForBoot = true;
   };
 
+  # TODO: name this file system so it can be referenced
   fileSystems."/run/media/michael/NVME Drive" = {
     device = "/dev/nvme0n1p1";
     fsType = "ext4";
   };
+
+  # TODO: fix this disk
+  # fileSystems."/run/media/michael/External Storage" = {
+  #   device = "/dev/sda2";
+  #   fsType = "ext4";
+  # };
 
   swapDevices = [ ];
 

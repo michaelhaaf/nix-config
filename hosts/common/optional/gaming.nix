@@ -12,6 +12,8 @@
     STEAM_FORCE_DESKTOPUI_SCALING = "2";
   };
 
+  # TODO: mount share games/mods directories if present
+
   nixpkgs.overlays = [ inputs.millennium.overlays.default ];
   programs = {
     steam = {
