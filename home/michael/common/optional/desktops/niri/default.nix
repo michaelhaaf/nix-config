@@ -5,6 +5,13 @@
   config,
   ...
 }:
+let
+  # TODO: put this somewhere more generic i.e. in modules
+  niripath = "home/michael/common/optional/desktops/niri";
+  createSymlink =
+    localPath:
+    config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nix-config/${localPath}";
+in
 {
   imports = lib.flatten [
     inputs.niri-flake.homeModules.niri
@@ -22,10 +29,10 @@
         ;
     };
     file = {
-      ".config/niri/config.kdl".source = config.lib.file.mkOutOfStoreSymlink ./config.kdl;
-      ".config/niri/inputs.kdl".source = config.lib.file.mkOutOfStoreSymlink ./inputs.kdl;
-      ".config/niri/binds.kdl".source = config.lib.file.mkOutOfStoreSymlink ./binds.kdl;
-      ".config/niri/rules.kdl".source = config.lib.file.mkOutOfStoreSymlink ./rules.kdl;
+      ".config/niri/config.kdl".source = createSymlink "${niripath}/config.kdl";
+      ".config/niri/inputs.kdl".source = createSymlink "${niripath}/inputs.kdl";
+      ".config/niri/binds.kdl".source = createSymlink "${niripath}/binds.kdl";
+      ".config/niri/rules.kdl".source = createSymlink "${niripath}/rules.kdl";
     };
 
   };
