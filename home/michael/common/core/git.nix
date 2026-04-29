@@ -28,19 +28,62 @@
 
     lfs.enable = true;
     settings = {
-      aliases = {
+      alias = {
         graph = "log --decorate --oneline --graph";
+        # Adapted from: https://github.com/datsfilipe/dotfiles/blob/main/modules/programs/git/user.nix
+        br = "branch";
+        co = "checkout";
+        sw = "switch";
+        st = "status -sb";
+        sf = "show --name-only";
+        rc = "reset --soft HEAD~1";
+        r = "reset HEAD --";
+        u = "checkout --";
+        c = "commit -m";
+        ca = "commit -am";
+        ps = "push";
+        psu = "push -u";
+        pl = "pull";
+        mt = "mergetool";
+        dt = "difftool";
+        psm = "!git push origin $(git rev-parse --abbrev-ref HEAD)";
+        plm = "!git pull origin $(git rev-parse --abbrev-ref HEAD)";
+        lg = "log --graph --name-status --pretty=format:\"%C(red)%h %C(reset)(%cd) %C(green)%an %Creset%s %C(yellow)%d%Creset\" --date=relative";
+        chbase = "!f() { git rebase --onto=$1 $2 $(git symbolic-ref --short HEAD); }; f";
+        eu = "!f() { git ls-files --unmerged | cut -f2 | sort -u ; }; vim `f`";
+        au = "!f() { git ls-files --unmerged | cut -f2 | sort -u ; }; git add `f`";
+        incc = "!(git fetch --quiet && git log --pretty=format:'%C(yellow)%h %C(white)- %C(red)%an %C(white)- %C(cyan)%d%Creset %s %C(white)- %ar%Creset' ..@{u})";
+        outc = "!(git fetch --quiet && git log --pretty=format:'%C(yellow)%h %C(white)- %C(red)%an %C(white)- %C(cyan)%d%Creset %s %C(white)- %ar%Creset' @{u}..)";
+        rev = "!f() { git ls-remote $1 HEAD | awk '{print $1}'; }; f";
+        sp = "submodule update --init --recursive";
+        sfor = "submodule foreach";
       };
       user = {
         email = lib.mkDefault inputs.nix-secrets.git.email;
         name = inputs.nix-secrets.git.name;
       };
+      core = {
+        pager = "delta";
+        editor = "nvim";
+      };
+      merge = {
+        conflictStyle = "zdiff3";
+        tool = "nvimdiff";
+      };
+      mergetool = {
+        keepBackup = false;
+        conflictStyle = "zdiff3"; # TODO: which one? merge or mergetool?
+        nvimdiff.layout = "LOCAL,BASE,REMOTE / MERGED";
+      };
+      diff = {
+        tool = "nvimdiff";
+        algorithm = "histogram";
+      };
+      commit = {
+        gpgSign = lib.mkDefault true;
+        commit.verbose = true;
+      };
       init.defaultBranch = "main";
-      commit.gpgSign = lib.mkDefault true;
-      core.pager = "delta";
-      merge.conflictStyle = "zdiff3";
-      commit.verbose = true;
-      diff.algorithm = "histogram";
       log.date = "iso";
       column.ui = "auto";
       branch.sort = "committerdate";
