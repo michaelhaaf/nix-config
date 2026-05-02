@@ -109,6 +109,8 @@ in
           "https://facebook.com"
           "https://messages.google.com"
           "https://reddit.com"
+          "https://mail.proton.me"
+          "https://account.proton.me"
 
           # work TODO: move elsewhere
           "https://johnabbott.omnivox.ca/"
