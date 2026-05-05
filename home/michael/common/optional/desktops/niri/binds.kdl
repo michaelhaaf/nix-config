@@ -102,8 +102,8 @@ binds {
     Super+Shift+E hotkey-overlay-title="Emoji picker"{ spawn-sh "noctalia-shell ipc call launcher emoji"; }
     Super+O hotkey-overlay-title="Overview" repeat=false { toggle-overview; }
     Super+Z hotkey-overlay-title="Monitor Zen" { spawn "toggleMonitorZen"; }
-    Super+P hotkey-overlay-title="Password manager" { spawn-sh "rofi-pass"; }
-    Super+Shift+P hotkey-overlay-title="Insert new password" { spawn-sh "rofi-pass --insert"; }
+    Super+P hotkey-overlay-title="Password manager" { spawn-sh "wofi-pass"; }
+    Super+Shift+P hotkey-overlay-title="Insert new password" { spawn-sh "wofi-pass --insert"; }
     Super+Shift+U hotkey-overlay-title="Unicode picker" { spawn-sh "noctalia-shell ipc call plugin:unicode toggle"; }
 
     XF86MonBrightnessUp allow-when-locked=true { spawn-sh "noctalia-shell ipc call brightness increase"; }
