@@ -8,11 +8,17 @@
     #logging = "debug";
   };
 
+  # TODO:
   # Mitigate cups and avahi security issue as described here: https://discourse.nixos.org/t/cups-cups-filters-and-libppd-security-issues/52780/2
   # Note: this will eventually be achievable with the option `services.printing.browsed.enabled = false` but the PR hasn't been merged to unstable as of 09.10.24
-  systemd.services.cups-browsed = {
-    enable = false;
-    unitConfig.Mask = true;
+  # systemd.services.cups-browsed = {
+  #   enable = false;
+  #   unitConfig.Mask = true;
+  # };
+  services.avahi = {
+    enable = true;
+    nssmdns4 = true;
+    openFirewall = true;
   };
 
   # SANE - scanner access now easy
