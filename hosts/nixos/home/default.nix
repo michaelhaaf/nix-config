@@ -67,6 +67,7 @@
 
       "hosts/common/optional/stylix.nix" # host-wide styling
       "hosts/common/optional/nix-ld.nix"
+      "hosts/common/optional/appimage.nix"
 
     ])
 
