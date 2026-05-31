@@ -1,11 +1,12 @@
 {
   plugins.img-clip = {
     enable = true;
-    lazyLoad.settings.ft = [
-      "markdown"
-      "tex"
-      "typst"
-    ];
+    # TODO: need lazy loading provider (lz-n?)
+    # lazyLoad.settings.ft = [
+    #   "markdown"
+    #   "tex"
+    #   "typst"
+    # ];
 
     settings = {
       default = {

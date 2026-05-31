@@ -29,8 +29,8 @@
   programs.nixvim = {
     nixpkgs.pkgs = import <nixpkgs> { };
 
-    # TODO: actually address this
-    version.enableNixpkgsReleaseCheck = false;
+    nixpkgs.useGlobalPackages = false;
+    version.enableNixpkgsReleaseCheck = true;
 
     enable = true;
     enableMan = true; # install man pages for nixvim options

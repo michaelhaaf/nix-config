@@ -4,8 +4,7 @@
   plugins = {
     treesitter = {
       enable = true;
-      # folding.enable = true; # 26.05
-      folding = true; # 25.11
+      folding.enable = true; # 26.05
       nixvimInjections = true;
       settings = {
         indent = {
