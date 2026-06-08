@@ -1,17 +1,19 @@
 {
+  inputs,
   lib,
   ...
 }:
 
 {
   imports = [
-    # include NixOS-WSL modules
-    <nixos-wsl/modules>
+    inputs.nixos-wsl.nixosModules.default
   ];
 
-  wsl.enable = true;
-  wsl.defaultUser = "michael";
-  wsl.docker-desktop.enable = true;
+  wsl = {
+    enable = true;
+    defaultUser = "michael";
+    docker-desktop.enable = true;
+  };
 
   nix.settings.trusted-users = [
     "root"

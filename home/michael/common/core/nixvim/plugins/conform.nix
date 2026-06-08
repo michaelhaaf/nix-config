@@ -67,7 +67,7 @@
           command = lib.getExe pkgs.jq;
         };
         nixfmt = {
-          command = lib.getExe pkgs.nixfmt-rfc-style;
+          command = lib.getExe pkgs.nixfmt;
         };
         ruff = {
           command = lib.getExe pkgs.ruff;

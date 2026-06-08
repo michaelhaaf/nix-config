@@ -5,7 +5,7 @@
 {
   programs.zellij = {
     enable = true;
-    package = pkgs.unstable.zellij;
+    package = pkgs.zellij;
   };
 
   home.file.".config/zellij/config.kdl".source = ./config.kdl;

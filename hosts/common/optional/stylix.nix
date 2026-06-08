@@ -28,7 +28,7 @@
         name = "Ubuntu Nerd Font";
       };
       serif = {
-        package = pkgs.etBook;
+        package = pkgs.et-book;
         name = "ETBembo";
       };
     };

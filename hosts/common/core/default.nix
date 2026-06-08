@@ -55,6 +55,7 @@ in
 
   home-manager = {
     useGlobalPkgs = true;
+    useUserPackages = true;
     backupFileExtension = "bk";
     overwriteBackup = true;
   };

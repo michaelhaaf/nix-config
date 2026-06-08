@@ -1,4 +1,4 @@
-{ inputs, pkgs, ... }:
+{ pkgs, ... }:
 {
   hardware.xone.enable = true; # xbox controller
 
@@ -14,7 +14,7 @@
 
   # TODO: mount share games/mods directories if present
 
-  nixpkgs.overlays = [ inputs.millennium.overlays.default ];
+  # nixpkgs.overlays = [ inputs.millennium.overlays.default ];
   programs = {
     steam = {
       enable = true;

@@ -140,6 +140,7 @@
       # '';
     };
     supportedFilesystems = [ "zfs" ];
+    zfs.forceImportRoot = false;
   };
 
   hardware = {

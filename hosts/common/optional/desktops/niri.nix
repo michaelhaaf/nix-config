@@ -20,8 +20,6 @@
   # Calendar integration
   services.gnome.evolution-data-server.enable = true;
 
-  services.dbus.implementation = "broker";
-
   # Prefer the noctalia polkit plugin for now
   systemd.user.services.niri-flake-polkit.enable = false;
 
@@ -29,11 +27,11 @@
     enable = true;
     xdgOpenUsePortal = true;
     wlr.enable = true;
-    config.common.default = [
+    config.common.default = lib.mkDefault [
       "gtk"
       "gnome"
     ];
-    config.niri.default = [
+    config.niri.default = lib.mkDefault [
       "gtk"
       "gnome"
     ];
