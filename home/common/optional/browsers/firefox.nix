@@ -15,10 +15,12 @@ in
   #
   # TODO(firefox):
   # - Port bookmarks and other profile settings over from existing profile
+
   home.packages = with pkgs; [
     tridactyl-native
   ];
   xdg.configFile."tridactyl/tridactylrc".source = ./tridactylrc;
+
   programs.firefoxpwa = {
     enable = true;
   };
@@ -81,6 +83,7 @@ in
           (extension "pwas_for_firefox" "firefoxpwa@filips.si")
           (extension "tree-style-tab" "treestyletab@piro.sakura.ne.jp")
           (extension "tridactyl" "tridactyl.vim@cmcaine.co.uk")
+          (extension "duckduckgo-no-ai-search" "noai@duckduckgo.com")
         ];
       Cookies = {
         Allow = [
@@ -192,14 +195,19 @@ in
       '';
     };
   };
-  xdg.mime.enable = true;
-  xdg.mimeApps.defaultApplications = {
-    "text/html" = [ "firefox.desktop" ];
-    "text/xml" = [ "firefox.desktop" ];
-    "x-scheme-handler/http" = [ "firefox.desktop" ];
-    "x-scheme-handler/https" = [ "firefox.desktop" ];
-    "x-scheme-handler/about" = [ "firefox.desktop" ];
-    "x-scheme-handler/unknown" = [ "firefox.desktop" ];
+  xdg = {
+    mime.enable = true;
+    mimeApps = {
+      enable = true;
+      defaultApplications = {
+        "text/html" = [ "firefox.desktop" ];
+        "text/xml" = [ "firefox.desktop" ];
+        "x-scheme-handler/http" = [ "firefox.desktop" ];
+        "x-scheme-handler/https" = [ "firefox.desktop" ];
+        "x-scheme-handler/about" = [ "firefox.desktop" ];
+        "x-scheme-handler/unknown" = [ "firefox.desktop" ];
+      };
+    };
   };
   stylix.targets.firefox.enable = true;
   stylix.targets.firefox.profileNames = [ "default" ];
