@@ -21,7 +21,6 @@
     # enableSshSupport = true;
     pinentry.package = pkgs.pinentry-qt;
     extraConfig = ''
-      pinentry-program /home/michael/.nix-profile/bin/pinentry-qt
       no-allow-external-cache
       max-cache-ttl 72000
       no-grab
