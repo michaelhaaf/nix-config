@@ -28,18 +28,20 @@
 
   services.kanshi = {
     enable = true;
-    profiles = {
-      undocked = {
-        outputs = [
+    settings = [
+      {
+        profile.name = "undocked";
+        profile.outputs = [
           {
             criteria = "eDP-1";
             scale = 1.0;
             status = "enable";
           }
         ];
-      };
-      work_office = {
-        outputs = [
+      }
+      {
+        profile.name = "work_office";
+        profile.outputs = [
           {
             criteria = "Dell Inc. DELL P2723QE 2HCRRS3";
             position = "0,0";
@@ -57,9 +59,10 @@
             status = "disable";
           }
         ];
-      };
-      classroom_mirror = {
-        outputs = [
+      }
+      {
+        profile.name = "classroom_mirror";
+        profile.outputs = [
           {
             criteria = "eDP-1";
             position = "0,0";
@@ -73,8 +76,8 @@
             status = "enable";
           }
         ];
-      };
-    };
+      }
+    ];
   };
 
 }

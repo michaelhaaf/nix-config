@@ -28,9 +28,10 @@
 
   services.kanshi = {
     enable = true;
-    profiles = {
-      default = {
-        outputs = [
+    settings = [
+      {
+        profile.name = "default";
+        profile.outputs = [
           {
             criteria = "DP-3";
             scale = 1.0;
@@ -46,8 +47,9 @@
             status = "enable";
           }
         ];
-      };
-    };
+
+      }
+    ];
   };
 
 }
