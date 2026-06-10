@@ -102,9 +102,6 @@ echo -e "${GREEN}[4/6] Creating ZFS datasets...${NC}"
 zfs create -p -o canmount=noauto -o mountpoint=legacy rpool/local/root
 # Blank snapshot (erase target)
 zfs snapshot rpool/local/root@blank
-# Boot
-zfs create -p -o mountpoint=legacy rpool/local/boot
-zfs create -p -o mountpoint=legacy rpool/local/boot-mirror
 # Nix store (read-only, made to survie roll-backs)
 zfs create -p -o mountpoint=legacy rpool/local/nix
 # Persistent data
@@ -123,11 +120,9 @@ echo -e "${GREEN}[5/6] Mounting filesystems...${NC}"
 # Method 2: (not necessarily used with mirroring)
 mount -t zfs rpool/local/root /mnt
 mkdir -p /mnt/{nix,home,persist,boot,boot-mirror}
-mount -t zfs rpool/local/boot /mnt/boot
-mount -t zfs rpool/local/boot-mirror /mnt/boot-mirror
-mkdir -p /mnt/{boot/efi,boot-mirror/efi}
-mount -t vfat -o umask=0077 "$D1PART1" /mnt/boot/efi
-mount -t vfat -o umask=0077 "$D2PART1" /mnt/boot-mirror/efi
+
+mount -t vfat -o umask=0077 "$D1PART1" /mnt/boot
+mount -t vfat -o umask=0077 "$D2PART1" /mnt/boot-mirror
 mount -t zfs rpool/local/nix /mnt/nix
 mount -t zfs rpool/safe/home /mnt/home
 mount -t zfs rpool/safe/persist /mnt/persist
