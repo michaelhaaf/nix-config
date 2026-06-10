@@ -79,6 +79,9 @@ mkfs.vfat -F32 -n EFI "${D1PART1}"
 mkfs.vfat -F32 -n EFI "${D2PART1}"
 
 echo -e "${GREEN}[3/6] Creating ZFS Pool 'rpool'...${NC}"
+
+# Destroy rpool if it exists, carry on if not
+if ! zpool status 2>&1 >/dev/null | grep -q "no pools available"; then zpool destroy rpool; fi
 zpool create -f \
 	-o ashift=12 \
 	-o autotrim=on \
