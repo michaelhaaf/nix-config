@@ -122,9 +122,10 @@ echo -e "${GREEN}[5/6] Mounting filesystems...${NC}"
 
 # Method 2: (not necessarily used with mirroring)
 mount -t zfs rpool/local/root /mnt
-mkdir -p /mnt/{nix,home,persist,boot,boot/efi,boot-mirror,boot-mirror/efi}
+mkdir -p /mnt/{nix,home,persist,boot,boot-mirror}
 mount -t zfs rpool/local/boot /mnt/boot
 mount -t zfs rpool/local/boot-mirror /mnt/boot-mirror
+mkdir -p /mnt/{boot/efi,boot-mirror/efi}
 mount -t vfat -o umask=0077 "$D1PART1" /mnt/boot/efi
 mount -t vfat -o umask=0077 "$D2PART1" /mnt/boot-mirror/efi
 mount -t zfs rpool/local/nix /mnt/nix
