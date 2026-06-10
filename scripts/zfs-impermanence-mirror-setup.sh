@@ -101,6 +101,7 @@ zfs create -p -o canmount=noauto -o mountpoint=legacy rpool/local/root
 zfs snapshot rpool/local/root@blank
 # Boot
 zfs create -p -o mountpoint=legacy rpool/local/boot
+zfs create -p -o mountpoint=legacy rpool/local/boot-mirror
 # Nix store (read-only, made to survie roll-backs)
 zfs create -p -o mountpoint=legacy rpool/local/nix
 # Persistent data
