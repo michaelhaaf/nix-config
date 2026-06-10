@@ -16,129 +16,52 @@ Because this repo relies on a private `nix-secrets` repository input as a flake 
 ### In this repo
 
 1. Create a configuration file for the new host at `hosts/nixos/<hostname/default.nix` (replace `nixos` with Darwin if that's what your using). Refer to existing host configs and define the config as needed.
-2. Add users to `hosts/common/users/<usern>.nix` if needed
-3. Create a host-specific home config for each user that will be accessing the host at `home/<user>/<hostname>.nix`. Refer to exiting user configs and define [the](the) config as needed.
-4. Edit `flake.nix` to include a the following entries:
-
-   - Host information, under the `nixosConfigurations` option.
-
-     ```nix
-       ...
-       nixosConfigurations = {
-         # This is an example of an existing host called "grief"
-         grief = lib.nixosSystem {
-           modules = [ ./hosts/grief ];
-           specialArgs = { inherit inputs outputs;};
-         }
-         # Add a description of your host
-         [yournewhostname](yournewhostname) = lib.nixosSystem {
-           modules = [ ./hosts/yournewhostname ];
-           specialArgs = { inherit inputs outputs;};
-         }
-         ...
-       };
-       ...
-     ```
-
-   - Primary user information for the primary user on each host, under the `homeConfigurations` option.
-
-     ```nix
-       ...
-       homeConfigurations = {
-         "ta@grief" = lib.homeManagerConfiguration {
-           modules = [ ./home/ta/grief.nix ];
-           pkgs = pkgsFor.x86_64-linux;
-           extraSpecialArgs = {inherit inputs outputs;};
-         };
-         "username@yournewhostname" = lib.homeManagerConfiguration {
-           modules = [ ./home/username/yournewhostname.nix ];
-           pkgs = pkgsFor.x86_64-linux;
-           extraSpecialArgs = {inherit inputs outputs;};
-         };
-         ...
-       };
-       ...
-     ```
-
-5. Commit and push the changes
+1. Add users to `hosts/common/users/<usern>.nix` if needed
+1. Create a host-specific home config for each user that will be accessing the host at `home/<user>/<hostname>.nix`.
 
 ### On the new host
-
-These steps assume:
-
-- installation on an UEFI system
 
 0. Boot the new machine into a NixOS live environment and wait for a shell, or for the graphical installer to automatically open if you used a graphical ISO.
 
 1. If in the graphical installer, and open a terminal.
    Confirm the boot process brought up networking successfully and a ip was acquired. Check `ip a`. If no ip was assigned, refer to <https://nixos.org/manual/nixos/stable/#sec-installation-manual-networking>
 
-2. To gain remote access right away, set a temporary password for the root user using `passwd root` and following the prompts. Then from a remote machine, `ssh root@0.0.0.0` using the ip printed in step 1.
+2. To gain remote access right away, set a temporary password for the root user using `passwd root` and following the prompts. Then from a remote machine, `ssh root@xxx.xxx.xxx.xxx` using the ip printed in step 1.
 
 3. Most of the following steps require root. If you are remoted in from step 2 you should have a root shell. Otherwise, `sudo su`
 
 > IMPORTANT: the code samples below assume installation on the `sda` device. Modify if necessary.
 > These are instructions come directly from <https://nixos.org/manual/nixos/stable/#sec-installation-manual-partitioning> with little to no modification.
 
-3. Create a GPT partition table.
+3. Run the `zfs-impermanence-setup` script, OR, do its steps manually
 
-   `# parted /dev/sda -- mklabel gpt`
+    for instance, to set up zfs mirroring, perform the steps manually with the
+    following adaptations:
 
-4. Add the root partition. This will fill the disk except for the end part, where the swap will live, and the space left in front (512MiB) which will be used by the boot partition.
+    - perform initial `sdisk` and `wipefs` commands on each disk (may need `-f` for `wipefs`)
+    - perform partition commands on one disk, then run the following commands to copy them
+    over:
+        ```
+        sgdisk /dev/nvme0n1 -R /dev/nvme1n1
+        sgdisk -G /dev/nvme1n1
+        ```
+    - after creating the initial zfs pool, attach it as a mirror using the following command:
+        ```
+        zpool attach rpool /dev/nvme0n1p2 /dev/nvme1n1p2
+        ```
+    - a good reference: https://lowtek.ca/roo/2025/nixos-with-mirrored-zfs-boot-volume/
 
-   `# parted /dev/sda -- mkpart root ext4 512MB -8GB`
-
-   If you do not require swap, replace `-8GB` with `100%`
-
-5. _If you are adding a swap partition_, the size required will vary according to needs, here a 8GB one is created. NixOS uses the standard linux swap file needs so this will depend on how much memory the host has.
-
-   `# parted /dev/sda -- mkpart swap linux-swap -8GB 100%`
-
-6. Finally, the boot partition. NixOS by default uses the ESP (EFI system partition) as its /boot partition. It uses the initially reserved 512MiB at the start of the disk.
-
-   ```bash
-   # parted /dev/sda -- mkpart ESP fat32 1MB 512MB
-   # parted /dev/sda -- set 3 esp on
-   ```
-
-7. Initialize the Ext4 partitions using mkfs.ext4 and assign a unique symbolic label using the `-L label` argument. For example:
-
-   `# mkfs.ext4 -L nixos /dev/sda1`
-
-8. For swap, _if required_, use `mkswap` and assign a label using the `-L label` argument. For example:
-
-   `# mkswap -L swap /dev/sda2`
-
-9. For UEFI system boot partitions use `mkfs.fat` and assign a label using `-n label`. For example:
-
-   `# mkfs.fat -F 32 -n BOOT /dev/sda3`
-
-10. Mount the target file system on which NixOS should be installed on /mnt, e.g.
-
-    `# mount /dev/disk/by-label/nixos /mnt`
-
-11. Mount the boot file system on /mnt/boot, e.g.
-
-    ```bash
-    # mkdir -p /mnt/boot
-    # mount /dev/disk/by-label/BOOT /mnt/boot
-    ```
-
-12. If you are using swap, activate swap devices now (swapon device). The installer (or rather, the build actions that it may spawn) may need quite a bit of RAM, depending on your configuration.
-
-    `# swapon /dev/sda2`
-
-13. Generate default configs
+4. Generate default configs
 
     `# nixos-generate-config --root /mnt`
 
-14. Edit the config so that we can quickly remote in over ssh after installation.
+5. Edit the config so that we can quickly remote in over ssh after installation.
 
     ```bash
     # vim /mnt/etc/nixos/configuration.nix
     ```
 
-15. Edit or add the following as needed.
+6. Edit or add the following as needed.
 
     1. Verify:
 
@@ -182,7 +105,10 @@ These steps assume:
 
        `nix.settings.experimental-features = [ "nix-command" "flakes" ];`
 
-    7. Save and exit the file
+    7. If using zfs, ensure:
+
+        - `networking.hostId` is set (could use `$ head -c4 /dev/urandom | xxd -p > /tmp/rand.txt"`)
+        - set either `boot.loader.grub.devices` OR `boot.loader.grub.mirroredBoots` if mirrored.
 
 16. Do the installation.
 
