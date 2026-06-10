@@ -183,7 +183,24 @@ zfs list || true
 echo
 echo -e "${GREEN}All checks passed.${NC}"
 
-# Next steps:
-# Generate a NixOS configuration
-# nixos-generate-config --root /mnt
-# edit configuration.nix and run `nixos-install`
+echo -e "${GREEN}Creating nixos config file...${NC}"
+machine_id=$(cat /etc/machine-id | cut -c1-8)
+boot_uuid=$(lsblk -f | grep /mnt/boot$ | xargs | cut -d " " -f 5)
+boot_mirror_uuid=$(lsblk -f | grep /mnt/boot-mirror | xargs | cut -d " " -f 5)
+cat <<EOF
+boot.loader.grub.enable = true;
+boot.loader.efi.canTouchEfiVariables = true;
+boot.loader.grub.efiSupport = true;
+boot.loader.grub.device = "nodev";
+
+boot.loader.grub.copyKernels = true;
+boot.loader.grub.mirroredBoots = [
+    { path = "/boot"; devices = ["/dev/disk/by-uuid/${boot_uuid}"]; }
+    { path = "/boot-fallback"; devices = ["/dev/disk/by-uuid/${boot_mirror_uuid}"]; }
+];
+
+boot.supportedFilesystems = [ "zfs" ];
+networking.hostId = "${machine_id}";
+
+EOF
+echo -e "Run $(nixos-generate-config) and apply the above options."
