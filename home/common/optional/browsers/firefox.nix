@@ -120,7 +120,10 @@ in
           "https://johnabbott.omnivox.ca/"
           "https://moodle.johnabbott.qc.ca/"
           "https://login.microsoft.com"
+          "https://microsoft.com"
+          "https://login.microsoftonline.com"
           "https://outlook.office.com"
+          "https://outlook.live.com"
         ];
       };
 
