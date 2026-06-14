@@ -70,14 +70,22 @@
         conflictStyle = "zdiff3";
         tool = "nvimdiff";
       };
+      rebase = {
+        autoSquash = true;
+        autoStash = true;
+        updateRefs = true;
+      };
       mergetool = {
         keepBackup = false;
-        conflictStyle = "zdiff3"; # TODO: which one? merge or mergetool?
+        conflictStyle = "zdiff3";
         nvimdiff.layout = "LOCAL,BASE,REMOTE / MERGED";
       };
       diff = {
         tool = "nvimdiff";
         algorithm = "histogram";
+        colorMoved = "plain";
+        mnemonicPrefix = true;
+        renames = true;
       };
       commit = {
         gpgSign = lib.mkDefault true;
@@ -87,8 +95,22 @@
       log.date = "iso";
       column.ui = "auto";
       branch.sort = "committerdate";
-      push.autoSetupRemote = true;
-      rerere.enabled = true;
+      tag.sort = "version:refname";
+      push = {
+        default = "simple";
+        autoSetupRemote = true;
+        followTags = true;
+      };
+      fetch = {
+        prune = true;
+        prunteTags = true;
+        all = true;
+      };
+      help.autocorrect = true;
+      rerere = {
+        enabled = true;
+        autoupdate = true;
+      };
       delta = {
         enable = true;
         features = [
@@ -99,7 +121,10 @@
           "commit-decoration"
         ];
       };
-      # pre-emptively ignore mac crap
+      grep = {
+        patternType = "perl";
+      };
+      feature.experimental = true;
       core.excludeFiles = builtins.toFile "global-gitignore" ''
         .DS_Store
         .DS_Store?
