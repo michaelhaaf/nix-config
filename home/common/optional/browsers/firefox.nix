@@ -134,11 +134,12 @@ in
       name = "default";
       isDefault = true;
 
-      search = {
-        force = true;
-        default = "ddg";
-        order = [ "ddg" ];
-      };
+      # TODO: remove if this works, i.e. DDG no-ai is default after installation
+      # search = {
+      #   force = true;
+      #   default = "ddg";
+      #   order = [ "ddg" ];
+      # };
 
       # FIXME(firefox): These should probably be in a let .. in block so I can re-use if I setup
       # additional profiles
