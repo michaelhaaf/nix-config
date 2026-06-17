@@ -4,44 +4,28 @@
 #
 
 {
-  config,
+  inputs,
   pkgs,
-  lib,
   ...
 }:
 
-let
-  cfg = config.autoLogin;
-in
 {
-  # Declare custom options for conditionally enabling auto login
-  options.autoLogin = {
-    enable = lib.mkEnableOption "Enable automatic login";
 
-    username = lib.mkOption {
-      type = lib.types.str;
-      default = "guest";
-      description = "User to automatically login";
+  imports = [
+    inputs.noctalia-greeter.nixosModules.default
+  ];
+
+  programs.noctalia-greeter = {
+    enable = true;
+    package = inputs.noctalia-greeter.packages.${pkgs.stdenv.hostPlatform.system}.default;
+
+    # Optional configuration
+    greeter-args = "";
+    settings.cursor = {
+      theme = "Adwaita";
+      size = 24;
+      package = pkgs.adwaita-icon-theme;
     };
   };
 
-  config = {
-    #    environment.systemPackages = [ pkgs.greetd.tuigreet ];
-    services.greetd = {
-      enable = true;
-
-      restart = true;
-      settings = {
-        default_session = {
-          command = "${pkgs.tuigreet}/bin/tuigreet --asterisks --time --time-format '%I:%M %p | %a • %h | %F' --cmd niri-session";
-          user = "michael";
-        };
-
-        initial_session = lib.mkIf cfg.enable {
-          command = "${pkgs.niri}/bin/niri-session";
-          user = "${cfg.username}";
-        };
-      };
-    };
-  };
 }

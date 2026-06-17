@@ -16,7 +16,8 @@
 
       # RDP
       remmina
-      rustdesk
+      # Temporarily don't build this because of OOM
+      # rustdesk
       ;
 
     inherit (pkgs.unstable)

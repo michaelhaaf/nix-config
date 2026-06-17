@@ -73,8 +73,11 @@ in
       # export NIXPKGS_ALLOW_UNFREE=1
       # export NIXPKGS_ALLOW_INSECURE=1
       # before nix-shell -p ventoy-full worked.
+      # TODO: find a way to add exceptions that sucks less e.g. librewolf
       permittedInsecurePackages = [
         "ventoy-1.1.10"
+        "librewolf-151.0.2-1"
+        "librewolf-unwrapped-151.0.2-1"
       ];
     };
   };

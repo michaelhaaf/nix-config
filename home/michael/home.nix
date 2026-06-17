@@ -21,7 +21,7 @@
   ]
   ++ map lib.custom.relativeToRoot [
     "home/common/optional/browsers/firefox.nix"
-    "home/common/optional/browsers/librewolf.nix"
+    # "home/common/optional/browsers/librewolf.nix"
     "home/common/optional/browsers/chromium.nix"
     "home/common/optional/browsers/brave.nix"
   ];

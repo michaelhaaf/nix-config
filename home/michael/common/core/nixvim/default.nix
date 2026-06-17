@@ -125,26 +125,26 @@
           ts_ls = {
             enable = true;
           };
-          yamlls = {
-            enable = true;
-          };
-          zuban = {
-            enable = true;
-            packageFallback = true;
-            config = {
-              cmd = [
-                "zuban"
-                "server"
-              ];
-              filetypes = [ "python" ];
-              root_markers = [
-                "pyproject.toml"
-              ];
-              settings = {
-                configurationPrefence = "filesystemFirst";
-              };
-            };
-          };
+          # yamlls = {
+          #   enable = true;
+          # };
+          # zuban = {
+          #   enable = true;
+          #   packageFallback = true;
+          #   config = {
+          #     cmd = [
+          #       "zuban"
+          #       "server"
+          #     ];
+          #     filetypes = [ "python" ];
+          #     root_markers = [
+          #       "pyproject.toml"
+          #     ];
+          #     settings = {
+          #       configurationPrefence = "filesystemFirst";
+          #     };
+          #   };
+          # };
         };
       };
 

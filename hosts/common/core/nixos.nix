@@ -35,4 +35,31 @@
 
   # TODO: Sysrq, choose a more precise value
   boot.kernel.sysctl."kernel.sysrq" = 1;
+
+  # CPU and RAM limiting for nix builds to prevent 100% CPU and/or OOM during builds and updates.
+  # Adapted from: https://discourse.nixos.org/t/nix-build-ate-my-ram/35752
+  # And: https://gitlab.com/yajoman/minfra/-/commit/b3602cb9e4e7140de439d8f863f8e8b428497d52
+  # DOCS: https://www.freedesktop.org/software/systemd/man/latest/systemd.resource-control.html
+  # DOCS: https://discourse.nixos.org/t/nix-build-ate-my-ram/35752?u=yajo
+  systemd = {
+    # Create a separate slice for nix-daemon that is
+    # memory-managed by the userspace systemd-oomd killer
+    slices."nix-daemon".sliceConfig = {
+      CPUAccounting = true;
+      CPUQuota = "50%";
+      MemoryAccounting = true; # Allow to control with systemd-cgtop
+      MemoryHigh = "50%";
+      MemoryMax = "75%";
+      MemorySwapMax = "50%";
+      MemoryZSwapMax = "50%";
+      ManagedOOMMemoryPressure = "kill";
+      ManagedOOMMemoryPressureLimit = "50%";
+    };
+    services."nix-daemon".serviceConfig.Slice = "nix-daemon.slice";
+    services.nixos-upgrade.serviceConfig.Slice = "nix-daemon.slice";
+
+    # If a kernel-level OOM event does occur anyway,
+    # strongly prefer killing nix-daemon child processes
+    services."nix-daemon".serviceConfig.OOMScoreAdjust = 1000;
+  };
 }
