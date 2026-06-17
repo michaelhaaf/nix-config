@@ -16,67 +16,67 @@
   #  nix shell nixpkgs#json-diff -c bash -c "json-diff <(jq -S . ~/.config/noctalia/settings.json) <(noctalia-shell ipc call state all | jq -S .settings)"
   programs.noctalia = {
     enable = true;
-    plugins = {
-      sources = [
-        {
-          enabled = true;
-          name = "Official Noctalia Plugins";
-          url = "https://github.com/noctalia-dev/noctalia-plugins";
-        }
-      ];
-      states = {
-        polkit-agent = {
-          enabled = true;
-          sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
-        };
-        tailscale = {
-          enabled = true;
-          sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
-        };
-        catwalk = {
-          enabled = true;
-          sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
-        };
-        keybind-cheatsheet = {
-          enabled = true;
-          sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
-        };
-        weekly-calendar = {
-          enabled = true;
-          sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
-        };
-        pomodoro = {
-          enabled = true;
-          sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
-        };
-        rss-feed = {
-          enabled = true;
-          sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
-        };
-        news = {
-          enabled = true;
-          sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
-        };
-        unicode-picker = {
-          enabled = true;
-          sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
-        };
-        neovim-session-provider = {
-          enabled = true;
-          sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
-          settings = {
-            sessionsDirectory = "~/.local/state/nvim/sessions";
-          };
-        };
-      };
-      version = 2;
-    };
-    pluginSettings = {
-      catwalk = {
-        minimumThreshold = 25;
-        hideBackground = true;
-      };
-    };
+    # plugins = {
+    #   sources = [
+    #     {
+    #       enabled = true;
+    #       name = "Official Noctalia Plugins";
+    #       url = "https://github.com/noctalia-dev/noctalia-plugins";
+    #     }
+    #   ];
+    #   states = {
+    #     polkit-agent = {
+    #       enabled = true;
+    #       sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
+    #     };
+    #     tailscale = {
+    #       enabled = true;
+    #       sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
+    #     };
+    #     catwalk = {
+    #       enabled = true;
+    #       sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
+    #     };
+    #     keybind-cheatsheet = {
+    #       enabled = true;
+    #       sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
+    #     };
+    #     weekly-calendar = {
+    #       enabled = true;
+    #       sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
+    #     };
+    #     pomodoro = {
+    #       enabled = true;
+    #       sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
+    #     };
+    #     rss-feed = {
+    #       enabled = true;
+    #       sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
+    #     };
+    #     news = {
+    #       enabled = true;
+    #       sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
+    #     };
+    #     unicode-picker = {
+    #       enabled = true;
+    #       sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
+    #     };
+    #     neovim-session-provider = {
+    #       enabled = true;
+    #       sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
+    #       settings = {
+    #         sessionsDirectory = "~/.local/state/nvim/sessions";
+    #       };
+    #     };
+    #   };
+    #   version = 2;
+    # };
+    # pluginSettings = {
+    #   catwalk = {
+    #     minimumThreshold = 25;
+    #     hideBackground = true;
+    #   };
+    # };
     settings = {
       appLauncher = {
         clipboardWatchImageCommand = "wl-paste --type image --watch cliphist store";

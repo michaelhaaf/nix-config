@@ -58,6 +58,7 @@
       # nix utilities
       nixfmt # command line formatter
       json-diff
+      hydra-check # check hydra for build status of a package
 
       # terminal graphics/image
       chafa
