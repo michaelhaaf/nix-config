@@ -69,8 +69,7 @@
       inputs.home-manager.follows = "home-manager";
     };
     noctalia = {
-      url = "github:noctalia-dev/noctalia/legacy-v4";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
+      url = "github:noctalia-dev/noctalia";
     };
     noctalia-greeter = {
       url = "github:noctalia-dev/noctalia-greeter";

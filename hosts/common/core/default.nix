@@ -114,6 +114,19 @@ in
         "ca-derivations"
         "pipe-operators"
       ];
+
+      builders-use-substitutes = true;
+      fallback = true;
+      substituters = [
+        "https://cache.nixos.org" # Official global cache
+        "https://nix-community.cachix.org" # Community packages
+      ];
+      extra-substituters = [
+        "https://noctalia.cachix.org"
+      ];
+      extra-trusted-public-keys = [
+        "noctalia.cachix.org-1:pCOR47nnMEo5thcxNDtzWpOxNFQsBRglJzxWPp3dkU4="
+      ];
     };
   };
 }

@@ -14,7 +14,7 @@
   };
 
   #  nix shell nixpkgs#json-diff -c bash -c "json-diff <(jq -S . ~/.config/noctalia/settings.json) <(noctalia-shell ipc call state all | jq -S .settings)"
-  programs.noctalia-shell = {
+  programs.noctalia = {
     enable = true;
     plugins = {
       sources = [
