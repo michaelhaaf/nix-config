@@ -26,6 +26,10 @@ in
       inherit (pkgs.unstable)
         xwayland-satellite # xwayland support
         fuzzel
+        swaylock-effects
+        swayidle
+        # Need to package this myself
+        # hyprsaver
         ;
     };
     file = {
