@@ -111,9 +111,9 @@
         };
         clock = {
           anchor = true;
-          format = "%A %d %B %H:%m:%S";
+          format = "%A %d %B %H:%M:%S";
           tooltip_format = "%c";
-          vertical_format = "%Hh%m";
+          vertical_format = "%Hh%M";
         };
         media = {
           hide_when_no_media = true;
