@@ -180,7 +180,7 @@
         expandtab = true;
 
         # ================ Folds ============================
-        foldlevel = "99"; # all folds are open when a file is opened
+        foldlevel = 99; # all folds are open when a file is opened
         foldmethod = "expr"; # fold based on expression
         foldexpr = "v:lua.vim.treesitter.foldexpr()"; # use treesitter for foldexpr
         foldtext = ""; # disable foldtext, folded line displayed normally.
