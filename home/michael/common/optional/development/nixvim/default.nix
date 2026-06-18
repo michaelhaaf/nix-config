@@ -180,9 +180,10 @@
         expandtab = true;
 
         # ================ Folds ============================
-        foldmethod = "indent"; # fold based on indent
-        foldnestmax = 3; # deepest fold is 3 levels
-        foldenable = false; # don't fold by default
+        foldlevel = "99"; # all folds are open when a file is opened
+        foldmethod = "expr"; # fold based on expression
+        foldexpr = "v:lua.vim.treesitter.foldexpr()"; # use treesitter for foldexpr
+        foldtext = ""; # disable foldtext, folded line displayed normally.
 
         # ================ Completion =======================
         wildmode = "list:longest,list:full"; # for tab completion in : command mode
