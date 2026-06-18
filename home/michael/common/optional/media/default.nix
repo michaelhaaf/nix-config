@@ -5,6 +5,7 @@
       vlc
       mpv
       ffmpeg
+      imagemagick
       jellyfin-desktop
       jellyfin-tui
       jellycli

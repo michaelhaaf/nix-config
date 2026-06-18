@@ -1,16 +1,16 @@
 {
   plugins.img-clip = {
     enable = true;
-    # TODO: need lazy loading provider (lz-n?)
-    # lazyLoad.settings.ft = [
-    #   "markdown"
-    #   "tex"
-    #   "typst"
-    # ];
+    lazyLoad.settings.ft = [
+      "markdown"
+      "tex"
+      "typst"
+    ];
 
     settings = {
       default = {
-        prompt_for_file_name = false;
+        dir_path = "assets";
+        relative_to_current_file = true;
         drag_and_drop = {
           enabled = true;
           insert_mode = true;
@@ -18,4 +18,14 @@
       };
     };
   };
+  keymaps = [
+    {
+      mode = [ "n" ];
+      key = "<leader>p";
+      action = "<cmd>PasteImage<CR>";
+      options = {
+        desc = "Paste image using img-clip";
+      };
+    }
+  ];
 }

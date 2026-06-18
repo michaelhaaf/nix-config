@@ -84,7 +84,7 @@
       key = "<leader><C-k>";
       action.__raw = "function() require('smart-splits').swap_buf_up() end";
       options = {
-        desc = "Increase Window Height";
+        desc = "Swap buffer up";
       };
     }
     {
@@ -92,7 +92,7 @@
       key = "<leader><C-j>";
       action.__raw = "function() require('smart-splits').swap_buf_down() end";
       options = {
-        desc = "Decrease Window Height";
+        desc = "Swap buffer down";
       };
     }
     {
@@ -100,7 +100,7 @@
       key = "<leader><C-h>";
       action.__raw = "function() require('smart-splits').swap_buf_left() end";
       options = {
-        desc = "Decrease Window Width";
+        desc = "Swap buffer left";
       };
     }
     {
@@ -108,7 +108,7 @@
       key = "<leader><C-l>";
       action.__raw = "function() require('smart-splits').swap_buf_right() end";
       options = {
-        desc = "Increase Window Height";
+        desc = "Swap buffer right";
       };
     }
 

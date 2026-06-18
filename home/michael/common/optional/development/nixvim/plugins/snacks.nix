@@ -14,6 +14,7 @@
       git.enabled = true;
       zen.enabled = true;
       input.enabled = true;
+      image.enabled = true;
       gitbrowse.enabled = true;
       scratch.enabled = true;
       quickfile.enabled = true;
