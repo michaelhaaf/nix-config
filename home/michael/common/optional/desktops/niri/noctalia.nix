@@ -13,237 +13,131 @@
     };
   };
 
-  #  nix shell nixpkgs#json-diff -c bash -c "json-diff <(jq -S . ~/.config/noctalia/settings.json) <(noctalia-shell ipc call state all | jq -S .settings)"
   programs.noctalia = {
     enable = true;
-    # systemd.enable = true;
-    # plugins = {
-    #   sources = [
-    #     {
-    #       enabled = true;
-    #       name = "Official Noctalia Plugins";
-    #       url = "https://github.com/noctalia-dev/noctalia-plugins";
-    #     }
-    #   ];
-    #   states = {
-    #     polkit-agent = {
-    #       enabled = true;
-    #       sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
-    #     };
-    #     tailscale = {
-    #       enabled = true;
-    #       sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
-    #     };
-    #     catwalk = {
-    #       enabled = true;
-    #       sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
-    #     };
-    #     keybind-cheatsheet = {
-    #       enabled = true;
-    #       sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
-    #     };
-    #     weekly-calendar = {
-    #       enabled = true;
-    #       sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
-    #     };
-    #     pomodoro = {
-    #       enabled = true;
-    #       sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
-    #     };
-    #     rss-feed = {
-    #       enabled = true;
-    #       sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
-    #     };
-    #     news = {
-    #       enabled = true;
-    #       sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
-    #     };
-    #     unicode-picker = {
-    #       enabled = true;
-    #       sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
-    #     };
-    #     neovim-session-provider = {
-    #       enabled = true;
-    #       sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
-    #       settings = {
-    #         sessionsDirectory = "~/.local/state/nvim/sessions";
-    #       };
-    #     };
-    #   };
-    #   version = 2;
-    # };
-    # pluginSettings = {
-    #   catwalk = {
-    #     minimumThreshold = 25;
-    #     hideBackground = true;
-    #   };
-    # };
     settings = {
-      appLauncher = {
-        clipboardWatchImageCommand = "wl-paste --type image --watch cliphist store";
-        clipboardWatchTextCommand = "wl-paste --type text --watch cliphist store";
-        enableClipPreview = true;
-        enableClipboardHistory = true;
-        terminalCommand = "ghostty -e";
+      backdrop = {
+        enabled = true;
+        blur_intensity = 0.5;
+        tint_intensity = 0.3;
       };
-      bar = {
-        density = "default";
-        barType = "framed";
-        position = "top";
-        showCapsule = false;
-        widgets = {
-          left = [
-            {
-              id = "Launcher";
-              colorizeSystemIcon = "none";
-              enableColorization = true;
-              useDistroLogo = true;
-            }
-            {
-              id = "Workspace";
-              hideUnoccupied = false;
-              emptyColor = "tertiary";
-              focusedColor = "secondary";
-              fontWeight = "semibold";
-              labelMode = "index+name";
-              occupiedColor = "tertiary";
-            }
-            {
-              id = "Taskbar";
-              colorizeIcons = true;
-              hideMode = "hidden";
-              maskTaskbarWidth = 40;
-              onlyActiveWorkspaces = true;
-              showPinnedApps = true;
-              showTitle = false;
-              smartWidth = true;
-              titleWidth = 120;
-            }
-            {
-              id = "ActiveWindow";
-              colorizeIcons = true;
-              hideMode = "hidden";
-              maxWidth = 145;
-              scrollingMode = "hover";
-              showIcon = true;
-              useFixedWidth = true;
-            }
-          ];
-          center = [
-            {
-              id = "Clock";
-              formatHorizontal = "HH:mm ddd MMM d";
-              formatVertical = "HH mm";
-              useMonospacedFont = true;
-              usePrimaryColor = true;
-            }
-          ];
-          right = [
-            {
-              id = "plugin:catwalk";
-              defaultSettings = {
-                hideBackground = false;
-                minimumThreshold = 10;
-              };
-            }
-            {
-              id = "plugin:tailscale";
-              defaultSettings = {
-                compactMode = false;
-              };
-            }
-            { id = "Network"; }
-            { id = "Volume"; }
-            {
-              alwaysShowPercentage = false;
-              id = "Battery";
-              warningThreshold = 30;
-            }
-          ];
+      default_session = {
+        # TODO: variables
+        command = "/run/current-system/sw/bin/noctalia-greeter-session --session Niri --user michael";
+        user = "michael";
+      };
+      dock = {
+        enabled = true;
+        background_opacity = 0.66;
+        active_monitor_only = true;
+        auto_hide = true;
+        reserve_space = false;
+        launcher_position = "start";
+      };
+      control_center = {
+        sidebar = "full";
+      };
+      idle = {
+        behavior_order = [ "screen-off" ];
+        behavior = {
+          screen-off = {
+            action = "screen_off";
+            enabled = true;
+            timeout = 600;
+          };
         };
       };
-      # colorSchemes.predefinedScheme = "Monochrome";
-      general = {
-        avatarImage = "/home/michael/.face";
-        radiusRatio = 0.2;
-        lockScreenCountdownDuration = 3000;
-        keybinds = {
-          keyUp = [
-            "Up"
-            "Ctrl+P"
-          ];
-          keyDown = [
-            "Down"
-            "Ctrl+N"
-          ];
-        };
+      keybinds = {
+        down = [ "Ctrl+n" ];
+        up = [ "Ctrl+p" ];
+        right = [ "Ctrl+t" ];
+        left = [ "Ctrl+d" ];
       };
       location = {
-        monthBeforeDay = true;
-        name = "Montreal, Canada";
+        auto_locate = true;
       };
-
-      hooks = {
+      nightlight = {
         enabled = true;
-        startup = "saveSettings";
+        force = true;
+      };
+      shell = {
+        # TODO: variable
+        avatar_path = "/home/michael/.face";
+        screen_time_enabled = true;
+        panel = {
+          launcher_session_search = true;
+          open_near_click_control_center = true;
+          session_placement = "centered";
+          wallpaper_placement = "centered";
+          transparency_mode = "glass";
+        };
+      };
+      bar = {
+        order = [ "main" ];
+        main = {
+          enabled = true;
+          position = "top";
+          reserve_space = true; # reserve compositor exclusive zone / push windows away
+          layer = "top"; # top | overlay; overlay appears above fullscreen apps
+          capsule = false;
+          radius = 0;
+          margin_edge = 0;
+          margin_ends = 0;
+          background_opacity = 0.66;
+          start = [
+            "launcher"
+            "workspaces"
+            "active_window"
+          ];
+          center = [ "clock" ];
+          end = [
+            "weather"
+            "media"
+            "notifications"
+            "network"
+            "volume"
+            "brightness"
+            "bluetooth"
+            "battery"
+            "session"
+          ];
+
+        };
+      };
+      widget = {
+        launcher = {
+          glyph = "menu-2";
+          custom_image_colorize = false;
+        };
+        clock = {
+          anchor = true;
+          format = "%A %d %B %H:%m:%S";
+          tooltip_format = "%c";
+          vertical_format = "%Hh%m";
+        };
+        media = {
+          hide_when_no_media = true;
+          title_scroll = "always";
+        };
+        network = {
+          show_label = false;
+        };
+        workspaces = {
+          display = "none";
+        };
+        active_window = {
+          capsule = true;
+        };
       };
 
-      desktopWidgets = {
-        enabled = true;
-        gridSnap = true;
-        overviewEnabled = true;
-        monitorWidgets = [
-          # {
-          #   name = "eDP-1";
-          #   widgets = [
-          #     {
-          #       hideMode = "visible";
-          #       id = "MediaPlayer";
-          #       roundedCorners = true;
-          #       scale = 1;
-          #       showAlbumArt = true;
-          #       showBackground = true;
-          #       showButtons = true;
-          #       showVisualizer = true;
-          #       visualizerType = "wave";
-          #       x = 1520;
-          #       y = 1000;
-          #     }
-          #     {
-          #       diskPath = "/";
-          #       id = "SystemStat";
-          #       layout = "bottom";
-          #       roundedCorners = true;
-          #       scale = 1;
-          #       showBackground = true;
-          #       statType = "CPU";
-          #       x = 1680;
-          #       y = 100;
-          #     }
-          #     {
-          #       id = "Weather";
-          #       roundedCorners = true;
-          #       scale = 1;
-          #       showBackground = true;
-          #       x = 1680;
-          #       y = 20;
-          #     }
-          #   ];
-          # }
-        ];
-
-      };
       wallpaper = {
+        enabled = true;
         directory = "/home/michael/media/pictures/wallpapers";
         # TODO: get from theme
-        fillColor = "#232136";
-        overviewEnabled = true;
-      };
-      sessionMenu = {
-        countdownDuration = 3000;
-      };
-      nightLight = {
-        enabled = true;
+        fill_color = "#232136";
+        fill_mode = "crop";
+        transition_on_startup = false;
+        edge_smoothness = 0.3;
       };
     };
   };
