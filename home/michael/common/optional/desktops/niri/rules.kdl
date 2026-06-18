@@ -124,9 +124,9 @@ window-rule {
     //may need to swap order of title and app-id for this one
     match title="^()$" app-id="^([Ff]irefox)"
     // specific app classes
-    match app-id=r#"^floating\.ghostty$"#
-    match app-id=r#"^floating\.thunar$"#
-    match app-id="dev.noctalia.Nocatlia.Settings"
+    match app-id=r#"^floating\.wezterm*"#
+    match app-id=r#"^floating\.thunar*"#
+    match app-id="dev.noctalia.Noctalia.Settings"
     // rules
     open-floating true
     default-column-width { fixed 1080; }

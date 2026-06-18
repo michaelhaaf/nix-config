@@ -1,6 +1,8 @@
-{ ... }:
 {
-  stylix.targets.ghostty.enable = true;
-  stylix.targets.kitty.enable = true;
-  stylix.targets.btop.enable = true;
+  stylix.targets = {
+    ghostty.enable = true;
+    wezterm.enable = true;
+    kitty.enable = true;
+    btop.enable = true;
+  };
 }

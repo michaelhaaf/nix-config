@@ -83,8 +83,8 @@ binds {
     Ctrl+Print hotkey-overlay-title="Screenshot (screen)" { screenshot-screen; }
     Alt+Print hotkey-overlay-title="Screenshot (window)" { screenshot-window; }
 
-    Super+Return hotkey-overlay-title="Spawn terminal" { spawn "ghostty"; }
-    Super+Shift+Return hotkey-overlay-title="Spawn terminal (floating)" { spawn "ghostty" "--class=floating.ghostty"; }
+    Super+Return hotkey-overlay-title="Spawn terminal" { spawn "wezterm"; }
+    Super+Shift+Return hotkey-overlay-title="Spawn terminal (floating)" { spawn "wezterm" "--class=floating.wezterm"; }
 
     Super+E hotkey-overlay-title="Spawn file explorer (floating)" { spawn "thunar" "--name=floating.thunar"; }
 
