@@ -18,8 +18,7 @@ overview {
 spawn-sh-at-startup "uwsm finalize NIRI_SOCKET"
 
 // TODO: use nix instead of hardcoded path
-spawn-at-startup "/home/michael/.nix-profile/bin/kanshi"
-spawn-at-startup "noctalia-shell"
+// spawn-at-startup "/home/michael/.nix-profile/bin/kanshi"
 spawn-at-startup "ghostty --gtk-single-instance=true --quit-after-last-window-closed=false --initial-window=false"
 
 hotkey-overlay { skip-at-startup; }
@@ -44,3 +43,5 @@ cursor {
     hide-when-typing
     hide-after-inactive-ms 5000
 }
+
+spawn-at-startup "noctalia"

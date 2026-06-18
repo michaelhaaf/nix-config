@@ -1,5 +1,5 @@
 layer-rule {
-  match namespace="^noctalia-overview*"
+  match namespace="^noctalia-backdrop*"
   place-within-backdrop true
 }
 
@@ -45,8 +45,37 @@ layout {
     }
 }
 
+/* Apps: blur them all without xray so it looks more realistic. */
 window-rule {
-    geometry-corner-radius 8
+    background-effect {
+        blur true
+        xray false
+    }
+}
+
+/*
+  Noctalia
+  Disable xray on all our surfaces so it looks more realistic.
+  Noctalia publishes blur regions automatically when ext-background-effects is available.
+*/
+layer-rule {
+  match namespace="^noctalia-(bar-[^\"]+|notification|dock|panel|attached-panel|osd)$"
+  background-effect {
+    xray false
+    // blur false
+  }
+}
+
+/* You can also fine-tune the blur effect globally. */
+blur {
+  passes 2        // more passes = stronger blur (default: 3)
+  offset 3.0      // sample distance per pass (default: 3.0)
+  noise 0.03      // grain overlay (default: 0.02)
+  saturation 1.0  // color saturation boost (default: 1.5)
+}
+
+window-rule {
+    geometry-corner-radius 20
     clip-to-geometry true
     focus-ring {
         off
@@ -97,8 +126,11 @@ window-rule {
     // specific app classes
     match app-id=r#"^floating\.ghostty$"#
     match app-id=r#"^floating\.thunar$"#
+    match app-id="dev.noctalia.Nocatlia.Settings"
     // rules
     open-floating true
+    default-column-width { fixed 1080; }
+    default-window-height { fixed 920; }
 }
 
 window-rule {
@@ -167,4 +199,9 @@ window-rule {
         active-color "#f38ba8"
         inactive-color "#7d0d2d"
     }
+}
+
+debug {
+    // Allows notifiaction actions and window activation from Noctalia
+    honor-xdg-activation-with-invalid-serial
 }
