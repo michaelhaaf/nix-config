@@ -174,9 +174,8 @@
         autoindent = true;
         cindent = true; # automatically indent braces
         smarttab = true;
-        shiftwidth = 2;
-        softtabstop = 0;
-        tabstop = 4;
+        shiftwidth = 4; # the number of spaces used for indentation
+        tabstop = 4; # the maximum number of spaces inserted when pressing <Tab>
         expandtab = true;
 
         # ================ Folds ============================
