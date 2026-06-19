@@ -128,6 +128,18 @@
         active_window = {
           capsule = true;
         };
+        weather = {
+          show_condition = false;
+        };
+        volume = {
+          show_condition = false;
+        };
+        brightness = {
+          show_condition = false;
+        };
+        battery = {
+          show_condition = false;
+        };
       };
 
       wallpaper = {
