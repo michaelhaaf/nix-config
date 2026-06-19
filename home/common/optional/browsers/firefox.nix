@@ -124,6 +124,9 @@ in
           "https://login.microsoftonline.com"
           "https://outlook.office.com"
           "https://outlook.live.com"
+
+          # misc
+          "https://methode-parici.com/"
         ];
       };
 
