@@ -16,7 +16,7 @@
       config.tab_bar_at_bottom = true
       config.use_fancy_tab_bar = false
 
-      config.window_background_opacity = 0.66
+      config.window_background_opacity = 0.80
 
       config.term = 'wezterm'
       config.window_padding = { left = 24, right = 24, top = 24, bottom = 24, }

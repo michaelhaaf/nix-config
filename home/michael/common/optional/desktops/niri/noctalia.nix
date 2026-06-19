@@ -1,8 +1,12 @@
-{ inputs, ... }:
+{ inputs, lib, ... }:
 {
   imports = [ inputs.noctalia.homeModules.default ];
 
-  stylix.targets.noctalia-shell.enable = true;
+  # TODO: real wall paper management
+  home.file."media/pictures/wallpapers" = {
+    recursive = true;
+    source = lib.custom.relativeToRoot "assets/wallpapers";
+  };
 
   services = {
     cliphist = {
@@ -16,6 +20,12 @@
   programs.noctalia = {
     enable = true;
     settings = {
+      theme = {
+        mode = "dark";
+        source = "wallpaper";
+        wallpaper_scheme = "m3-content";
+        builtin = "Catppuccin";
+      };
       backdrop = {
         enabled = true;
         blur_intensity = 0.5;
@@ -48,10 +58,22 @@
         };
       };
       keybinds = {
-        down = [ "Ctrl+n" ];
-        up = [ "Ctrl+p" ];
-        right = [ "Ctrl+t" ];
-        left = [ "Ctrl+d" ];
+        down = [
+          "Ctrl+n"
+          "Down"
+        ];
+        up = [
+          "Ctrl+p"
+          "Up"
+        ];
+        right = [
+          "Ctrl+t"
+          "Right"
+        ];
+        left = [
+          "Ctrl+d"
+          "Left"
+        ];
       };
       location = {
         auto_locate = true;
@@ -150,6 +172,7 @@
         fill_mode = "crop";
         transition_on_startup = false;
         edge_smoothness = 0.3;
+        automation.enabled = true;
       };
     };
   };
