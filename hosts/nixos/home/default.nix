@@ -135,9 +135,9 @@
     initrd = {
       systemd.enable = true;
       # Uncomment after first reboot
-      # postMountCommands = lib.mkAfter ''
-      #   zfs rollback -r rpool/local/root@blank
-      # '';
+      postMountCommands = lib.mkAfter ''
+        zfs rollback -r rpool/local/root@blank
+      '';
     };
     supportedFilesystems = [ "zfs" ];
     zfs.forceImportRoot = false;
