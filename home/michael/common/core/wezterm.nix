@@ -33,6 +33,16 @@
         { key = 'r', mods = 'SHIFT|CTRL', action = act.SplitHorizontal{ domain =  'CurrentPaneDomain' } },
       }
 
+      config.keys = {
+      -- search for things that look like git hashes
+      -- see https://wezterm.org/scrollback.html#configuring-saved-searches
+        {
+          key = 'H',
+          mods = 'SHIFT|CTRL',
+          action = wezterm.action.Search { Regex = '[a-f0-9]{6,}' },
+        },
+      }
+
       smart_splits.apply_to_config(config, {
         -- modifier keys to combine with direction_keys
         modifiers = {
