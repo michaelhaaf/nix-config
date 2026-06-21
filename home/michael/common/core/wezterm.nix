@@ -31,12 +31,9 @@
         { key = 'r', mods = 'ALT', action = act.SplitHorizontal{ domain =  'CurrentPaneDomain' } },
         { key = 'd', mods = 'SHIFT|CTRL', action = act.SplitVertical{ domain =  'CurrentPaneDomain' } },
         { key = 'r', mods = 'SHIFT|CTRL', action = act.SplitHorizontal{ domain =  'CurrentPaneDomain' } },
-      }
-
-      config.keys = {
-      -- search for things that look like git hashes
-      -- see https://wezterm.org/scrollback.html#configuring-saved-searches
         {
+          -- search for things that look like git hashes
+          -- see https://wezterm.org/scrollback.html#configuring-saved-searches
           key = 'H',
           mods = 'SHIFT|CTRL',
           action = wezterm.action.Search { Regex = '[a-f0-9]{6,}' },

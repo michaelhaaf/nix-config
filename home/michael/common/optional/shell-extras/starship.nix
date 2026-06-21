@@ -8,6 +8,7 @@
       enableBashIntegration = true;
       package = pkgs.unstable.starship;
       settings = {
+        command_timeout = 100;
         # palette = "catppuccin_pine";
         add_newline = false; # see starship.rc
         line_break.disabled = true;
