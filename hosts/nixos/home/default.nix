@@ -132,12 +132,24 @@
       };
       timeout = 3;
     };
-    initrd = {
-      systemd.enable = true;
-      # Uncomment after first reboot
-      postMountCommands = lib.mkAfter ''
-        zfs rollback -r rpool/local/root@blank
-      '';
+    # see https://github.com/saylesss88/my-flake/issues/2#issuecomment-4391082858
+    initrd.systemd = {
+      enable = true;
+      services.rollback = {
+        description = "Rollback ZFS root subvolume to a pristine state";
+        wantedBy = [ "initrd.target" ];
+
+        # Before mounting the system root (/sysroot) during the early boot process
+        before = [ "sysroot.mount" ];
+
+        unitConfig.DefaultDependencies = "no";
+        serviceConfig.Type = "oneshot";
+
+        # Uncomment after first reboot
+        script = ''
+          zfs rollback -r rpool/local/root@blank
+        '';
+      };
     };
     supportedFilesystems = [ "zfs" ];
     zfs.forceImportRoot = false;
