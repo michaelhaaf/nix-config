@@ -29,8 +29,8 @@
       config.keys = {
         { key = 'd', mods = 'ALT', action = act.SplitVertical{ domain =  'CurrentPaneDomain' } },
         { key = 'r', mods = 'ALT', action = act.SplitHorizontal{ domain =  'CurrentPaneDomain' } },
-        { key = 'd', mods = 'SHIFT|CTRL', action = act.SplitVertical{ domain =  'CurrentPaneDomain' } },
-        { key = 'r', mods = 'SHIFT|CTRL', action = act.SplitHorizontal{ domain =  'CurrentPaneDomain' } },
+        { key = 'd', mods = 'SHIFT|CTRL', action = act.ScrollByPage(0.5) },
+        { key = 'u', mods = 'SHIFT|CTRL', action = act.ScrollByPage(-0.5) },
         {
           -- search for things that look like git hashes
           -- see https://wezterm.org/scrollback.html#configuring-saved-searches
