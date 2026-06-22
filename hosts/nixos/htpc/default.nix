@@ -56,13 +56,15 @@
       #
       # ========== Optional Configs ==========
       #
+      "hosts/common/optional/desktops/wayland.nix" # common wayland options
+      "hosts/common/optional/desktops/kde.nix" # KDE desktop
+      "hosts/common/optional/desktops/plasma-bigscreen.nix" # Plasma for TV
+
       "hosts/common/optional/services/openssh.nix" # allow remote SSH access
       "hosts/common/optional/services/bluetooth.nix"
       "hosts/common/optional/services/tailscale.nix"
 
       "hosts/common/optional/audio.nix" # pipewire and cli controls
-      "hosts/common/optional/plasma.nix" # KDE desktop
-      "hosts/common/optional/wayland.nix" # common wayland options
       "hosts/common/optional/wifi.nix" # common wifi options
       "hosts/common/optional/gaming.nix"
       "hosts/common/optional/stylix.nix"

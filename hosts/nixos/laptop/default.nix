@@ -47,6 +47,7 @@
       # ========== Optional Configs ==========
       #
       "hosts/common/optional/desktops/niri.nix"
+      "hosts/common/optional/desktops/wayland.nix" # common wayland options
 
       "hosts/common/optional/services/greetd.nix" # display manager
       "hosts/common/optional/services/printing.nix" # CUPS
@@ -62,7 +63,6 @@
       "hosts/common/optional/plymouth.nix" # fancy boot screen
       "hosts/common/optional/thunar.nix" # file manager
       "hosts/common/optional/audio.nix" # pipewire and cli controls
-      "hosts/common/optional/wayland.nix" # common wayland options
       "hosts/common/optional/wifi.nix" # common wifi options
       "hosts/common/optional/gaming.nix" # steam and gamemode and stuff
       "hosts/common/optional/wine.nix" # run windows applications
