@@ -15,7 +15,7 @@
   ];
   boot.kernelModules = [ "vfio-pci" ];
 
-  # Enable yubikey direction into a QEMU image https://github.com/NixOS/nixpkgs/issues/39618
+  # see https://github.com/NixOS/nixpkgs/issues/39618
   virtualisation.spiceUSBRedirection.enable = true;
 
   virtualisation.libvirtd = {

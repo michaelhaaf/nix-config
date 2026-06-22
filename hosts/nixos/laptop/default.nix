@@ -72,8 +72,6 @@
       "hosts/common/optional/stylix.nix"
       "hosts/common/optional/nix-ld.nix"
       "hosts/common/optional/appimage.nix"
-
-      # "hosts/common/optional/yubikey.nix" # yubikey related packages and configs
     ])
   ];
 

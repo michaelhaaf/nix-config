@@ -83,8 +83,6 @@
     users = [
       "michael"
     ];
-    # TODO: set up yubikey
-    # useYubikey = lib.mkForce true;
     # TODO: see if gpu/monitor support HDR
     # hdr = lib.mkForce true;
     persistFolder = "/persist";

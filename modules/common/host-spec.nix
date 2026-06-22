@@ -140,11 +140,6 @@
           default = false;
           description = "Used to indicate a host that is darwin";
         };
-        useYubikey = lib.mkOption {
-          type = lib.types.bool;
-          default = false;
-          description = "Used to indicate if the host uses a yubikey";
-        };
         voiceCoding = lib.mkOption {
           type = lib.types.bool;
           default = false;

@@ -22,9 +22,6 @@
       config.lib.file.mkOutOfStoreSymlink "/mnt/c/Program Files/Neovim/bin/win32yank.exe";
   };
 
-  # services.yubikey-touch-detector.enable = true;
-  # services.yubikey-touch-detector.notificationSound = true;
-
   programs.nixvim = {
     extraConfigLua = ''
       vim.g.clipboard = {
