@@ -31,6 +31,10 @@
         { key = 'r', mods = 'ALT', action = act.SplitHorizontal{ domain =  'CurrentPaneDomain' } },
         { key = 'd', mods = 'SHIFT|CTRL', action = act.ScrollByPage(0.5) },
         { key = 'u', mods = 'SHIFT|CTRL', action = act.ScrollByPage(-0.5) },
+        { key = 'j', mods = 'SHIFT|CTRL', action = act.ScrollByLine(1) },
+        { key = 'k', mods = 'SHIFT|CTRL', action = act.ScrollByLine(-1) },
+        { key = 'l', mods = 'SHIFT|CTRL', action = act.SendKey{ key = 'l', mods = 'CTRL' } },
+        { key = 'd', mods = 'CTRL|ALT', action = act.ShowDebugOverlay },
         {
           -- search for things that look like git hashes
           -- see https://wezterm.org/scrollback.html#configuring-saved-searches
