@@ -56,44 +56,64 @@
     users = [
       "michael"
     ];
-    # TODO: see if gpu/monitor support HDR
-    # hdr = lib.mkForce true;
     persistFolder = "/persist";
   };
 
   networking = {
     networkmanager.enable = true;
     enableIPv6 = false;
-    # TODO:
-    hostId = "fcb8db9f";
+    hostId = "763a41a9";
   };
 
   # Firmware update
   services.fwupd.enable = true;
 
   boot = {
-    loader = {
-      systemd-boot = {
-        enable = true;
-        # When using plymouth, initrd can expand by a lot each time, so limit how many we keep around
-        configurationLimit = lib.mkDefault 10;
-      };
-      efi = {
-        efiSysMountPoint = "/boot/efi";
-        canTouchEfiVariables = true;
-      };
-      timeout = 3;
-    };
-    initrd = {
-      systemd.enable = true;
-      # Uncomment after first reboot
-      # postMountCommands = lib.mkAfter ''
-      #   zfs rollback -r rpool/local/root@blank
-      # '';
-    };
     supportedFilesystems = [ "zfs" ];
     zfs.forceImportRoot = false;
+    loader = {
+      grub = {
+        enable = true;
+        efiSupport = true;
+        device = "nodev";
+        copyKernels = true;
+        mirroredBoots = [
+          {
+            path = "/boot";
+            devices = [ "/dev/disk/by-uuid/4A60-0A0F" ];
+          }
+          {
+            path = "/boot-mirror";
+            devices = [ "/dev/disk/by-uuid/4A60-6400" ];
+          }
+        ];
+      };
+      efi = {
+        canTouchEfiVariables = true;
+      };
+    };
+    # Uncomment after first reboot
+    initrd.systemd = {
+      enable = true;
+      services.rollback = {
+        description = "Rollback ZFS root subvolume to a pristine state";
+        wantedBy = [ "initrd.target" ];
+
+        # Before mounting the system root (/sysroot) during the early boot process
+        before = [ "sysroot.mount" ];
+
+        unitConfig.DefaultDependencies = "no";
+        serviceConfig.Type = "oneshot";
+
+        script = ''
+          zfs rollback -r rpool/local/root@blank
+        '';
+      };
+    };
   };
+
+  filesystems."/boot".options = [ "nofail" ];
+  filesystems."/boot-mirror".options = [ "nofail" ];
 
   hardware = {
     graphics = {
