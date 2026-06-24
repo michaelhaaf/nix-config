@@ -3,6 +3,30 @@
   ...
 }:
 {
+  sops.secrets = {
+    "sonarr/api_key" = { };
+    "sonarr/password" = { };
+    "radarr/api_key" = { };
+    "radarr/password" = { };
+    "lidarr/api_key" = { };
+    "lidarr/password" = { };
+    "prowlarr/api_key" = { };
+    "prowlarr/password" = { };
+    "indexer-api-keys/DrunkenSlug" = { };
+    "indexer-api-keys/NZBFinder" = { };
+    "indexer-api-keys/NzbPlanet" = { };
+    "jellyfin/admin_password" = { };
+    "seerr/api_key" = { };
+    "sabnzbd/api_key" = { };
+    "sabnzbd/nzb_key" = { };
+    "sabnzbd/username" = { };
+    "sabnzbd/password" = { };
+    "usenet/eweka/username" = { };
+    "usenet/eweka/password" = { };
+    "usenet/newsgroupdirect/username" = { };
+    "usenet/newsgroupdirect/password" = { };
+  };
+
   nixflix = {
     enable = true;
 
