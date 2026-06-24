@@ -9,12 +9,6 @@
   ];
 
   sops.secrets = {
-    "sonarr/api_key" = { };
-    "sonarr/password" = { };
-    "radarr/api_key" = { };
-    "radarr/password" = { };
-    "lidarr/api_key" = { };
-    "lidarr/password" = { };
     "prowlarr/api_key" = { };
     "prowlarr/password" = { };
     "indexer-api-keys/DrunkenSlug" = { };
@@ -32,6 +26,7 @@
     "usenet/newsgroupdirect/username" = { };
     "usenet/newsgroupdirect/password" = { };
     "usenet/newsgroupdirect/server" = { };
+    "qbittorrent/password" = { };
   };
 
   nixflix = {
@@ -58,27 +53,19 @@
     # TV Shows
     sonarr = {
       enable = true;
-      config = {
-        apiKey = {
-          _secret = config.sops.secrets."sonarr/api_key".path;
-        };
-        hostConfig.password = {
-          _secret = config.sops.secrets."sonarr/password".path;
-        };
-      };
+    };
+    sonarr-anime = {
+      enable = true;
     };
 
     # Movies
     radarr = {
       enable = true;
-      config = {
-        apiKey = {
-          _secret = config.sops.secrets."radarr/api_key".path;
-        };
-        hostConfig.password = {
-          _secret = config.sops.secrets."radarr/password".path;
-        };
-      };
+    };
+
+    # Music
+    lidarr = {
+      enable = true;
     };
 
     # Synchronizes Sonarr and Radarr
@@ -89,28 +76,10 @@
     # Indexer management
     prowlarr = {
       enable = true;
-      config = {
-        apiKey = {
-          _secret = config.sops.secrets."prowlarr/api_key".path;
-        };
-        hostConfig.password = {
-          _secret = config.sops.secrets."prowlarr/password".path;
-        };
-        indexers = [
-          {
-            name = "DrunkenSlug";
-            apiKey._secret = config.sops.secrets."indexer-api-keys/DrunkenSlug".path;
-          }
-          {
-            name = "NZBFinder";
-            apiKey._secret = config.sops.secrets."indexer-api-keys/NZBFinder".path;
-          }
-          {
-            name = "NzbPlanet";
-            apiKey._secret = config.sops.secrets."indexer-api-keys/NzbPlanet".path;
-          }
-        ];
-      };
+    };
+
+    downloadarr = {
+      enable = true;
     };
 
     usenetClients.sabnzbd = {
@@ -159,13 +128,22 @@
         password = {
           _secret = config.sops.secrets."jellyfin/admin_password".path;
         };
+        apiKey._secret = config.sops.secrets."jellyfin/api_key".path;
       };
     };
 
     # Request management
-    seer = {
+    seerr = {
       enable = true;
       apiKey._secret = config.sops.secrets."seerr/api_key".path;
+    };
+
+    torrentClients = {
+      qbittorrent = {
+        enable = true;
+        password._secret = config.sops.secrets."qbittorrent/password".path;
+      };
+
     };
 
     # Wireguard
