@@ -9,8 +9,12 @@
   ];
 
   sops.secrets = {
-    "prowlarr/api_key" = { };
-    "prowlarr/password" = { };
+    "sonarr/api_key" = { };
+    "sonarr/password" = { };
+    "radarr/api_key" = { };
+    "radarr/password" = { };
+    "lidarr/api_key" = { };
+    "lidarr/password" = { };
     "indexer-api-keys/DrunkenSlug" = { };
     "indexer-api-keys/NZBFinder" = { };
     "indexer-api-keys/NzbPlanet" = { };
@@ -53,19 +57,34 @@
     # TV Shows
     sonarr = {
       enable = true;
-    };
-    sonarr-anime = {
-      enable = true;
+      config = {
+        apiKey._secret = config.sops.secrets."sonarr/api_key".path;
+        hostConfig = {
+          password._secret = config.sops.secrets."sonarr/password".path;
+        };
+      };
     };
 
     # Movies
     radarr = {
       enable = true;
+      config = {
+        apiKey._secret = config.sops.secrets."radarr/api_key".path;
+        hostConfig = {
+          password._secret = config.sops.secrets."radarr/password".path;
+        };
+      };
     };
 
     # Music
     lidarr = {
       enable = true;
+      config = {
+        apiKey._secret = config.sops.secrets."lidarr/api_key".path;
+        hostConfig = {
+          password._secret = config.sops.secrets."lidarr/password".path;
+        };
+      };
     };
 
     # Synchronizes Sonarr and Radarr
@@ -76,6 +95,12 @@
     # Indexer management
     prowlarr = {
       enable = true;
+      config = {
+        apiKey._secret = config.sops.secrets."prowlarr/api_key".path;
+        hostConfig = {
+          password._secret = config.sops.secrets."prowlarr/password".path;
+        };
+      };
     };
 
     downloadarr = {
