@@ -43,6 +43,7 @@
       #
 
       "hosts/common/optional/services/tailscale.nix"
+      "hosts/common/optional/nixflix.nix"
     ])
 
   ];

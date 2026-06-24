@@ -5,6 +5,9 @@
       # Device imaging
       rpi-imager
 
+      # E-book client
+      calibre
+
       # Productivity
       drawio
       libreoffice

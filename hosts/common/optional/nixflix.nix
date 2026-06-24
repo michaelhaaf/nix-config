@@ -140,11 +140,12 @@
     };
 
     # Wireguard
-    vpn = {
-      enable = true;
-      wgConfFile = config.sops.secrets."wireguard/conf".path;
-      accessibleFrom = [ "192.168.2.0/24" ];
-    };
+    # TODO: configure a wireguard instace with a conf path
+    # vpn = {
+    #   enable = true;
+    #   wgConfFile = config.sops.secrets."wireguard/conf".path;
+    #   accessibleFrom = [ "192.168.2.0/24" ];
+    # };
 
   };
 }
