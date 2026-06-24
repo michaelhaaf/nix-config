@@ -42,6 +42,7 @@
       # ========== Optional Configs ==========
       #
 
+      "hosts/common/optional/services/tailscale.nix"
     ])
 
   ];
@@ -68,9 +69,15 @@
   # Firmware update
   services.fwupd.enable = true;
 
+  # Automatic scrubbing
+  services.zfs.autoScrub.enable = true;
+
   boot = {
     supportedFilesystems = [ "zfs" ];
-    zfs.forceImportRoot = false;
+    zfs = {
+      forceImportRoot = false;
+      extraPools = [ "tank" ];
+    };
     loader = {
       grub = {
         enable = true;

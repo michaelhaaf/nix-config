@@ -63,6 +63,11 @@
     fsType = "zfs";
   };
 
+  fileSystems."/data" = {
+    device = "/dev/disk/by-uuid/490fb47d-4c42-49ce-a5ea-991354ff194b";
+    fsType = "xfs;";
+  };
+
   swapDevices = [ ];
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
