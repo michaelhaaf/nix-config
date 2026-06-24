@@ -84,7 +84,6 @@
     # Synchronizes Sonarr and Radarr
     recyclarr = {
       enable = true;
-      cleanupUnmanagedProfiles = true;
     };
 
     # Indexer management
@@ -114,8 +113,7 @@
       };
     };
 
-    # Usenet downloader
-    sabnzbd = {
+    usenetClients.sabnzbd = {
       enable = true;
       settings = {
         misc = {
