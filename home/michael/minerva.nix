@@ -6,6 +6,7 @@
     #
     common/core
 
+    common/optional/sops.nix
   ];
 
 }

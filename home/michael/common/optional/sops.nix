@@ -5,7 +5,7 @@
   ...
 }:
 let
-  sopsFolder = (builtins.toString inputs.nix-secrets) + "/sops";
+  sopsFolder = (toString inputs.nix-secrets) + "/sops";
   homeDirectory = config.home.homeDirectory;
 in
 {
