@@ -70,15 +70,13 @@ Because this repo relies on a private `nix-secrets` repository input as a flake 
        boot.loader.efi.canTouchEfiVariables = true;
        ```
 
-    2. Uncomment this line and replace `nixos` with your desired host name:
+    1. Uncomment this line and replace `nixos` with your desired host name:
 
        ```nix
        # networking.hostname = "nixos";
        ```
 
-       This step isn't technically required but will make connected to the machine faster if you have aliases already setup.
-
-    3. Delete or comment out the following lines if the are present.
+    1. Delete or comment out the following lines if the are present.
 
        ```nix
        # services.xserver.enable = true;
@@ -88,20 +86,11 @@ Because this repo relies on a private `nix-secrets` repository input as a flake 
        # services.xserver.desktopManager.gnome.enable = true;
        ```
 
-    4. Uncomment the `users.users.alice` section and create a basic use. For example:
+    1. Uncomment the `users.users.alice` section and create a basic user. For example:
 
-       ```nix
-       #users.users.ta := {
-         #isNormalUser = true;
-         #extraGroups = [ "wheel" ];
-         #initialPassword = "temp";
-       #};
-       #users.mutableUsers = true;
-       ```
+    1. Uncomment `services.openssh.enable = true`
 
-    5. Uncomment `services.openssh.enable = true`
-
-    6. At the end of the file, but prior to the final `}`, add the following line:
+    1. At the end of the file, but prior to the final `}`, add the following line:
 
        `nix.settings.experimental-features = [ "nix-command" "flakes" ];`
 
@@ -177,53 +166,12 @@ Because this repo relies on a private `nix-secrets` repository input as a flake 
 
 1. Commit and push the changes to `nix-secrets` so they will be retrieved when the flake is built on the new host.
 
-1. Before we build the flake and home-manager confgs on the new host, we need to ensure that it can access the private `nix-secrets` repo. From a system with the required priv/pub key-pair, cp the keys to the newhost:
-
-    ```bash
-    $ scp ~/.ssh/key_name* user@0.0.0.0:.ssh/
-    ```
-
 ### Back on the new host
-
-1. Back on the new hosts, create a `~/.ssh/config` so the correct keys are used.
-
-    ```ssh
-    ~/.ssh/config
-    ------------------------------
-    Host gitlab.com github.com
-      IdentitiesOnly yes
-      IdentityFile ~/.ssh/id_manu
-
-    Host *
-      ForwardAgent no
-      Compression no
-      ServerAliveInterval 0
-      ServerAliveCountMax 3
-      HashKnownHosts no
-      UserKnownHostsFile ~/.ssh/known_hosts
-      ControlMaster no
-      ControlPath ~/.ssh/master-%r@%n:%p
-      ControlPersist no
-    ```
 
 1. Since we've updated nix-secrets, we'll have to update the flake lock file to ensure that the latest revision is retrieved.
 
-    ```bash
-    $ nix flake lock --update-input nix-secrets
-    warning: Git tree '/home/ta/src/nix-config' is dirty
-    Enter passphrase for key '/home/ta/.ssh/id_manu':
-    warning: updating lock file '/home/ta/src/nix-config/flake.lock':
-    • Updated input 'nix-secrets':
-     'git+ssh://git@gitlab.com/emergentmind/nix-secrets.git?ref=main&rev=aa0165aff5f74d367b523cc27dbd028b0251c30d&shallow=1' (2024-02-09)
-    → 'git+ssh://git@gitlab.com/emergentmind/nix-secrets.git?ref=main&rev=2ef287a53f19be75a4ff1f5ba28595686d4b5cbb&shallow=1' (2024-02-13)
-    warning: Git tree '/home/ta/src/nix-config' is dirty
-    ```
-
-    Enter the passphrase when prompted.
-
-1. Copy the generated hardware config from its default location to the nix-config location:
-
-    `$ cp /etc/nixos/hardware-configuration.nix ~/src/nix-config/hosts/NEWHOSTNAME/hardware-configuration.nix`
+1. Copy the generated hardware config from its default location to the nix-config
+   location.
 
 1. Build and switch to the flake:
 
