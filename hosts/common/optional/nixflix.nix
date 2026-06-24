@@ -23,8 +23,9 @@
     "sabnzbd/password" = { };
     "usenet/eweka/username" = { };
     "usenet/eweka/password" = { };
+    "usenet/eweka/server" = { };
     "usenet/newsgroupdirect/username" = { };
-    "usenet/newsgroupdirect/password" = { };
+    "usenet/newsgroupdirect/server" = { };
   };
 
   nixflix = {
