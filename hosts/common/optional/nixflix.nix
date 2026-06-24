@@ -15,10 +15,13 @@
     "radarr/password" = { };
     "lidarr/api_key" = { };
     "lidarr/password" = { };
+    "prowlarr/api_key" = { };
+    "prowlarr/password" = { };
     "indexer-api-keys/DrunkenSlug" = { };
     "indexer-api-keys/NZBFinder" = { };
     "indexer-api-keys/NzbPlanet" = { };
     "jellyfin/admin_password" = { };
+    "jellyfin/api_key" = { };
     "seerr/api_key" = { };
     "sabnzbd/api_key" = { };
     "sabnzbd/nzb_key" = { };
@@ -147,13 +150,13 @@
     # Media streaming, automatic library configuration
     jellyfin = {
       enable = true;
+      apiKey._secret = config.sops.secrets."jellyfin/api_key".path;
       users.admin = {
         mutable = false;
         policy.isAdministrator = true;
         password = {
           _secret = config.sops.secrets."jellyfin/admin_password".path;
         };
-        apiKey._secret = config.sops.secrets."jellyfin/api_key".path;
       };
     };
 
