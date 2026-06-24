@@ -112,8 +112,8 @@
     };
   };
 
-  filesystems."/boot".options = [ "nofail" ];
-  filesystems."/boot-mirror".options = [ "nofail" ];
+  fileSystems."/boot".options = [ "nofail" ];
+  fileSystems."/boot-mirror".options = [ "nofail" ];
 
   hardware = {
     graphics = {
