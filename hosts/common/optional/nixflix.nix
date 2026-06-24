@@ -1,8 +1,13 @@
 {
   config,
+  inputs,
   ...
 }:
 {
+  imports = [
+    inputs.nixflix.nixosModules.default
+  ];
+
   sops.secrets = {
     "sonarr/api_key" = { };
     "sonarr/password" = { };
