@@ -110,42 +110,42 @@
       enable = true;
     };
 
-    usenetClients.sabnzbd = {
-      enable = true;
-      settings = {
-        misc = {
-          api_key._secret = config.sops.secrets."sabnzbd/api_key".path;
-          nzb_key._secret = config.sops.secrets."sabnzbd/nzb_key".path;
-          username._secret = config.sops.secrets."sabnzbd/username".path;
-          password._secret = config.sops.secrets."sabnzbd/password".path;
-        };
-        servers = [
-          {
-            name = "Eweka";
-            host = config.sops.secrets."usenet/eweka/server".path;
-            port = 563;
-            username._secret = config.sops.secrets."usenet/eweka/username".path;
-            password._secret = config.sops.secrets."usenet/eweka/password".path;
-            connections = 20;
-            ssl = true;
-            priority = 0;
-            retention = 3000;
-          }
-          {
-            name = "NewsgroupDirect";
-            host = config.sops.secrets."usenet/newsgroupdirect/server".path;
-            port = 563;
-            username._secret = config.sops.secrets."usenet/newsgroupdirect/username".path;
-            password._secret = config.sops.secrets."usenet/newsgroupdirect/password".path;
-            connections = 10;
-            ssl = true;
-            priority = 1;
-            optional = true;
-            backup = true;
-          }
-        ];
-      };
-    };
+    # usenetClients.sabnzbd = {
+    #   enable = true;
+    #   settings = {
+    #     misc = {
+    #       api_key._secret = config.sops.secrets."sabnzbd/api_key".path;
+    #       nzb_key._secret = config.sops.secrets."sabnzbd/nzb_key".path;
+    #       username._secret = config.sops.secrets."sabnzbd/username".path;
+    #       password._secret = config.sops.secrets."sabnzbd/password".path;
+    #     };
+    #     servers = [
+    #       {
+    #         name = "Eweka";
+    #         host = config.sops.secrets."usenet/eweka/server".path;
+    #         port = 563;
+    #         username._secret = config.sops.secrets."usenet/eweka/username".path;
+    #         password._secret = config.sops.secrets."usenet/eweka/password".path;
+    #         connections = 20;
+    #         ssl = true;
+    #         priority = 0;
+    #         retention = 3000;
+    #       }
+    #       {
+    #         name = "NewsgroupDirect";
+    #         host = config.sops.secrets."usenet/newsgroupdirect/server".path;
+    #         port = 563;
+    #         username._secret = config.sops.secrets."usenet/newsgroupdirect/username".path;
+    #         password._secret = config.sops.secrets."usenet/newsgroupdirect/password".path;
+    #         connections = 10;
+    #         ssl = true;
+    #         priority = 1;
+    #         optional = true;
+    #         backup = true;
+    #       }
+    #     ];
+    #   };
+    # };
 
     # Media streaming, automatic library configuration
     jellyfin = {
@@ -161,18 +161,17 @@
     };
 
     # Request management
-    seerr = {
-      enable = true;
-      apiKey._secret = config.sops.secrets."seerr/api_key".path;
-    };
+    # seerr = {
+    #   enable = true;
+    #   apiKey._secret = config.sops.secrets."seerr/api_key".path;
+    # };
 
-    torrentClients = {
-      qbittorrent = {
-        enable = true;
-        password._secret = config.sops.secrets."qbittorrent/password".path;
-      };
-
-    };
+    # torrentClients = {
+    #   qbittorrent = {
+    #     enable = true;
+    #     password._secret = config.sops.secrets."qbittorrent/password".path;
+    #   };
+    # };
 
     # Wireguard
     # TODO: configure a wireguard instace with a conf path
