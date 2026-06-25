@@ -65,7 +65,7 @@
 
   fileSystems."/data" = {
     device = "/dev/disk/by-uuid/490fb47d-4c42-49ce-a5ea-991354ff194b";
-    fsType = "xfs;";
+    fsType = "xfs";
   };
 
   swapDevices = [ ];
