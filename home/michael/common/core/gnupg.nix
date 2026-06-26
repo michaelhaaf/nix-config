@@ -3,7 +3,11 @@
   ...
 }:
 {
-  # TODO: import secret keys using sops
+  # TODO: configure Agent Forwarding:
+  # - client machines: get the path to the agent-socket,
+  #                    add it to ~/.ssh/config RemoteForward
+  # - sshd servers: add StreamLocalBindUnlink yes argument to sshd config
+  # See https://wiki.gnupg.org/AgentForwarding
 
   programs.gpg = {
     enable = true;

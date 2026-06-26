@@ -20,6 +20,8 @@
       # RDP
       remmina
       rustdesk
+
+      yt-dlp
       ;
 
     inherit (pkgs.unstable)
