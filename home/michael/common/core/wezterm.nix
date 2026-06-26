@@ -29,6 +29,10 @@
       config.keys = {
         { key = 'd', mods = 'ALT', action = act.SplitVertical{ domain =  'CurrentPaneDomain' } },
         { key = 'r', mods = 'ALT', action = act.SplitHorizontal{ domain =  'CurrentPaneDomain' } },
+        { key = 'b', mods = 'ALT', action = act.RotatePanes 'CounterClockwise' },
+        { key = 'n', mods = 'ALT', action = act.RotatePanes 'Clockwise' },
+        { key = 'p', mods = 'ALT', action = act.PaneSelect },
+        { key = 's', mods = 'ALT', action = act.PaneSelect { mode = 'SwapWithActive' } },
         { key = 'd', mods = 'SHIFT|CTRL', action = act.ScrollByPage(0.5) },
         { key = 'u', mods = 'SHIFT|CTRL', action = act.ScrollByPage(-0.5) },
         { key = 'j', mods = 'SHIFT|CTRL', action = act.ScrollByLine(1) },
