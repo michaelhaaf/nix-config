@@ -30,7 +30,7 @@
       enableFzfFd = true;
       enableFzfRg = true;
       enableFzfRga = true;
-      enableFzfGit = true;
+      enableFzfGit = false;
       fileWidgetOptions = [
         "--height 60%"
         "--border sharp"

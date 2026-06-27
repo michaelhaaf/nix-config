@@ -1,4 +1,6 @@
 {
+  # required for remote-nvim
+  plugins.telescope.enable = true;
   plugins.remote-nvim = {
     enable = true;
 
