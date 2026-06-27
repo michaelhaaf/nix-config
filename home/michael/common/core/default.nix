@@ -80,7 +80,7 @@
       unzip # zip extraction
       unrar # rar extraction
       vim
-      nvim
+      neovim
       wget
       wordnet # lexical database
       wordlists # unix list of words
