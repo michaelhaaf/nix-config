@@ -66,6 +66,11 @@
       imv
       timg
 
+      # document procesors
+      mupdf
+      ghostscript
+      mermaid-cli
+
       pciutils
       pfetch # system info
       pre-commit # git hooks
@@ -80,12 +85,10 @@
       unzip # zip extraction
       unrar # rar extraction
       vim
-      neovim
       wget
       wordnet # lexical database
       wordlists # unix list of words
       zathura # pdf reader
-      mupdf
       zip
       ;
   };
