@@ -34,7 +34,7 @@
     "usenet/newsgroupdirect/password" = { };
     "usenet/newsgroupdirect/server" = { };
     "qbittorrent/password" = { };
-    "wireguard-configs/protonvpn-homelab-confinement" = { };
+    "wireguard-confs/protonvpn-homelab-confinement" = { };
   };
 
   nixflix = {
@@ -55,7 +55,9 @@
     nginx = {
       enable = true;
       addHostsEntries = true;
-      forceSSL = true;
+
+      # TODO: jellyfin needs a real certificate or something
+      # forceSSL = true;
 
       # TODO: You have to configure security.acme.certs.$${nixflix.nginx.domain} in order to use this.
       # enableACME = true;
@@ -180,7 +182,7 @@
 
     vpn = {
       enable = true;
-      wgConfFile = config.sops.secrets."wireguard-confgs/protonvpn-homelab-confinement".path;
+      wgConfFile = config.sops.secrets."wireguard-confs/protonvpn-homelab-confinement".path;
       accessibleFrom = [ "192.168.2.0/24" ];
     };
 

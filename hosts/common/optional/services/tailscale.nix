@@ -1,23 +1,27 @@
-{ config, pkgs, ... }:
+{
+  inputs,
+  config,
+  pkgs,
+  ...
+}:
 let
-  user = config.hostSpec.user;
-  tailscale_auth_key =
-    if config.hostSpec.isAdmin then
-      config.sops."tailscale/admin-oauth-secret".path
-    else
-      config.sops."tailscale/server-oauth-secret".path;
+  sopsFolder = toString inputs.nix-secrets + "/sops";
+  user = config.hostSpec.primaryUsername;
+  tailscale_auth_key_path =
+    if config.hostSpec.isAdmin then "tailscale/admin-oauth-secret" else "tailscale/server-oauth-secret";
   routing_features = if config.hostSpec.isServer then "both" else "client";
 in
 {
-  sops.secrets."tailscale/admin-oauth-secret" = { };
-  sops.secrets."tailscale/server-oauth-secret" = { };
+  sops.secrets.${tailscale_auth_key_path} = {
+    sopsFile = "${sopsFolder}/shared.yaml";
+  };
   networking.firewall.trustedInterfaces = [ "tailscale0" ];
-  services.resolve.enable = true;
+  services.resolved.enable = true;
   services.tailscale = {
     enable = true;
     openFirewall = true;
     useRoutingFeatures = routing_features;
-    extraUpFlages = [
+    extraUpFlags = [
       "--accept-routes=false"
       "--operator=${user}"
     ];
@@ -48,7 +52,7 @@ in
       sleep 2
 
       # authenticate with tailscale
-      ${tailscale}/bin/tailscale up --auth-key=${tailscale_auth_key}
+      ${tailscale}/bin/tailscale up --auth-key=${config.sops.secrets.${tailscale_auth_key_path}}
       ${tailscale}/bin/tailscale set --operator=${user}
     '';
   };
