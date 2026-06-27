@@ -1,8 +1,8 @@
 {
   # required for remote-nvim
-  plugins.telescope.enable = true;
+  plugins.telescope.enable = false;
   plugins.remote-nvim = {
-    enable = true;
+    enable = false;
 
     # Offline mode: copy data locally instead of NVIM release.
     # https://nix-community.github.io/nixvim/plugins/remote-nvim/index.html
