@@ -52,8 +52,9 @@ in
       sleep 2
 
       # authenticate with tailscale
-      ${tailscale}/bin/tailscale up --auth-key=${config.sops.secrets.${tailscale_auth_key_path}}
-      ${tailscale}/bin/tailscale set --operator=${user}
+      ${tailscale}/bin/tailscale up --auth-key=${
+        config.sops.secrets.${tailscale_auth_key_path}.path
+      } --operator=${user}
     '';
   };
 }
