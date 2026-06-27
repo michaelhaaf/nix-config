@@ -86,6 +86,7 @@
     # TODO: see if gpu/monitor support HDR
     # hdr = lib.mkForce true;
     persistFolder = "/persist";
+    isAdmin = true;
   };
 
   # set custom autologin options. see greetd.nix for details

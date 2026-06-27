@@ -85,6 +85,7 @@
     users = [
       "michael"
     ];
+    isAdmin = true;
   };
 
   networking = {

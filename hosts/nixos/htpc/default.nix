@@ -83,6 +83,7 @@
       "michael"
       "homie"
     ];
+    isRemote = true;
   };
 
   services.displayManager = {

@@ -60,6 +60,8 @@
       "michael"
     ];
     persistFolder = "/persist";
+    isRemote = true;
+    isServer = true;
   };
 
   networking = {

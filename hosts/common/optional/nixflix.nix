@@ -34,6 +34,7 @@
     "usenet/newsgroupdirect/password" = { };
     "usenet/newsgroupdirect/server" = { };
     "qbittorrent/password" = { };
+    "wireguard-configs/protonvpn-homelab-confinement" = { };
   };
 
   nixflix = {
@@ -54,6 +55,10 @@
     nginx = {
       enable = true;
       addHostsEntries = true;
+      forceSSL = true;
+
+      # TODO: You have to configure security.acme.certs.$${nixflix.nginx.domain} in order to use this.
+      # enableACME = true;
     };
     postgres.enable = true;
 
@@ -173,13 +178,11 @@
     #   };
     # };
 
-    # Wireguard
-    # TODO: configure a wireguard instace with a conf path
-    # vpn = {
-    #   enable = true;
-    #   wgConfFile = config.sops.secrets."wireguard/conf".path;
-    #   accessibleFrom = [ "192.168.2.0/24" ];
-    # };
+    vpn = {
+      enable = true;
+      wgConfFile = config.sops.secrets."wireguard-confgs/protonvpn-homelab-confinement".path;
+      accessibleFrom = [ "192.168.2.0/24" ];
+    };
 
   };
 }
