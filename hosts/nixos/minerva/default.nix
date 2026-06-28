@@ -44,7 +44,7 @@
 
       "hosts/common/optional/services/openssh.nix" # allow remote SSH access
       "hosts/common/optional/services/tailscale.nix"
-      "hosts/common/optional/nixflix.nix"
+      "hosts/common/optional/server/nixflix"
     ])
 
   ];
