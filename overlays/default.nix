@@ -25,8 +25,12 @@ let
     stable = import inputs.nixpkgs-stable {
       inherit (final.stdenv.hostPlatform) system;
       config.allowUnfree = true;
-      #overlays = [
-      #];
+      overlays = [
+        # https://github.com/NixOS/nixpkgs/issues/536623#issuecomment-4833056236
+        (stable_final: stable_prev: {
+          pnpm_10_29_2 = stable_final.pnpm_10;
+        })
+      ];
     };
   };
 

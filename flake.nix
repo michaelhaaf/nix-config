@@ -44,7 +44,6 @@
       inputs.home-manager.follows = "";
     };
 
-    # Secrets management. See ./docs/secretsmgmt.md
     sops-nix = {
       url = "github:mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -55,18 +54,15 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # Editors
     nixvim = {
       url = "github:nix-community/nixvim";
     };
 
-    # Pre-commit
     pre-commit-hooks = {
       url = "github:cachix/git-hooks.nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # Theming
     stylix = {
       url = "github:nix-community/stylix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -83,16 +79,10 @@
       url = "github:noctalia-dev/noctalia-greeter";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    vicinae.url = "github:vicinaehq/vicinae";
-    noctalia-qs = {
-      url = "github:noctalia-dev/noctalia-qs";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
-    };
     niri-flake = {
       url = "github:sodiboo/niri-flake";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
-    # millennium.url = "github:SteamClientHomebrew/Millennium?dir=packages/nix";
 
     #
     # ========= Personal Repositories =========
