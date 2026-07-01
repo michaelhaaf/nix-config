@@ -46,7 +46,7 @@
     # memory-managed by the userspace systemd-oomd killer
     slices."nix-daemon".sliceConfig = {
       CPUAccounting = true;
-      CPUQuota = "50%";
+      CPUQuota = "600%"; # 100% per core
       MemoryAccounting = true; # Allow to control with systemd-cgtop
       MemoryHigh = "50%";
       MemoryMax = "75%";
