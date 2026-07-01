@@ -54,7 +54,7 @@ in
       # authenticate with tailscale
       ${tailscale}/bin/tailscale up --auth-key=${
         config.sops.secrets.${tailscale_auth_key_path}.path
-      } --operator=${user}
+      } --reset --operator=${user}
     '';
   };
 }
