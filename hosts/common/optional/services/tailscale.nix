@@ -2,6 +2,7 @@
   inputs,
   config,
   pkgs,
+  lib,
   ...
 }:
 let
@@ -10,21 +11,18 @@ let
   tailscale_auth_key_path =
     if config.hostSpec.isAdmin then "tailscale/admin-oauth-secret" else "tailscale/server-oauth-secret";
   routing_features = if config.hostSpec.isServer then "both" else "client";
+  accept_dns = if config.hostSpec.isServer then " --accept-dns=false" else "";
 in
 {
   sops.secrets.${tailscale_auth_key_path} = {
     sopsFile = "${sopsFolder}/shared.yaml";
   };
   networking.firewall.trustedInterfaces = [ "tailscale0" ];
-  services.resolved.enable = true;
+  services.resolved.enable = lib.mkDefault true;
   services.tailscale = {
     enable = true;
     openFirewall = true;
     useRoutingFeatures = routing_features;
-    extraUpFlags = [
-      "--accept-routes=false"
-      "--operator=${user}"
-    ];
   };
 
   # create a oneshot job to authenticate to Tailscale
@@ -54,7 +52,7 @@ in
       # authenticate with tailscale
       ${tailscale}/bin/tailscale up --auth-key=${
         config.sops.secrets.${tailscale_auth_key_path}.path
-      } --reset --operator=${user}
+      } --reset --operator=${user} ${accept_dns}
     '';
   };
 }

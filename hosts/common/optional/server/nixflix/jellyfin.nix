@@ -22,6 +22,7 @@
     enable = true;
     apiKey._secret = config.sops.secrets."jellyfin/api_key".path;
     subdomain = "watch";
+    vpn.enable = false;
     network.enableRemoteAccess = true;
     # TODO: OIDC auth?
     # branding = {

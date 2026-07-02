@@ -11,6 +11,7 @@
   nixflix.radarr = {
     enable = true;
     subdomain = "movies";
+    vpn.enable = false;
     config = {
       apiKey._secret = config.sops.secrets."radarr/api_key".path;
       hostConfig.password._secret = config.sops.secrets."radarr/password".path;

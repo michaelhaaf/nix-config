@@ -4,6 +4,9 @@
   lib,
   ...
 }:
+let
+  domainName = "local.${config.hostSpec.domain}";
+in
 {
   imports = [
     inputs.nixflix.nixosModules.default
@@ -36,9 +39,8 @@
 
     nginx = {
       enable = true;
-
-      # TODO: disable when I add my own DNS
-      addHostsEntries = true;
+      domain = domainName;
+      addHostsEntries = false;
 
       # TODO: jellyfin needs a real certificate or something
       # forceSSL = true;

@@ -26,7 +26,7 @@
       servers = [
         {
           name = "Eweka";
-          host = config.sops.secrets."usenet/eweka/server".path;
+          host = "news.eweka.nl";
           port = 563;
           username._secret = config.sops.secrets."usenet/eweka/username".path;
           password._secret = config.sops.secrets."usenet/eweka/password".path;
