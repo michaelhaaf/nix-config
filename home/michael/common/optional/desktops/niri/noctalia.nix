@@ -22,7 +22,7 @@
     settings = {
       theme = {
         mode = "dark";
-        source = "wallpaper";
+        source = lib.mkDefault "wallpaper";
         wallpaper_scheme = "m3-content";
         builtin = "Catppuccin";
       };
@@ -38,7 +38,7 @@
       };
       dock = {
         enabled = true;
-        background_opacity = 0.66;
+        background_opacity = lib.mkDefault 0.66;
         active_monitor_only = true;
         auto_hide = true;
         reserve_space = false;

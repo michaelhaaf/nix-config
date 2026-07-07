@@ -34,7 +34,7 @@
         lua = [ "stylua" ];
         markdown = [
           "injected"
-          "mdformat"
+          # "mdformat"
         ];
         nix = [ "nixfmt" ];
         rust = [ "rustfmt" ];
@@ -72,26 +72,26 @@
         ruff = {
           command = lib.getExe pkgs.ruff;
         };
-        mdformat =
-          let
-            pyPkgs = pkgs.python312Packages;
-          in
-          {
-            command = lib.getExe (
-              pkgs.writeShellApplication {
-                name = "mdformat";
-
-                runtimeInputs = [
-                  pyPkgs.mdformat
-                  pyPkgs.mdformat-myst
-                ];
-
-                text = ''
-                  mdformat "$@"
-                '';
-              }
-            );
-          };
+        # mdformat =
+        #   let
+        #     pyPkgs = pkgs.python312Packages;
+        #   in
+        #   {
+        #     command = lib.getExe (
+        #       pkgs.writeShellApplication {
+        #         name = "mdformat";
+        #
+        #         runtimeInputs = [
+        #           pyPkgs.mdformat
+        #           pyPkgs.mdformat-myst
+        #         ];
+        #
+        #         text = ''
+        #           mdformat "$@"
+        #         '';
+        #       }
+        #     );
+        #   };
         prettierd = {
           command = lib.getExe pkgs.prettierd;
         };
