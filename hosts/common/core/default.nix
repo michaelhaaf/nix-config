@@ -113,7 +113,7 @@ in
 
       allow-import-from-derivation = true;
 
-      access-token = "github.com=${config.sops.secrets."access-tokens/github-nix".path}";
+      access-tokens = "github.com=${config.sops.secrets."access-tokens/github-nix".path}";
 
       experimental-features = [
         "nix-command"
