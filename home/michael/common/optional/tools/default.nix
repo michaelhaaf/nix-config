@@ -1,7 +1,7 @@
 { lib, pkgs, ... }:
 {
   home.packages = lib.attrValues {
-    inherit (pkgs)
+    inherit (pkgs.stable)
       # Device imaging
       rpi-imager
 
@@ -15,11 +15,9 @@
       # Media production
       audacity
       gimp
-      inkscape
 
       # RDP
       remmina
-      rustdesk
 
       yt-dlp
       ;

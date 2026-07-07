@@ -14,6 +14,9 @@ in
     sopsFile = "${sopsFolder}/shared.yaml";
   };
 
+  # TODO: guard this with "if enabled"
+  programs.fzf.historyWidget.command = "";
+
   programs.atuin = {
     enable = true;
 
