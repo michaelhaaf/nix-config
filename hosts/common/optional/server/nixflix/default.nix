@@ -5,7 +5,7 @@
   ...
 }:
 let
-  domainName = "local.${config.hostSpec.domain}";
+  domainName = "${config.hostSpec.hostName}.${config.hostSpec.domain}";
 in
 {
   imports = [
@@ -41,12 +41,8 @@ in
       enable = true;
       domain = domainName;
       addHostsEntries = false;
-
-      # TODO: jellyfin needs a real certificate or something
-      # forceSSL = true;
-
-      # TODO: You have to configure security.acme.certs.$${nixflix.nginx.domain} in order to use this.
-      # enableACME = true;
+      forceSSL = true;
+      enableACME = true;
     };
     postgres.enable = true;
 

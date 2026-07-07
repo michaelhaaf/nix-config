@@ -44,8 +44,10 @@
 
       "hosts/common/optional/services/openssh.nix" # allow remote SSH access
       "hosts/common/optional/services/tailscale.nix"
+      "hosts/common/optional/server/acme.nix"
       "hosts/common/optional/server/dnsmasq.nix"
       "hosts/common/optional/server/nixflix"
+      "hosts/common/optional/server/nix-cache"
     ])
 
   ];

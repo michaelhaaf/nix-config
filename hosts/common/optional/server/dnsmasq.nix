@@ -3,7 +3,7 @@
   ...
 }:
 let
-  domainName = "local.${config.hostSpec.domain}";
+  domainName = "${config.hostSpec.hostName}.${config.hostSpec.domain}";
 in
 {
   # services.resolved.enable = lib.mkForce false;
@@ -22,8 +22,6 @@ in
       bogus-priv = true;
       # Addresses to listen on
       listen-address = [
-        "127.0.0.1"
-        "192.168.2.166" # lan subnet
         "100.109.85.57" # tailscale
       ];
       # Useful for debugging
