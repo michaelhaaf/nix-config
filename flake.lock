@@ -349,10 +349,10 @@
         "nixpkgs": "nixpkgs"
       },
       "locked": {
-        "lastModified": 1783453164,
-        "narHash": "sha256-aOcbWITFG1EvB3K4Z8xjBPgnuUvRNY96arR1U8+Hr6o=",
+        "lastModified": 1783456306,
+        "narHash": "sha256-JFzcTr37s5vfxLq5ANZu84BpVWmV3Jk+43oyRiRqxT4=",
         "ref": "main",
-        "rev": "c36bd9df1422ec0dee5df5c1bf22b8bf6a53ebe6",
+        "rev": "aaa10ab398fcb7943406e29dfc9e98938e0c63bd",
         "shallow": true,
         "type": "git",
         "url": "https://github.com/michaelhaaf/nix-secrets.git"

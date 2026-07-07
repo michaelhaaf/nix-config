@@ -1,5 +1,5 @@
 # Harmonia binary cache server
-{ config, lib, ... }:
+{ config, ... }:
 
 {
   sops.secrets = {
@@ -8,11 +8,9 @@
 
   services.harmonia = {
 
-    signKeyPaths = config.sops.secrets."harmonia/private_key".path;
     cache = {
       enable = true;
-      # Don't use signKeyPaths - it uses LoadCredential which is broken in LXC
-      signKeyPaths = lib.mkForce [ ];
+      signKeyPaths = [ config.sops.secrets."harmonia/private_key".path ];
       settings = {
         bind = "[::]:5000";
         workers = 4;

@@ -11,6 +11,7 @@
   ...
 }:
 let
+  sopsFolder = toString inputs.nix-secrets + "/sops";
   platform = if isDarwin then "darwin" else "nixos";
   platformModules = "${platform}Modules";
 in
@@ -82,6 +83,10 @@ in
     };
   };
 
+  sops.secrets."access-tokens/github-nix" = {
+    sopsFile = "${sopsFolder}/shared.yaml";
+  };
+
   #
   # ========== Nix Nix Nix ==========
   #
@@ -108,6 +113,8 @@ in
 
       allow-import-from-derivation = true;
 
+      access-token = "github.com=${config.sops.secrets."access-tokens/github-nix".path}";
+
       experimental-features = [
         "nix-command"
         "flakes"
@@ -120,9 +127,11 @@ in
       substituters = [
         "https://cache.nixos.org" # Official global cache
         "https://nix-community.cachix.org" # Community packages
+        "https://cache.minerva.michaelhaaf.net" # My cache
       ];
       trusted-public-keys = [
         "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+        "cache.minerva.michaelhaaf.net:/6R5lN0QcixiKt25poOVX/qSBA5wQaRgYMvGQTS7HuM="
       ];
     };
   };

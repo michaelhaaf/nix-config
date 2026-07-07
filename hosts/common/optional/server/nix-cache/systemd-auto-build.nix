@@ -26,11 +26,11 @@
         # Clone or update dotfiles
         if [ ! -d "$DOTFILES" ]; then
           git clone https://github.com/michaelhaaf/nix-config.git "$DOTFILES"
-        else
-          cd "$DOTFILES"
-          git fetch origin
-          git reset --hard origin/main
         fi
+
+        cd "$DOTFILES"
+        git fetch origin
+        git reset --hard origin/main
 
         # Update flake inputs
         nix flake update
