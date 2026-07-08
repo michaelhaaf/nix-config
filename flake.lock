@@ -355,13 +355,13 @@
         "rev": "aaa10ab398fcb7943406e29dfc9e98938e0c63bd",
         "shallow": true,
         "type": "git",
-        "url": "https://github.com/michaelhaaf/nix-secrets.git"
+        "url": "ssh://git@github.com/michaelhaaf/nix-secrets.git"
       },
       "original": {
         "ref": "main",
         "shallow": true,
         "type": "git",
-        "url": "https://github.com/michaelhaaf/nix-secrets.git"
+        "url": "ssh://git@github.com/michaelhaaf/nix-secrets.git"
       }
     },
     "nixflix": {

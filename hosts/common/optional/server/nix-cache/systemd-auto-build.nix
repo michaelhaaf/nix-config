@@ -1,6 +1,8 @@
 # TODO: adapt this further to re-use the existing build logic (e.g. in the scripts dir)
 # Adapted from: https://github.com/basnijholt/dotfiles/blob/main/configs/nixos/hosts/nix-cache/auto-build.nix
 
+# TODO: bootstrap the initial ssh auth for github somewhere (needs to run once because of Authenticity of Host warning)
+
 # Automatic nix build service for caching
 { pkgs, ... }:
 
@@ -25,13 +27,10 @@
 
         # Clone or update dotfiles
         if [ ! -d "$DOTFILES" ]; then
-          git clone https://github.com/michaelhaaf/nix-config.git "$DOTFILES"
+          git clone git+ssh://git@github.com/michaelhaaf/nix-config.git "$DOTFILES"
         fi
 
         cd "$DOTFILES"
-        git remote set-url origin https://michaelhaaf@github.com/michaelhaaf/nix-config
-        git fetch origin
-        git reset --hard origin/main
 
         # Update flake inputs
         nix flake update

@@ -11,7 +11,6 @@
   ...
 }:
 let
-  sopsFolder = toString inputs.nix-secrets + "/sops";
   platform = if isDarwin then "darwin" else "nixos";
   platformModules = "${platform}Modules";
 in
@@ -83,14 +82,6 @@ in
     };
   };
 
-  sops.secrets."access-tokens/github-nix" = {
-    sopsFile = "${sopsFolder}/shared.yaml";
-  };
-
-  sops.templates."access-tokens/github-nix.conf".content = ''
-    access-tokens = github.com=${config.sops.placeholder."access-tokens/github-nix"}
-  '';
-
   #
   # ========== Nix Nix Nix ==========
   #
@@ -102,10 +93,6 @@ in
     # This will add your inputs to the system's legacy channels
     # Making legacy nix commands consistent as well, awesome!
     nixPath = lib.mapAttrsToList (key: value: "${key}=${value.to.path}") config.nix.registry;
-
-    extraOptions = ''
-      !include ${config.sops.templates."access-tokens/github-nix.conf".path}
-    '';
 
     settings = {
       # See https://jackson.dev/post/nix-reasonable-defaults/
