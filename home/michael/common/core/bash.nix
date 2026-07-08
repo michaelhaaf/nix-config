@@ -31,7 +31,7 @@
       enableFzfRg = true;
       enableFzfRga = true;
       enableFzfGit = false;
-      fileWidgetOptions = [
+      fileWidget.options = [
         "--height 60%"
         "--border sharp"
         "--layout reverse"
