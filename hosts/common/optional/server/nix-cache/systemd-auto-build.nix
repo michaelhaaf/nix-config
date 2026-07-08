@@ -32,6 +32,8 @@
 
         cd "$DOTFILES"
 
+        git pull
+
         # Update flake inputs
         nix flake update
 
