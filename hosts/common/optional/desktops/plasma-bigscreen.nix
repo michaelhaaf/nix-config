@@ -16,7 +16,7 @@
   };
 
   # 144 DIP = 1.5x standard - readable from couch distance at 1080p
-  environment.etc."xdg/kcmfonts".txt = ''
+  environment.etc."xdg/kcmfonts".text = ''
     [General]
     forceFontDPI=144
   '';
