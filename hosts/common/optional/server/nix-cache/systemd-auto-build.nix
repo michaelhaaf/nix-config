@@ -29,6 +29,7 @@
         fi
 
         cd "$DOTFILES"
+        git remote set-url origin https://michaelhaaf@github.com/michaelhaaf/nix-config
         git fetch origin
         git reset --hard origin/main
 

@@ -87,6 +87,10 @@ in
     sopsFile = "${sopsFolder}/shared.yaml";
   };
 
+  sops.templates."access-tokens/github-nix.conf".content = ''
+    access-tokens = github.com=${config.sops.placeholder."access-tokens/github-nix"}
+  '';
+
   #
   # ========== Nix Nix Nix ==========
   #
@@ -99,6 +103,10 @@ in
     # Making legacy nix commands consistent as well, awesome!
     nixPath = lib.mapAttrsToList (key: value: "${key}=${value.to.path}") config.nix.registry;
 
+    extraOptions = ''
+      !include ${config.sops.templates."access-tokens/github-nix.conf".path}
+    '';
+
     settings = {
       # See https://jackson.dev/post/nix-reasonable-defaults/
       connect-timeout = 5;
@@ -107,13 +115,13 @@ in
       max-free = 1000000000; # 1GB
 
       trusted-users = [ "@wheel" ];
+
       # Deduplicate and optimize nix store
       auto-optimise-store = true;
+
       warn-dirty = false;
 
       allow-import-from-derivation = true;
-
-      access-tokens = "github.com=${config.sops.secrets."access-tokens/github-nix".path}";
 
       experimental-features = [
         "nix-command"
