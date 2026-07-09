@@ -13,6 +13,7 @@
     enable = true;
     subdomain = "tv";
     vpn.enable = false;
+    user = "admin";
     config = {
       apiKey._secret = config.sops.secrets."sonarr/api_key".path;
       hostConfig.password._secret = config.sops.secrets."sonarr/password".path;

@@ -8,10 +8,11 @@
 #   inherit (inputs.nixflix.lib.jellyfinPlugins) fromRepo;
 # in
 {
-  # sops.secrets. = { };
   sops.secrets = {
+    "service-passwords/homie" = { };
+    "service-passwords/chorf" = { };
     "jellyfin/api_key" = { };
-    "jellyfin/admin_password" = { };
+    "jellyfin/password" = { };
     # "jellyfin/oidc-client-id" = { };
     # "jellyfin/oidc-client-secret" = { };
     # "opensubtitles-com/api_key" = { };
@@ -24,6 +25,7 @@
     subdomain = "watch";
     vpn.enable = false;
     network.enableRemoteAccess = true;
+    encoding.hardwareAccelerationType = "vaapi";
     # TODO: OIDC auth?
     # branding = {
     #   loginDisclaimer = ''
@@ -53,7 +55,21 @@
         mutable = false;
         policy.isAdministrator = true;
         password = {
-          _secret = config.sops.secrets."jellyfin/admin_password".path;
+          _secret = config.sops.secrets."jellyfin/password".path;
+        };
+      };
+      homie = {
+        mutable = true;
+        policy.isAdministrator = false;
+        password = {
+          _secret = config.sops.secrets."service-passwords/homie".path;
+        };
+      };
+      chorf = {
+        mutable = false;
+        policy.isAdministrator = false;
+        password = {
+          _secret = config.sops.secrets."service-passwords/chorf".path;
         };
       };
     };
