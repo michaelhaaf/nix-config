@@ -17,7 +17,7 @@
     subdomain = "nzb";
     settings = {
       misc = {
-        username._secret = "sabnzbd";
+        username = "sabnzbd";
         password._secret = config.sops.secrets."sabnzbd/password".path;
         api_key._secret = config.sops.secrets."sabnzbd/api_key".path;
         nzb_key._secret = config.sops.secrets."sabnzbd/nzb_key".path;
