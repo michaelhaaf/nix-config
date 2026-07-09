@@ -38,9 +38,6 @@
         # parsers
         yq-go # parser for Yaml and Toml Files, that mirrors jq
 
-        # file sync and network forwarding
-        mutagen
-
         # serial debugging
         screen
 
