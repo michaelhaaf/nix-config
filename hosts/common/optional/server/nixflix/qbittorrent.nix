@@ -15,7 +15,6 @@
   nixflix.torrentClients.qbittorrent = {
     enable = false;
     subdomain = "torrent";
-    user = "admin";
     password._secret = config.sops.secrets."qbittorrent/password".path;
     serverConfig = {
       LegalNotice.Accepted = true;

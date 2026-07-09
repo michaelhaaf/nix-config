@@ -51,7 +51,7 @@
     # };
 
     users = {
-      admin = {
+      jellyfin = {
         mutable = false;
         policy.isAdministrator = true;
         password = {

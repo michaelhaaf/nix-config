@@ -6,7 +6,6 @@
   sops.secrets = {
     "sabnzbd/api_key" = { };
     "sabnzbd/nzb_key" = { };
-    "sabnzbd/username" = { };
     "sabnzbd/password" = { };
     "usenet/eweka/username" = { };
     "usenet/eweka/password" = { };
@@ -18,7 +17,7 @@
     subdomain = "nzb";
     settings = {
       misc = {
-        username._secret = "admin";
+        username._secret = "sabnzbd";
         password._secret = config.sops.secrets."sabnzbd/password".path;
         api_key._secret = config.sops.secrets."sabnzbd/api_key".path;
         nzb_key._secret = config.sops.secrets."sabnzbd/nzb_key".path;

@@ -9,7 +9,6 @@
     enable = true;
     subdomain = "music";
     vpn.enable = false;
-    user = "admin";
 
     config = {
       apiKey._secret = config.sops.secrets."lidarr/api_key".path;

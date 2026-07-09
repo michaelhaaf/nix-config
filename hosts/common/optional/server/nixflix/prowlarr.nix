@@ -11,7 +11,6 @@
     enable = true;
     subdomain = "indexers";
     vpn.enable = false;
-    user = "admin";
 
     config = {
       apiKey._secret = config.sops.secrets."prowlarr/api_key".path;
