@@ -35,7 +35,6 @@
     #
     # ========== Misc Inputs ==========
     #
-    inputs.stylix.nixosModules.stylix
 
     (map lib.custom.relativeToRoot [
       #

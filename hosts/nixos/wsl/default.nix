@@ -5,7 +5,6 @@
 ###############################################################
 
 {
-  inputs,
   pkgs,
   lib,
   ...
@@ -17,7 +16,6 @@
     #
     # ========== Misc Inputs ==========
     #
-    inputs.stylix.nixosModules.stylix
 
     (map lib.custom.relativeToRoot [
       #

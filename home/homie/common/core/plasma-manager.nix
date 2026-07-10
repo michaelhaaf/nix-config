@@ -1,10 +1,19 @@
-{ inputs, pkgs, ... }:
+{
+  inputs,
+  lib,
+  config,
+  pkgs,
+  ...
+}:
 {
   imports = [ inputs.plasma-manager.homeModules.plasma-manager ];
   home.packages = with pkgs; [
     papirus-icon-theme
   ];
-  stylix.targets.qt.platform = "qtct";
+
+  config = lib.mkIf config.stylix.enable {
+    stylix.targets.qt.platform = "qtct";
+  };
   programs.plasma = {
     enable = true;
 

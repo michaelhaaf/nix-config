@@ -1,6 +1,13 @@
-{ lib, pkgs, ... }:
 {
-  # TODO: define theme itself per host
+  inputs,
+  lib,
+  pkgs,
+  ...
+}:
+{
+  imports = [
+    inputs.stylix.nixosModules.stylix
+  ];
 
   stylix = {
     enable = true;

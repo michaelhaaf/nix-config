@@ -31,10 +31,8 @@
         fi
 
         cd "$DOTFILES"
-
+        git reset --hard origin/main
         git pull
-
-        # Update flake inputs
         nix flake update
 
         # Get the commit ID of the nixpkgs input (locked in flake.lock)

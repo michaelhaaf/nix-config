@@ -216,6 +216,5 @@ in
       };
     };
   };
-  stylix.targets.firefox.enable = true;
-  stylix.targets.firefox.profileNames = [ "default" ];
+
 }
