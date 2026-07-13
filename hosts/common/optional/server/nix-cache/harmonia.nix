@@ -32,7 +32,7 @@
     enable = true;
     recommendedTlsSettings = true;
     virtualHosts."cache.minerva.michaelhaaf.net" = {
-      enableACME = true;
+      useACMEHost = "minerva.michaelhaaf.net";
       forceSSL = true;
 
       locations."/".extraConfig = ''
