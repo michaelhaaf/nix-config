@@ -47,7 +47,7 @@ in
     # have the job run this shell script
     script = with pkgs; ''
       # wait for tailscaled to settle
-      sleep 2
+      sleep 5
 
       # authenticate with tailscale
       ${tailscale}/bin/tailscale up --auth-key=${

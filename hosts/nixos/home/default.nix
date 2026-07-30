@@ -131,6 +131,7 @@
       };
       timeout = 3;
     };
+
     # see https://github.com/saylesss88/my-flake/issues/2#issuecomment-4391082858
     initrd.systemd = {
       enable = true;
@@ -138,18 +139,27 @@
         description = "Rollback ZFS root subvolume to a pristine state";
         wantedBy = [ "initrd.target" ];
 
+        after = [
+          "zfs-import-rpool.service"
+        ];
+
         # Before mounting the system root (/sysroot) during the early boot process
         before = [ "sysroot.mount" ];
+
+        path = with pkgs; [
+          zfs
+        ];
 
         unitConfig.DefaultDependencies = "no";
         serviceConfig.Type = "oneshot";
 
         # Uncomment after first reboot
         script = ''
-          zfs rollback -r rpool/local/root@blank
+          zfs rollback -r rpool/local/root@blank && echo "  >> >> rollback complete << <<"
         '';
       };
     };
+
     supportedFilesystems = [ "zfs" ];
     zfs.forceImportRoot = false;
   };
