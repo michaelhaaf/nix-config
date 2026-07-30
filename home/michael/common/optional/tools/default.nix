@@ -19,7 +19,10 @@
       # RDP
       remmina
 
+      # Other
+      anki
       yt-dlp
+
       ;
 
     inherit (pkgs.unstable)
