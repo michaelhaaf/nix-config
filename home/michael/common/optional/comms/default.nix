@@ -6,7 +6,7 @@
       signal-desktop
       vesktop
       teams-for-linux
-      tor-browser
+      # tor-browser
       element-desktop
       ;
   };

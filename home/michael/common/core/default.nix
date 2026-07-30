@@ -87,7 +87,7 @@
       vim
       wget
       wordnet # lexical database
-      wordlists # unix list of words
+      # wordlists # unix list of words
       zathura # pdf reader
       zip
       ;

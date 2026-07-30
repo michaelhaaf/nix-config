@@ -3,7 +3,7 @@
   hardware.xone.enable = true; # xbox controller
 
   environment.systemPackages = with pkgs; [
-    bottles
+    # bottles
     steam-tui
     steamcmd
   ];
