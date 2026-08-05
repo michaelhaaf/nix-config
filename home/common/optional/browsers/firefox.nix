@@ -3,9 +3,6 @@
   pkgs,
   ...
 }:
-let
-  homeDir = config.home.homeDirectory;
-in
 {
   # Inspiration:
   # - https://discourse.nixos.org/t/declare-firefox-extensions-and-settings/36265/20
@@ -19,7 +16,25 @@ in
   home.packages = with pkgs; [
     tridactyl-native
   ];
-  xdg.configFile."tridactyl/tridactylrc".source = ./tridactylrc;
+
+  xdg = {
+    configFile."tridactyl/tridactylrc".source = ./tridactylrc;
+    mime.enable = true;
+    mimeApps = {
+      enable = true;
+      defaultApplications = {
+        "text/html" = [ "firefox.desktop" ];
+        "text/xml" = [ "firefox.desktop" ];
+        "x-scheme-handler/http" = [ "firefox.desktop" ];
+        "x-scheme-handler/https" = [ "firefox.desktop" ];
+        "x-scheme-handler/about" = [ "firefox.desktop" ];
+        "x-scheme-handler/unknown" = [ "firefox.desktop" ];
+      };
+    };
+  };
+
+  # TODO: figure out how to surround with lib.mkIf without introducting top level config, or whatever
+  stylix.targets.firefox.profileNames = [ "default" ];
 
   programs.firefoxpwa = {
     enable = true;
@@ -154,7 +169,7 @@ in
         "browser.compactmode.show" = true;
         "browser.uidensity" = 1; # enable compact mode
         "browser.aboutConfig.showWarning" = false;
-        "browser.download.dir" = "${homeDir}/downloads";
+        "browser.download.dir" = "${config.home.homeDirectory}/downloads";
         "browser.contentblocking.category" = "strict";
         "browser.topsites.contile.enabled" = false;
         "browser.formfill.enable" = false;
@@ -201,20 +216,6 @@ in
           display: none !important;
         }
       '';
-    };
-  };
-  xdg = {
-    mime.enable = true;
-    mimeApps = {
-      enable = true;
-      defaultApplications = {
-        "text/html" = [ "firefox.desktop" ];
-        "text/xml" = [ "firefox.desktop" ];
-        "x-scheme-handler/http" = [ "firefox.desktop" ];
-        "x-scheme-handler/https" = [ "firefox.desktop" ];
-        "x-scheme-handler/about" = [ "firefox.desktop" ];
-        "x-scheme-handler/unknown" = [ "firefox.desktop" ];
-      };
     };
   };
 

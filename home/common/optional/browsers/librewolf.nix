@@ -1,5 +1,11 @@
-{ pkgs, ... }:
 {
+  pkgs,
+  ...
+}:
+{
+  # TODO: figure out how to surround with lib.mkIf without introducting top level config, or whatever
+  stylix.targets.librewolf.profileNames = [ "default" ];
+
   programs.librewolf = {
     enable = true;
     package = pkgs.stable.librewolf;
