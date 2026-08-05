@@ -6,11 +6,11 @@
       enable = true;
       # folding.enable = true; # 26.05
       nixvimInjections = true;
+      indent = {
+        enable = true;
+        disable = [ "python" ];
+      };
       settings = {
-        indent = {
-          enable = true;
-          disable = [ "python" ];
-        };
         incremental_selection = {
           enable = true;
         };

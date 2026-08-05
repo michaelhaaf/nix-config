@@ -126,7 +126,8 @@ in
           "https://outlook.live.com"
 
           # misc
-          "https://methode-parici.com/"
+          "https://methode-parici.com"
+          "https://lichess.org"
         ];
       };
 

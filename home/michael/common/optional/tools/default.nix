@@ -27,7 +27,6 @@
 
     inherit (pkgs.unstable)
       obs-studio
-      grimblast # screenshot tool
       ;
     inherit (pkgs.unstable.pkgsRocm)
       blender

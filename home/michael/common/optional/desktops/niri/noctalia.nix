@@ -22,8 +22,9 @@
     settings = {
       theme = {
         mode = "dark";
-        source = lib.mkDefault "wallpaper";
-        wallpaper_scheme = "m3-content";
+        source = lib.mkDefault "community";
+        community_palette = "Catppuccin Macchiato Pink";
+        wallpaper_scheme = "vibrant";
         builtin = "Catppuccin";
       };
       backdrop = {

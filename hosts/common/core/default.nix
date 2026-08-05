@@ -122,11 +122,11 @@ in
       substituters = [
         "https://cache.nixos.org" # Official global cache
         "https://nix-community.cachix.org" # Community packages
-        "https://cache.minerva.michaelhaaf.net" # My cache
+        # "https://cache.minerva.michaelhaaf.net" # My cache
       ];
       trusted-public-keys = [
         "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
-        "cache.minerva.michaelhaaf.net:/6R5lN0QcixiKt25poOVX/qSBA5wQaRgYMvGQTS7HuM="
+        # "cache.minerva.michaelhaaf.net:/6R5lN0QcixiKt25poOVX/qSBA5wQaRgYMvGQTS7HuM="
       ];
     };
   };
