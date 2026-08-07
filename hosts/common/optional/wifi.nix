@@ -13,6 +13,11 @@
     pkgs.networkmanagerapplet
   ];
 
+  services.kismet = {
+    enable = true;
+
+  };
+
   networking.networkmanager.dispatcherScripts = [
     {
       type = "basic";
