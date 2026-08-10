@@ -143,6 +143,9 @@
           # misc
           "https://methode-parici.com"
           "https://lichess.org"
+
+          # miscellany
+          "https://authentification.quebec.ca"
         ];
       };
 

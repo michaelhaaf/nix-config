@@ -73,6 +73,9 @@
       gh-classroom
       gh-dash
       gh-f
+      # TODO: declare the custom package necessary to build the below from source
+      # gh-teacher
+      # gh-student
     ];
 
   };
