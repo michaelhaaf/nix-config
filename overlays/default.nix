@@ -40,25 +40,7 @@ let
       config.allowUnfree = true;
       overlays = [
         (unstable_final: unstable_prev: {
-          bootdev-cli = unstable_prev.bootdev-cli.overrideAttrs (
-            previousAttrs:
-            let
-              version = "1.28.0";
-              hashes = {
-                "1.28.0" = "sha256-sBPId1wEsIG1E+sf+pbqfz0xW0+PHVAoRYTkFLXpWOU=";
-              };
-            in
-            rec {
-              inherit version;
-              src = _prev.fetchFromGitHub {
-                owner = "bootdotdev";
-                repo = "bootdev";
-                tag = "v${version}";
-                hash = hashes.${version} or "";
-              };
-              vendorHash = "sha256-ZDioEU5uPCkd+kC83cLlpgzyOsnpj2S7N+lQgsQb8uY=";
-            }
-          );
+
         })
       ];
     };
