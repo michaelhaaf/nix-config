@@ -20,13 +20,13 @@
       remmina
 
       # Other
-      anki
       yt-dlp
 
       ;
 
     inherit (pkgs.unstable)
       obs-studio
+      anki
       ;
     inherit (pkgs.unstable.pkgsRocm)
       blender

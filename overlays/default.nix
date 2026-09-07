@@ -13,7 +13,7 @@ let
       directory = ../pkgs/common;
     });
 
-  linuxModifications = final: prev: prev.lib.mkIf final.stdenv.isLinux { };
+  linuxModifications = final: prev: prev.lib.mkIf final.stdenv.hostPlatform.isLinux { };
 
   modifications = final: prev: {
     # example = prev.example.overrideAttrs (oldAttrs: let ... in {
@@ -40,6 +40,32 @@ let
       config.allowUnfree = true;
       overlays = [
         (unstable_final: unstable_prev: {
+          # https://jezenthomas.com/2026/07/nix-overrides-that-expire-themselves/
+          # keeping this here as an example that hopefully works
+          # anki = unstable_prev.anki.overrideAttrs (
+          #   previousAttrs:
+          #   let
+          #     version = "26.08.1";
+          #     hashes = {
+          #       version = "sha256:88785a68b0e361ec173ff38410fe0ee4388b2723da0ef1cf0746c5e862e4a7df";
+          #     };
+          #     noOverride = _prev.lib.versionAtLeast unstable_prev.anki.version version;
+          #   in
+          #   _prev.lib.warnIf noOverride
+          #     ''
+          #       anki >= ${version} is now in nixpkgs, the override should be removed.
+          #     ''
+          #     rec {
+          #       inherit version;
+          #       src = _prev.fetchFromGitHub {
+          #         owner = "ankitects";
+          #         repo = "anki";
+          #         tag = "v${version}";
+          #         hash = hashes.${version} or "";
+          #       };
+          #       # vendorHash = "sha256:88785a68b0e361ec173ff38410fe0ee4388b2723da0ef1cf0746c5e862e4a7df";
+          #     }
+          # );
         })
       ];
     };

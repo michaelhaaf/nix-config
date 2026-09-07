@@ -66,7 +66,7 @@ in
       #     path = "/etc/borg/passphrase";
       #   };
       # })
-      (lib.mkIf pkgs.stdenv.isLinux linuxEntries)
+      (lib.mkIf pkgs.stdenv.hostPlatform.isLinux linuxEntries)
     ];
   # The containing folders are created as root and if this is the first ~/.config/ entry,
   # the ownership is busted and home-manager can't target because it can't write into .config...
