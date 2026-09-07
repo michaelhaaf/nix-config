@@ -40,7 +40,6 @@ let
       config.allowUnfree = true;
       overlays = [
         (unstable_final: unstable_prev: {
-
         })
       ];
     };

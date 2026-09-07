@@ -48,6 +48,8 @@
         # standard man pages for linux API
         man-pages
         man-pages-posix
+
+        android-tools
         ;
       inherit (pkgs.unstable)
         devenv # environment manager
