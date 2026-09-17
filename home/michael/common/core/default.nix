@@ -27,7 +27,7 @@
       "$HOME/.local/bin"
     ];
     sessionVariables = {
-      FLAKE = "$HOME/src/nix/nix-config";
+      NH_FLAKE = "$HOME/nix-config";
       SHELL = "bash";
     };
     file.".face".source = lib.custom.relativeToRoot "assets/.face";

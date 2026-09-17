@@ -19,6 +19,10 @@ in
   users.users.${hostSpec.primaryUsername} = {
     home = "/home/${hostSpec.primaryUsername}";
     isNormalUser = true;
+
+    # TODO: find out why this is still necessary: github.com/NixOS/nixpkgs/issues/208766
+    initialHashedPassword = null;
+
     hashedPasswordFile = sopsHashedPasswordFile; # Blank if sops is not working.
 
     extraGroups = lib.flatten [
@@ -41,6 +45,10 @@ in
   # root's ssh key are mainly used for remote deployment, borg, and some other specific ops
   users.users.root = {
     shell = pkgs.bash;
+
+    # TODO: find out why this is still necessary: github.com/NixOS/nixpkgs/issues/208766
+    initialHashedPassword = null;
+
     hashedPasswordFile = config.users.users.${hostSpec.primaryUsername}.hashedPasswordFile;
     hashedPassword = config.users.users.${hostSpec.primaryUsername}.hashedPassword; # This comes from hosts/common/optional/minimal.nix and gets overridden if sops is working
     openssh.authorizedKeys.keys =

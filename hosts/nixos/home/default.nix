@@ -153,8 +153,11 @@
         serviceConfig.Type = "oneshot";
 
         # Uncomment after first reboot
+        # script = ''
+        #   zfs rollback -r rpool/local/root@blank && echo "  >> >> rollback complete << <<"
+        # '';
         script = ''
-          zfs rollback -r rpool/local/root@blank && echo "  >> >> rollback complete << <<"
+          echo "  >> >> rollback WOULD HAVE been complete << <<"
         '';
       };
     };
