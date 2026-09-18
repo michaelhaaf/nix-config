@@ -24,11 +24,17 @@
       };
       # package = pkgs.millennium-steam;
       extraCompatPackages = [ pkgs.unstable.proton-ge-bin ];
+      gamescopeSession = {
+        enable = true;
+      };
     };
     #gamescope launch args set dynamically in home/<user>/common/optional/gaming
     gamescope = {
       enable = true;
-      capSysNice = true;
+      # TODO: look into re-enabling when https://github.com/ValveSoftware/gamescope/pull/2313 is released.
+      # See also: https://github.com/NixOS/nixpkgs/issues/351516
+      # capSysNice = true;
+      capSysNice = false;
     };
     # to run steam games in game mode, add the following to the game's properties from within steam
     # gamemoderun %command%
