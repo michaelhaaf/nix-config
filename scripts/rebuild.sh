@@ -25,7 +25,7 @@ function yellow() {
 	fi
 }
 
-switch_args="--impure --flake "
+switch_args="--flake "
 trace=""
 if [[ -n $1 && $1 == "trace" ]]; then
 	trace="--show-trace"
@@ -82,7 +82,7 @@ else
 	if command -v nh &>/dev/null; then
 		REPO_PATH=$(pwd)
 		export REPO_PATH
-		nh os switch . -- --impure $trace
+		nh os switch . -- $trace
 	else
 		sudo nixos-rebuild $switch_args
 	fi
