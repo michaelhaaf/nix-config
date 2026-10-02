@@ -44,29 +44,30 @@
       #
       "hosts/common/optional/desktops/niri.nix"
       "hosts/common/optional/desktops/wayland.nix" # common wayland options
-
       "hosts/common/optional/services/greetd.nix" # display manager
-      "hosts/common/optional/services/printing.nix" # CUPS
-      "hosts/common/optional/services/openssh.nix" # allow remote SSH access
-      "hosts/common/optional/services/bluetooth.nix" # bluetooth
-      "hosts/common/optional/services/openrgb.nix" # openrgb
-      "hosts/common/optional/services/tailscale.nix"
 
-      "hosts/common/optional/amd.nix" # GPU monitor (not available in home-manager)
-      "hosts/common/optional/libvirt.nix" # Virtual machine manager
-      "hosts/common/optional/docker.nix"
-      "hosts/common/optional/nvtop.nix" # GPU monitor (not available in home-manager)
+      # "hosts/common/optional/services/printing.nix" # CUPS
+      "hosts/common/optional/services/openssh.nix" # allow remote SSH access
+
+      # "hosts/common/optional/services/bluetooth.nix" # bluetooth
+      # "hosts/common/optional/services/openrgb.nix" # openrgb
+      # "hosts/common/optional/services/tailscale.nix"
+
+      # "hosts/common/optional/amd.nix" # GPU monitor (not available in home-manager)
+      # "hosts/common/optional/libvirt.nix" # Virtual machine manager
+      # "hosts/common/optional/docker.nix"
+      # "hosts/common/optional/nvtop.nix" # GPU monitor (not available in home-manager)
       "hosts/common/optional/plymouth.nix" # fancy boot screen
-      "hosts/common/optional/thunar.nix" # file manager
+      # "hosts/common/optional/thunar.nix" # file manager
       "hosts/common/optional/audio.nix" # pipewire and cli controls
       "hosts/common/optional/wifi.nix" # common wifi options
-      "hosts/common/optional/gaming.nix" # steam and gamemode and stuff
-      "hosts/common/optional/wine.nix" # run windows applications
+      # "hosts/common/optional/gaming.nix" # steam and gamemode and stuff
+      # "hosts/common/optional/wine.nix" # run windows applications
       "hosts/common/optional/xdg.nix" # XDG spec modifications
 
       "hosts/common/optional/stylix.nix" # host-wide styling
-      "hosts/common/optional/nix-ld.nix"
-      "hosts/common/optional/appimage.nix"
+      # "hosts/common/optional/nix-ld.nix"
+      # "hosts/common/optional/appimage.nix"
 
     ])
 
@@ -128,7 +129,7 @@
         efiSysMountPoint = "/boot/efi";
         canTouchEfiVariables = true;
       };
-      timeout = 3;
+      timeout = 10;
     };
 
     # see https://github.com/saylesss88/my-flake/issues/2#issuecomment-4391082858
@@ -186,7 +187,7 @@
       ;
   };
 
-  services.lact.enable = true;
+  # services.lact.enable = true;
 
   # https://wiki.nixos.org/wiki/FAQ/When_do_I_update_stateVersion
   system.stateVersion = "25.11";

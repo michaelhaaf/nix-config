@@ -13,10 +13,9 @@
     pkgs.networkmanagerapplet
   ];
 
-  services.kismet = {
-    enable = true;
-
-  };
+  # services.kismet = {
+  #   enable = true;
+  #  };
 
   networking.networkmanager.dispatcherScripts = [
     {

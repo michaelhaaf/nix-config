@@ -10,20 +10,20 @@
     # ========== Host-specific Optional Configs ==========
     #
     common/optional/desktops/niri
-
     common/optional/sops.nix
     common/optional/desktops
+
     common/optional/shell-extras
     common/optional/development
-    common/optional/comms
-    common/optional/media
-    common/optional/tools
+    # common/optional/comms
+    # common/optional/media
+    # common/optional/tools
   ]
   ++ map lib.custom.relativeToRoot [
     "home/common/optional/browsers/firefox.nix"
     # "home/common/optional/browsers/librewolf.nix"
-    "home/common/optional/browsers/chromium.nix"
-    "home/common/optional/browsers/brave.nix"
+    # "home/common/optional/browsers/chromium.nix"
+    # "home/common/optional/browsers/brave.nix"
   ];
 
   services.kanshi = {
